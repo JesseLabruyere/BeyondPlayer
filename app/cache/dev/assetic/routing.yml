@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /home/mark/PhpstormProjects/MusicPlayer/app/config/routing_dev.yml
+    resource: 'D:\projecten\webdev\zomergit\BeyondPlayer\app/config/routing_dev.yml'
