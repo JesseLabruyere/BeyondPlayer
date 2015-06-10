@@ -53,16 +53,12 @@ module.exports = function(grunt) {
 
 
     /*---------------- DEFAULT TASKS --------------------*/
+	
     // Default task(s).
     // These tasks will be automaticly executed when the grunt command is run
     // grunt uglify works in the command line but not as a default task
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['uglify', 'sass']);
 
-
-    // test default task
-    grunt.registerTask('default', 'Log some stuff.', function() {
-        grunt.log.write('Logging some stuff...').ok();
-    });
     // 'Sass' task
     /*grunt.registerTask('default', ['sass']);*/
 
