@@ -25,7 +25,7 @@ class appDevDebugProjectContainer extends Container
     public function __construct()
     {
         $dir = __DIR__;
-        for ($i = 1; $i <= 5; ++$i) {
+        for ($i = 1; $i <= 3; ++$i) {
             $this->targetDirs[$i] = $dir = dirname($dir);
         }
         $this->parameters = $this->getDefaultParameters();
@@ -619,7 +619,7 @@ class appDevDebugProjectContainer extends Container
         $b = new \Doctrine\DBAL\Configuration();
         $b->setSQLLogger($a);
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => 3307, 'dbname' => 'musicplayer', 'user' => 'root', 'password' => 'usbw', 'charset' => 'UTF8', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => 'localhost', 'port' => 3306, 'dbname' => 'musicplayer', 'user' => 'root', 'password' => 'test', 'charset' => 'UTF8', 'driverOptions' => array()), $b, new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this), array());
     }
 
     /**
@@ -720,7 +720,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_db25a3bb64842fab5596f72db0fb109063558a8ce37376a9118eccceeabed614');
+        $instance->setNamespace('sf2orm_default_94d307c8ec2c601a29d7fdf9336e24b8157b20aa12f6e6cabe15cb918f168ed7');
 
         return $instance;
     }
@@ -737,7 +737,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_db25a3bb64842fab5596f72db0fb109063558a8ce37376a9118eccceeabed614');
+        $instance->setNamespace('sf2orm_default_94d307c8ec2c601a29d7fdf9336e24b8157b20aa12f6e6cabe15cb918f168ed7');
 
         return $instance;
     }
@@ -754,7 +754,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] = $instance = new \Doctrine\Common\Cache\ArrayCache();
 
-        $instance->setNamespace('sf2orm_default_db25a3bb64842fab5596f72db0fb109063558a8ce37376a9118eccceeabed614');
+        $instance->setNamespace('sf2orm_default_94d307c8ec2c601a29d7fdf9336e24b8157b20aa12f6e6cabe15cb918f168ed7');
 
         return $instance;
     }
@@ -3709,10 +3709,10 @@ class appDevDebugProjectContainer extends Container
             'kernel.container_class' => 'appDevDebugProjectContainer',
             'database_driver' => 'pdo_mysql',
             'database_host' => 'localhost',
-            'database_port' => 3307,
+            'database_port' => 3306,
             'database_name' => 'musicplayer',
             'database_user' => 'root',
-            'database_password' => 'usbw',
+            'database_password' => 'test',
             'mailer_transport' => 'smtp',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => NULL,
@@ -4157,10 +4157,10 @@ class appDevDebugProjectContainer extends Container
             'assetic.variables' => array(
 
             ),
-            'assetic.java.bin' => 'C:\\ProgramData\\Oracle\\Java\\javapath\\java.EXE',
-            'assetic.node.bin' => 'D:\\installaties\\nodejs\\\\node.EXE',
-            'assetic.ruby.bin' => 'D:\\installaties\\Ruby21-x64\\bin\\ruby.EXE',
-            'assetic.sass.bin' => 'D:\\installaties\\Ruby21-x64\\bin\\sass.BAT',
+            'assetic.java.bin' => 'C:\\Program Files\\Java\\jdk1.8.0_25\\bin\\java.EXE',
+            'assetic.node.bin' => 'C:\\Program Files\\nodejs\\\\node.EXE',
+            'assetic.ruby.bin' => '/usr/bin/ruby',
+            'assetic.sass.bin' => '/usr/bin/sass',
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
             'assetic.twig_extension.functions' => array(
 
