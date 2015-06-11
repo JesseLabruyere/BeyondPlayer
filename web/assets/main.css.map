@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,IAAK;EACH,IAAI,EAAE,0BAAgB;EACtB,KAAK,EALS,IAAI;EAMlB,gBAAgB,EALR,IAAI;;;AAQd,YAAY;EACV,KAAK,EAAE,eAAwB",
+"sources": ["../../app/Resources/stylesheets/test.scss"],
+"names": [],
+"file": "main.css"
+}

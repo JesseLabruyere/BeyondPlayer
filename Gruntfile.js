@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             my_target: {
                 files: {
                     // we specify that we exclude the min.js files
-                    'web/assets/output.min.js': ['app/Resources/scripts/*.js', '!app/Resources/scripts/*.min.js']
+                    'web/assets/output.min.js': ['app/Resources/scripts/*.js']
                 }
             }
         },
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {                         // Dictionary of files
-                    'web/assets/main.css': ['app/Resources/stylesheets/*.scss', 'app/Resources/stylesheets/*.sass']       // 'destination': 'source'
+                    'web/assets/main.css': ['app/Resources/stylesheets/*.scss', 'app/Resources/stylesheets/*.sass', 'app/Resources/stylesheets/*.css']       // 'destination': 'source'
 
                 }
             }

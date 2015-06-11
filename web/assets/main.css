@@ -1,6 +1,11 @@
 body {
   font: 100% Helvetica, sans-serif;
   color: #333;
+  background-color: #fff;
+}
+
+.btn-default {
+  color: #333 !important;
 }
 
 /*# sourceMappingURL=main.css.map */
