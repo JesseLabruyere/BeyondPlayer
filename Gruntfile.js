@@ -26,7 +26,8 @@ module.exports = function(grunt) {
         },
             my_target: {
                 files: {
-                    'app/Resources/scripts/output.min.js': ['app/Resources/scripts/test1.js', 'app/Resources/scripts/test2.js']
+                    // we specify that we exclude the min.js files
+                    'app/Resources/scripts/output.min.js': ['app/Resources/scripts/*.js', '!app/Resources/scripts/*.min.js']
                 }
             }
         },
@@ -38,19 +39,34 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {                         // Dictionary of files
-                    /*'main.css': 'app/Resources/views/*.scss',       // 'destination': 'source'
-                    'widgets.css': 'widgets.scss'*/
+                    'app/Resources/stylesheets/main.css': ['app/Resources/stylesheets/*.scss', 'app/Resources/stylesheets/*.sass']       // 'destination': 'source'
+
                 }
             }
         },
 
         // watch configuration
         watch: {
+            // watch task for scripts
             scripts: {
                 // watch if any .js files change in the scripts folder
-                files: ['app/Resources/scripts/*.js', 'app/Resources/views/*.scss'],
+                files: ['app/Resources/scripts/*.js'],
                 // run these tasks when the watch event triggers
-                tasks: ['uglify', 'sass'],
+                tasks: ['uglify'],
+                options: {
+                    // Setting this option to false speeds up the reaction time of the watch (usually 500ms faster for most)
+                    // and allows subsequent task runs to share the same context.
+                    spawn: false,
+                    // react to all events 'changed', 'added' and 'deleted'.
+                    event: ['all']
+                }
+            },
+            // watch task for stylesheets
+            stylesheets: {
+                // watch if any .scss files change in the views folder
+                files: ['app/Resources/stylesheets/*.scss', 'app/Resources/stylesheets/*.sass'],
+                // run these tasks when the watch event triggers
+                tasks: ['sass'],
                 options: {
                     // Setting this option to false speeds up the reaction time of the watch (usually 500ms faster for most)
                     // and allows subsequent task runs to share the same context.
