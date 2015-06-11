@@ -1,9 +1,13 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
-$testing: #ffffff;
+$testing: #fff;
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
   background-color: $testing;
+}
+
+.btn-default{
+  color: $primary-color!important;
 }
