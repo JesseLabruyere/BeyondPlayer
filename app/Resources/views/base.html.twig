@@ -12,6 +12,7 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+            <script src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
             <script src="{{ asset('assets/output.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>

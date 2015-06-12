@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 // now we can use the package name in the banner of our minified file
-                banner: '*//*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> *//*\n',
+            //    banner: '*//*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> *//*\n',
                 // prevent changes to your variable and function names.
                 mangle: false,
                 // beautify your code for debugging/troubleshooting purposes

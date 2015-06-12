@@ -2,7 +2,19 @@
 <html>
     <body>
         {% block body %}
+            {% verbatim %}
+            <div ng-app='app'>
+                <div ng-controller="MyController" ng-init="myVar = 'door angular gegenereerd'">
+                    {{myVar}}
+                </div>
+            </div>
+            {% endverbatim %}
         <p>this is the footer!</p>
         {% endblock %}
     </body>
 </html>
+
+<!-- verbatim tag zorgt ervoor dat de content die erin staat niet gerenderd wordt door de twig engine.
+     Dit is belangrijk, omdat twig en angular dezelfde brackets gebruiken. (deze oplossing gekozen ipv de default angular
+     waarde te wijzigen. Angular code staat in test1.js)
+-->
