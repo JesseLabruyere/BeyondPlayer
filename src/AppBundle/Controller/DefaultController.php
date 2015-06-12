@@ -21,7 +21,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        // whenevert a twig page is being rendered variabeles can be passed in an array
+        return $this->render('default/index.html.twig', array( 'testTwigVariable' => 'Dit is een Twig Variable'));
     }
 
     /**

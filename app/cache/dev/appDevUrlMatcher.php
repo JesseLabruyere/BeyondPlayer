@@ -127,17 +127,18 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/app')) {
-            // homepage
-            if ($pathinfo === '/app/example') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        // homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'homepage');
             }
 
-            // nothomepage
-            if ($pathinfo === '/app/trol') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
-            }
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        }
 
+        // nothomepage
+        if ($pathinfo === '/app/trol') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
