@@ -23,17 +23,31 @@ class __TwigTemplate_85d7f2736bc14c3ed925be91897e68f38e5cd079a24793f7c025e17eab6
         ";
         // line 4
         $this->displayBlock('body', $context, $blocks);
-        // line 7
+        // line 14
         echo "    </body>
 </html>
-";
+
+<!-- verbatim tag zorgt ervoor dat de content die erin staat niet gerenderd wordt door de twig engine.
+     Dit is belangrijk, omdat twig en angular dezelfde brackets gebruiken. (deze oplossing gekozen ipv de default angular
+     waarde te wijzigen. Angular code staat in test1.js)
+-->";
     }
 
     // line 4
     public function block_body($context, array $blocks = array())
     {
         // line 5
-        echo "        <p>this is the footer!</p>
+        echo "            ";
+        // line 11
+        echo "
+            <div ng-app='app'>
+                <div ng-controller=\"MyController\" ng-init=\"myVar = 'door angular gegenereerd'\">
+                    {{myVar}}
+                </div>
+            </div>
+            ";
+        echo "
+        <p>this is the footer!</p>
         ";
     }
 
@@ -44,6 +58,6 @@ class __TwigTemplate_85d7f2736bc14c3ed925be91897e68f38e5cd079a24793f7c025e17eab6
 
     public function getDebugInfo()
     {
-        return array (  36 => 5,  33 => 4,  27 => 7,  25 => 4,  20 => 1,);
+        return array (  42 => 11,  40 => 5,  37 => 4,  27 => 14,  25 => 4,  20 => 1,);
     }
 }

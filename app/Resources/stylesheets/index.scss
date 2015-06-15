@@ -1,8 +1,64 @@
+// variables
+$top-row-height: 150px;
+$footer-row-height: 150px;
+$remaining-height: calc(100% - (#{$top-row-height} + #{$footer-row-height}));
 
-#mainContainer {
-  height: 100% !important;
+// we want to use the whole page
+html, body {
+  height: 100%!important;
 }
 
+// div that removes padding
 .noPadding {
   padding: 0 !important;
 }
+
+/*-------the main container---------*/
+#mainContainer {
+  height: 100%;
+  min-height: 100%;
+
+  //------- the first row
+  .header-row {
+    height: 150px;
+    .header{
+      height:100%;
+    }
+  }
+  //------- the center row
+  .center-row {
+    height: $remaining-height;
+    min-height: $remaining-height;
+
+    // Left
+    .leftbar {
+      height: 100%;
+      min-height: 100%;
+    }
+    // Right
+    .center {
+      height: 100%;
+      min-height: 100%;
+    }
+  }
+  //------- the last row
+  .footer-row {
+    /*position: fixed;*/
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+
+    // Footer
+    .footer {
+      height:100%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
