@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppBundle\model\testModel;
+/*use AppBundle\model\testModel;*/
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Product;
@@ -22,7 +22,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         // whenevert a twig page is being rendered variabeles can be passed in an array
-        return $this->render('default/index.html.twig', array( 'testTwigVariable' => 'Dit is een Twig Variable'));
+        return $this->render('default/index.html.twig', array( 'headerTitle' => 'MusicPlayer'));
     }
 
     /**
@@ -49,6 +49,14 @@ class DefaultController extends Controller
         return new Response('Created product id '.$product->getId());
 
 
+    }
+
+    /**
+     * @Route("app/uploadForm", name="uploadForm")
+     */
+    public function uploadForm()
+    {
+        return $this->render('page_templates/upload.html.twig', array());
     }
 
 

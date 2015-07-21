@@ -136,9 +136,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
-        // nothomepage
-        if ($pathinfo === '/app/trol') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
+        if (0 === strpos($pathinfo, '/app')) {
+            // nothomepage
+            if ($pathinfo === '/app/trol') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
+            }
+
+            // uploadForm
+            if ($pathinfo === '/app/uploadForm') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadForm',  '_route' => 'uploadForm',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

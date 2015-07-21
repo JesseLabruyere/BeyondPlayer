@@ -2,7 +2,14 @@
 <html>
     <body>
         {% block body %}
-        <p>this is the left bar!</p>
+
+        <p>Menu</p>
+
+        <div class="btn-group-vertical" role="group" aria-label="...">
+            <button class="btn btn-default" type="button" id="leftbar_listen">Listen</button>
+            <button class="btn btn-default" type="button" id="leftbar_upload" ng-click="myData.doClick(item, $event)">Upload</button>
+        </div>
+
         {% endblock %}
     </body>
 </html>
