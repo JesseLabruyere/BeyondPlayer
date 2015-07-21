@@ -4,16 +4,20 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link href="{{ asset('assets/bootstrap.css') }}" rel="stylesheet" />
-            <link href="{{ asset('assets/main.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/assets/bootstrap.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/assets/main.css') }}" rel="stylesheet" />
 
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+            {# loading angular is the right order will fix the 'angular is not defined' error, if we uglify these scripts bad things happen #}
+            <script src="/assets/angular/angular.js"></script>
+            <script src="/assets/angular/angular-sanitize.js"></script>
+
             <script src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
-            <script src="{{ asset('assets/output.min.js') }}"></script>
+            <script src="{{ asset('/assets/output.min.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -147,6 +147,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadForm',  '_route' => 'uploadForm',);
             }
 
+            // test
+            if ($pathinfo === '/app/test') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

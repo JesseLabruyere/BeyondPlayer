@@ -1,484 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8c55a2d-d9e0-4765-a2aa-37dc13b8c107" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/scripts/bootstrap.file-input.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/page_templates/upload.html.twig" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\0bc941adfa74495addbae9ede6ba796304caba67#checkAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\0bc941adfa74495addbae9ede6ba796304caba67#finalAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\0bc941adfa74495addbae9ede6ba796304caba67#stepAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\0bc941adfa74495addbae9ede6ba796304caba67.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#checkOptionalSettings.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#checkRequirements.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#getDriverKeys.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#getDrivers.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#getFormType.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#getTemplate.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#setParameters.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645#update.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$driver.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$host.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$name.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$password.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$path.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$port.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645$user.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\109cc66a1e264fe55377a0c64aa2830e08e0d645.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#__clone.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#__construct.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#add.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#addError.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#all.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#bind.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#count.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#createView.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#get.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getClickedButton.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getConfig.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getErrors.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getErrorsAsString.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getExtraData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getIterator.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getName.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getNormData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getParent.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getPropertyPath.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getRoot.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getTransformationFailure.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#getViewData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#handleRequest.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#has.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#indent.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#initialize.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isBound.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isDisabled.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isEmpty.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isRequired.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isRoot.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isSubmitted.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isSynchronized.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#isValid.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#modelToNorm.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#normToModel.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#normToView.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#offsetExists.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#offsetGet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#offsetSet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#offsetUnset.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#remove.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#setData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#setParent.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#submit.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a#viewToNorm.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$children.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$clickedButton.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$config.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$defaultDataSet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$errors.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$extraData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$lockSetData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$modelData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$normData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$parent.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$submitted.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$transformationFailure.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a$viewData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\137636d9a151ece443ec1a0bc45bacf9998ded1a.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\1cf0aa9d61f185b59f643939f862c01f89b21360$description.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\1cf0aa9d61f185b59f643939f862c01f89b21360$id.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\1cf0aa9d61f185b59f643939f862c01f89b21360$name.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\1cf0aa9d61f185b59f643939f862c01f89b21360$price.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\1cf0aa9d61f185b59f643939f862c01f89b21360.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18#checkOptionalSettings.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18#checkRequirements.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18#getFormType.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18#getTemplate.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18#setParameters.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18#update.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\34d8c6ff4c00b653ddfb06cff20d58eb112fde18.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#checkOptionalSettings.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#checkRequirements.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#generateRandomSecret.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#getFormType.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#getTemplate.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#setParameters.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf#update.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf$secret.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\3ab5078289aba11a8481fc1b46348359c30f47bf.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\41216fe586c98f51c6ea60da702451a54bd469ed#getIterator.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\41216fe586c98f51c6ea60da702451a54bd469ed.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\43b555f9eb0fa2504aebdf7dc2e143b0f703ed31#indexAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\43b555f9eb0fa2504aebdf7dc2e143b0f703ed31.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\59fd5a242afd82b90a6ceb5e74a56292751b5ff4#urlRedirectAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\59fd5a242afd82b90a6ceb5e74a56292751b5ff4.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\653e2382f602883abf6a7d360b3234ca8097ae90#count.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\653e2382f602883abf6a7d360b3234ca8097ae90.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\72114c0f8683bcc2a66ceccb136abe5a78f8577e#helloAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\72114c0f8683bcc2a66ceccb136abe5a78f8577e#helloadminAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\72114c0f8683bcc2a66ceccb136abe5a78f8577e#loginAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\72114c0f8683bcc2a66ceccb136abe5a78f8577e#logoutAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\72114c0f8683bcc2a66ceccb136abe5a78f8577e#securityCheckAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\72114c0f8683bcc2a66ceccb136abe5a78f8577e.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9462534474940c9f1544385e8ba867ef4fbef54a#contactAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9462534474940c9f1544385e8ba867ef4fbef54a#helloAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9462534474940c9f1544385e8ba867ef4fbef54a#indexAction.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9462534474940c9f1544385e8ba867ef4fbef54a.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#__construct.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#count.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#getIterator.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#offsetExists.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#offsetGet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#offsetSet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5#offsetUnset.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5$elements.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5$managedCursors.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5$orderedKeys.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\9991082bb48b927249ca255da54151bbbeeabda5.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\b3f2e985db383c94521559410abfe5a507362e26#offsetExists.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\b3f2e985db383c94521559410abfe5a507362e26#offsetGet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\b3f2e985db383c94521559410abfe5a507362e26#offsetSet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\b3f2e985db383c94521559410abfe5a507362e26#offsetUnset.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\b3f2e985db383c94521559410abfe5a507362e26.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\b795f17232474b10e4eb05eb081a307e9d9dfa5d.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#add.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#addError.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#all.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#createView.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#get.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getConfig.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getErrors.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getExtraData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getName.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getNormData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getParent.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getPropertyPath.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getRoot.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getTransformationFailure.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#getViewData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#handleRequest.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#has.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#initialize.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isDisabled.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isEmpty.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isRequired.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isRoot.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isSubmitted.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isSynchronized.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#isValid.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#remove.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#setData.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#setParent.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062#submit.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\annotations\c0e5dd98c24f42fa3b74981f237a49b1ff62d062.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\01\93\bf9301" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\01\ad\acad01" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\03\3a\3c3a03" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\04\26\b22604" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\06\21\822106" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\0a\dc\2ddc0a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\0b\79\2a790b" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\0c\48\b3480c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\0c\4e\244e0c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\0c\58\55580c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\0d\c4\bcc40d" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\13\fa\eafa13" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\15\e2\87e215" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\15\fa\abfa15" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\16\e8\31e816" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\19\06\670619" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\21\71\db7121" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\22\1a\4b1a22" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\27\38\893827" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\2b\46\e5462b" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\2c\84\53842c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\2d\e8\8ce82d" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\31\e3\b3e331" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\3a\87\c6873a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\3c\77\bf773c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\3e\5c\f95c3e" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\3e\82\ab823e" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\3e\99\f6993e" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\3f\c1\b1c13f" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\40\ef\92ef40" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\42\57\6e5742" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\43\96\a29643" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\46\af\f4af46" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\4b\56\15564b" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\4b\dc\3fdc4b" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\52\7c\aa7c52" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\54\f9\dbf954" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\5a\0e\fc0e5a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\5a\51\06515a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\5f\be\14be5f" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\5f\de\abde5f" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\61\b2\5fb261" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\62\55\1f5562" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\66\72\e47266" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\69\2e\1b2e69" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\6a\7d\af7d6a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\6c\76\58766c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\6d\68\79686d" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\76\5f\195f76" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\79\c4\d2c479" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\79\ed\b8ed79" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\7c\14\46147c" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\7f\9b\149b7f" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\80\a2\c1a280" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\82\51\d95182" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\83\17\a51783" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\83\53\055383" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\85\fe\b4fe85" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\88\96\629688" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\8a\87\7b878a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\8a\c5\d5c58a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\8d\ce\04ce8d" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\8e\26\e1268e" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\92\5c\ed5c92" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\95\19\981995" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\95\5b\ae5b95" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\95\bf\b4bf95" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\96\f9\fbf996" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\97\8d\798d97" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\99\e7\d6e799" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\9a\60\c5609a" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\9b\00\2d009b" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\9d\59\82599d" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\a0\70\4070a0" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\a2\d1\e0d1a2" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\a8\f4\2ff4a8" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ab\9d\a39dab" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ac\f0\86f0ac" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ad\b1\15b1ad" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ae\55\0655ae" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\af\2d\b72daf" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\af\c3\57c3af" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b0\f9\b2f9b0" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b1\28\fb28b1" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b4\36\0736b4" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b4\62\8162b4" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b4\a1\bba1b4" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b4\cd\26cdb4" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b5\ee\5beeb5" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b6\be\96beb6" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b7\45\2b45b7" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\b7\bd\ccbdb7" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\bc\63\7d63bc" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\bd\f9\41f9bd" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c1\1e\031ec1" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c1\2a\752ac1" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c3\03\ca03c3" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c3\da\c4dac3" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c6\ad\dcadc6" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c6\f4\88f4c6" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\c8\e7\96e7c8" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\cb\f8\32f8cb" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ce\9d\3c9dce" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\d7\90\6090d7" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\d7\a6\c5a6d7" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\db\e1\93e1db" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\dc\cc\8eccdc" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\dd\0a\d60add" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\dd\c3\7ec3dd" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\dd\cf\c5cfdd" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\df\13\9d13df" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\df\af\eaafdf" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\e2\cf\b8cfe2" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\e3\8f\138fe3" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\e3\f7\24f7e3" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\e8\3a\da3ae8" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\e8\58\1e58e8" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\e9\1d\ed1de9" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ea\62\f862ea" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ea\ab\bcabea" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\ec\7f\a27fec" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\f2\f0\d9f0f2" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\f3\90\f790f3" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\f9\17\b417f9" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\f9\1e\3f1ef9" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\fa\9f\e89ffa" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\fe\25\2925fe" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\fe\42\3442fe" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\profiler\fe\d2\42d2fe" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\00\31\476483b08d471c6a394d449380eec4926aea51c5a4ab3ef127ff6c45135e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\02\c6\9ca1808727adf7b091183c3cc03474e75030b449043930cbba93a628f2d6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\04\b8\e10b80ff2dfbef4a8501bc3141cd06dd9faeb38636aba33de2f3d9ca7eef.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\07\6e\9ce214a4b2887d7400fcc8d73d2f6bb6e107954042d4f9b0f685b31923c6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\0b\2d\fde6e908ed19eaadf5b6398137eceb565b8c1442a4fdd7c2cd073cf344bf.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\0d\2f\1fbca6d280ea6685a6f8036502294418ba7af0d6accfb56eefee167f82f6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\0d\ca\3d20ffdaca248408f8954cecd72f48eb8f56b836abaab292b13c79392fbb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\11\62\2a987390d2190454ab1479a42ad7246df347511cf34092a5eed0b44b6c23.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\11\99\8983bb536f823b4444e5fe1a7d98b85b541beb8467f086dcbcec7f589ad8.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\12\41\2ddca2fa457ad68f52948d0473dd178234bee1254c5e34b17a4bd40456ca.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\12\7d\969fc0479e96406152459ef72bbf6ffd7ff8198ee2f8398ee82f5caf36fd.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\12\b5\06c5fa3901311cd05152f47690d829d79852275fdd4d55a37b36d56d4536.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\14\04\07b34094c78e1c2f370ec9db0fb37f92478ec15411d9865a139cbde9fdca.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\15\57\5adfae551c297c8812711af80187c764899c5e2ac2829a70fd891e934f52.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\19\53\183f25f0aa33684ec7292504222bb837c32a6cff0178cc9748f8549b97a1.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\1a\d5\777e13ab526951166180a5baaccaf5dadfae4c52b9b096e1e29a620f621f.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\1c\d7\a6f08c78fc77ae3538af2435ac3b78a70ba018ffc4482061eb89a23a8451.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\1d\ee\d5b22476c0275473a99c5d0c5e2d4a2fc54d1cfe1817355f71737688fd67.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\20\02\f260ace6b404f67af9182897cd0996c12664d466d1506fa2f68e1af797e1.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\22\56\1b874dadde43d1ff476cb86858211071fef3b12f5b6fe6d8084a05b131dd.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\25\82\805284915b74bc3455a559bfe7acc59bfe800b10a4cb4b198197f93ed2e6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\28\45\7a44437f0ffea6412105393e068af77b7fa1859362a5248a9f1d61e0f02d.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\29\ed\bf6de7900a62ddb2c2e7cdea341e153ac16e38eedf43fb265595785455d4.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\2b\14\f0bb6a50c4f48c84445f02b086c74d1bfe7cde28c9293644deb4589e191d.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\2b\7c\e23f7ae586b43470b5cd3d82b95c74990f0f4675f6b7b0b839b1e7a25fdb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\30\76\249320a05f0bec0b0e071b64e1e75b9bc82ba3a3e1c9844dda0da9533922.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\31\c4\954d4a51455fb8695871307565aa4818da5998e91dff40472d52d13e61bd.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\32\9f\020f2ded7caf09dada9cfe4e0caad281ec9cfcd55691a97af63f2a5e7b5b.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\37\ac\b553652c20cb8f7f1884e1455006440a04a46ff3ca653a6b691b9828faf8.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\37\dc\8c53ebc20605fd2b777ac5018b5c9ea915074eaa61e16a0d6d3822526e68.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\3b\70\674e37e2d147c1befc6a38326c158a309c7c5d645a14603bc3ac23bc8164.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\3c\93\1bfa94c9ccc8dd3a02b6844aedc7be197b733fc54f449fc2ddd601fd61ba.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\3c\f7\dfee991032d7dcdc71bb36004ba56edb3edc482f9b18b407677ab1aef085.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\40\a5\8fa75bcb3780f3c62893ba0a4f0bfca5bb84f6324e74c468104a8fa042e5.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\43\22\85d3155a86b1dbc7bde31ff9fd80099bc391645e3e54effaf11a33849d27.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\43\48\64d51ad738608d3d92fcdc9ebb819d3a5a8279ede16717c3e43fd83250b7.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\47\95\d799f7da50c0dbdf0b7353ea43721ba45041c1f4afcd5c4381401a2474d1.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\49\b9\8c26778a1d3a88d8d88c8851990f2ea61ed059f12d747a8b5318340d76d7.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\49\d6\daaf219a166cc032d67027bd5ebdff43b53a5e45ee4dbdba53fd5a51c66c.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\4a\ef\adf22415b1f22730d8cba2ecdad48e485f1fcb6c3ce93e42096072540b02.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\4b\09\963a256b0e78572c1b6913d0bf0e23c5fba8521ac0e2b67b843d878a2afd.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\4c\9c\ac2f707400dbd1b1ee0352d316b89c8379251b3f264cbf6cff22e8cd2cdb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\50\ca\17a4b230ec90936d7b807407443eb702a18b6a54f567a8ab7a29b2090561.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\51\25\0f6406b263e80fc57742c58935d4fed4ebd103945794e806d97b79427bf5.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\55\9c\64a7f0d65e747e650db2558fa43756ae57a045acaab936b48b42ad1853b7.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\55\ae\573495e891848d96bfa972d7c95dc648f9c1c433679c848daa8a65b48018.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\5b\14\3e6812063f4cf73210d5558b29c3d084ff16b21bfd48f4f60f66a1cc572c.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\5c\1a\e1a1abc6982cf8a7cfa9ff0386ea9cb57aa2cd8ef7ebfc92e2fdb12da8cb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\5d\95\2e060a95869f21bac11df00c8c5dab5fa1ef90628df07f07959592de2a6e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\5d\96\e6c1a0d7334a1886d30f302176ad096d530641d2952911ad199e062f56a1.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\5f\8e\20c701397950a16e292578e1ed560c6414c08e4f8e5bb7c435b6988c3d20.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\5f\a2\8ef4109a60f712280d5649e22bc7d9d9efc5b64514676f5b42c6e0317338.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\60\19\eb076415e3fe29b8cb8c9c9d8183f92e1711e4259fbf81c1e6f6d2e6905b.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\62\8a\e4c1e8328e499e7aae43a3b5c3f386e2e60d1bfa0f66f9f55103f94b9519.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\63\85\5ac7b747a794e6e5a7a8adb315f5b1edcd9db3c7019d8a97973460ee4895.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\66\3c\612076b7eb3d6c6903bbc92a2c298d4bfef4c459375606b00b72a1152fcc.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\67\9b\0e00627046249e62c914148baf5f4c78bbbab408156109ec43ecf9dbf8f8.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\69\02\464487fccf30a731e4e939ae4f4560e6d4c4bb4298cb429d83ea3be98eb6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\6c\77\6587fb64a7468de8347835fb912a46e8770dbdf0c75e466aeee20a51ed3b.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\6d\74\892708381b8a77b18fab958b3c6fec7416fe8557be84a975bbe64945df94.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\6f\15\f58058478c61f26c2e7ce2905e63e32fc7ccf025dcaeecaba8d8961967ae.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\6f\47\644d4f2e22084acca887bdba4fa7a1fad50d7f5ef5deb43dd9373e3a79a9.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\72\0d\18cfb9cd1e8b13ab4f98d5ad9cdb758b4865b2b437ff5348de2fa4d99bc4.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\76\5b\c9b4dad3bce3b3ec72e906115bdecebed62501422e40c70757b96c966a2b.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\78\44\c7361c3b1817434cf8b06b436b132c093fd6d39e480a519300d684d92f1c.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\79\b0\46033a3fb4fea101d98afe9117d3f02ada4883781678885679649a244474.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\79\fc\8f6f08656e90c88e3ccd777a64e091e84a6d90c9cef2e54aa10c3e8f3b4e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\7c\fa\fd33bb0a096f5ee93e5c8355f2447ead5256a2a395c0019c7bfd611e2f05.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\7d\cc\3c2c9ae07ef2b18e1bf7b1c2d98e976a50812613509ffe84ef0baaad2bc7.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\80\91\f7634817430a818c3f29041586d729a617dba4ab4c8dbf1a4cbd9ba282e8.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\80\a5\4ee59e95861cd345b9623b13a88deba41d2e20c3b4b35bab11e7b720aecb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\84\74\2c6b3999eee1317155fdf8c1f2215b92a4aaf31440d3d66e6ae632c3e932.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\84\df\b285a2b179ebd68aea04e106f7f859224038fb24f7927fd8f5741f3cd610.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\85\d7\f2736bc14c3ed925be91897e68f38e5cd079a24793f7c025e17eab699e24.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\87\1a\e925b61195dcc52dfb5ea5976e12cec06dd9259a007a3c95cafddcd33ea7.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\8c\21\f04083d064b72e707232448d6e540421f28996ea3f31a1ebadcc9aa309f2.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\8c\f0\fa2b684e6d3c8e6fca3647d0569e647de57811faccd739ce1d3af373cd9d.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\8d\f2\5bc934e6597ecc370d6edfe9d6d28f5c6c02dec7c94915522428de966535.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\8e\53\c38834497b6c66933af4adad11f972d87d5bf55afc8fa11fd81cbfd4907c.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\91\72\5cf23a5ec30a5f43bb274d90dbb3f64b4597959414569078e72f70bf32b5.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\93\b1\0fa15407941431efb4178a5b53fdcb7005246b4e942b299e3eb509edac24.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\95\dd\76edda3c9741a8a7fc4a0c80c9fc8f0192d21206a2c82f6522a3a8e34089.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\95\fa\dfabd47e87e4b0afff4ba15519927e050214b0c97edc722375fadc8f1124.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\99\8f\a912f7041eb6c346c3c65163c4f447f1f8eccfa02482e1d801bfd83d383e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\9f\4e\d82ef76bda8fbdf5786bb3158c178831a245dc895cb6cb7d8ac497ac54ea.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\9f\53\c7299f203dfb8ef5cddca38d7028df331e774dd3b3397ec04fec98370120.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\a1\0c\68311ec193bdb4c4e8ee2f1b16eee2898922cd2d54dac6d9dee72bef48eb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\a2\3f\16a73a0530c4d32c99a349196428581719af120989873be344c28af2ab26.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\a3\25\9e96b9ff8e7554ae7498ae98135a3f3c949d9be804b58f59d0502d4f3118.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\a5\8b\421658e82a67c734e24576a15f7aaaa6cc96d46a6edb4a184f51cac84644.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\a6\73\5d25927bff452d3e8acff6eebb32a622c09e4afbda1e34f1723ee39da3d5.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\a8\a2\2bbd8aceca09e5172978d9968a1fafa2e05e16f52cbcd264f2847c2f247a.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\aa\a6\5261b6a79e4bb8d68f90c9f298add4ebbd107089530c4f4a4e2cd8d0020e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\ab\52\25ec66100611527b6415bbc4c42329c828ffd3a6db5a0ff04d39c38378c6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\ab\95\0dfb776bd87044504ba5b046fe0909d23f15bd7cc4fa031055ef96f4cd0c.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\ac\d2\fd3a9fd25c8208fcf823aded48fd46bc0202f315c1c56410e0810b3cec76.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\af\e2\a801eed7b02921eb7f732bae2933cbfd9adcf918195d7705da97321cdd49.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\b0\60\dd77d398be4f1ef7a300be80f4a9020ad55fe9f2d663a803b75ee9e9ec99.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\b1\04\6a91bb34eecdda1a0af615215ec2f87c2444cafe424146f9be58b07aeed9.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\b2\20\f0079778fa4f39f0686e547b82d503a6687877a3b415794f04d6f79dcda1.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\b8\66\fa9735bed7c5f9c7edaa74c344b9e2244936d8d15afa912e0727e29b2990.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\b9\84\889274a29426c39deb009193d799f82ef4de653a6ba12124fe698aee4791.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\b9\ea\57f5fc4beb98a9c89c5c597b80b0dc244c86523e2bf598c634ebb0d395b6.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\bf\73\3458f7268ff856ba28ba3b80e5864f79c6f7b6490b990cd7cbfe02e6419e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\c4\39\26cb742d161fdec56761dbe454c4cb0802b585e1c604ce6c7b5ed02da96d.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\c6\10\5ecd4fd1b7101ff7213b279d1a096bda56b46c03f2d481fde1dabc67e79a.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\c6\38\8349793b2238a2934e386683d4ffd358e8752dffe01b3f38d82821f9f4a5.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\c6\b1\81831fa21fe614eeb93865d57942977f5d4f42bd34187d4f9f9b785bca88.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\c7\78\f7167bc87571d09e53cdfb7d03e225f313c3768348462f40b62a526b66a0.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\c9\5b\55075a0d64192213f570b3acf9aeaab74396b5f6c90a800cbb1b4a20246a.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\cc\35\8d6058fb78ef7ad903e3b1a84cb85c7a8735e164da5f71e2942306b69c23.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\cc\a1\5d16fa6f2dd222ad01c1d49420d756eb05973fc6e9f36fef15b043fe4b5f.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\cc\ed\dfac1fb2b4f0462be85f7fc1a3d5358f6b1ba7a63b265aad4469f7b869c9.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d1\76\e61a5a5d1c78053d57939ea37ccacfb700661dd8baeb56e5efa417dc6d1d.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d2\99\c2d307912bce1a21de49c6391b8f6bf77efb3b01c9d13611c493f5e58eba.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d3\50\1ac29901f7b9ba72ebfd74edfe96b091116ce31033f93912d0e7b4c0e1f4.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d3\7f\1bd9c2376e726ec472259fbc41164897419a177b41c01e1358f60128f33e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d8\28\528591425b3ced0853f8c2ba10417e4704f37998b982b04f6eff89ac5ce3.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d8\59\b788b4b8368a1875a53afd7ceef39a74281b5efda94de042a43e2573342e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\d9\49\4b0c873aa6b818541ae8d66f9e3ecdea856f4bcab4bc6f97fbd14d650539.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\da\5b\acea17ffc26c42ae0c3f3c9c9f4af2909feaadbce720c1672df656d5a0ee.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\da\b0\c41fe40dace78f78002f3525ddc805d1d422bfcdc4ff663f5ff3d1519a4e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\db\67\dbe362016ddd27d44ad023888f6c5ea59c93d640a251b1527632c9f066d8.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\db\7f\3dc594cd79f4952ece124fcdeeea48f36d7986a875f9812d9d00787584cb.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\dc\23\e0a5706f53b6e016857cb67b134f9b3c83bbcc2796da3eaa34cbf82440f9.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\dc\53\772a990fff78e8e56426853436f122634b2cb2d1db542f8ce1b4feb94d20.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\de\47\8ece923400e1f50493719d6e8629f37b7490340ded2020d2b69d957d6e7a.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\de\5e\75fecab8e7b88eeda07fabef66ecc2ced8d53619cf64cf83403468b0620f.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\df\1a\ac654ab6d039470002e91d4d5b52127c832ad481fd779fd185c55f0b9fff.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\e0\83\036d42eee331f764a9c5626227b817bc628d65c9d238ef5ab72a0261a4ff.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\e1\d4\4c1f902ca36e7accc67774fdbbe3684840ad0f60072faaaaf9f2e62e5add.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\e3\58\0fb241490608134d303543cb33be6f026ad55083ef0931564eca04c0b52e.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\e7\4d\ae2d42a76cfcfcb49cfb91dd27d715f95fb8e8ddd2e79e0de53d5eb47a2d.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\e7\a0\2e1424af96eaf37cb64e3795442c614467c6959f53f5d2679b82fe666ce7.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\e9\ce\736163087ce2a3ce670abfb5ff6e1fd0f456fdfe8625a491cb2a4e0c9943.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\ec\6a\3b071bed53c8bd0575340738f3030e08c4a21f115a1bd106e7f6fabe0151.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\ed\6b\d4c943c28c18bf45b37fcf4a770f70d6c89e45ef09f119ee609c261951de.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\f1\de\996e2e79d5fd6ac3cd6ac9e79840be19c54504971116dcd95f826594b4da.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\f2\f7\f01c5a6ae949f7b0d81edcf7859f1101aa5e477611b34f4204b1fb8f2e49.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\f5\85\a7bea89ad705849eaa2f8ef62ae978dd259a2972c4f4938ee73bde483642.php" afterPath="" />
-      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\cache\dev\twig\f7\61\ad2f1b63bf3ad647b0613a786a7e1d2408a57129602bb23cfdea202f8c66.php" afterPath="" />
+    <list default="true" id="a8c55a2d-d9e0-4765-a2aa-37dc13b8c107" name="Default" comment="de database login was aangepast">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/scripts_inactive/angular-sanitize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/assets/angular/angular-sanitize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/scripts_inactive/angular.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/assets/angular/angular.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/default/test.html.twig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/html_templates/upload.html.twig" />
+      <change type="DELETED" beforePath="E:\Github_Projects\MusicPlayer\app\Resources\views\page_templates\upload.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php.meta" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/config/0/02e19fcb9a3f1640371c0fa5c847f2a0.php" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/config/0/02e19fcb9a3f1640371c0fa5c847f2a0.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/config/4/43a80f0e087752a2d4724591f85aa0e1.php" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/config/4/43a80f0e087752a2d4724591f85aa0e1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/prod/twig/f9/7a/4beeb373ed2cc1da05834f0d44d727b6b6ce5cac0f77c134f955b96faf69.php" afterPath="$PROJECT_DIR$/app/cache/prod/twig/f9/7a/4beeb373ed2cc1da05834f0d44d727b6b6ce5cac0f77c134f955b96faf69.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/config/6/60dee008a53fb295c9bdd815104fe030.php" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/config/6/60dee008a53fb295c9bdd815104fe030.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/config/a/ae1b290dcfca1cdecd87a85bbe4b1164.php" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/config/a/ae1b290dcfca1cdecd87a85bbe4b1164.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" afterPath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainerCompiler.log" afterPath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainerCompiler.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/prod/appProdProjectContainer.php" afterPath="$PROJECT_DIR$/app/cache/prod/appProdProjectContainer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/prod/appProdUrlMatcher.php" afterPath="$PROJECT_DIR$/app/cache/prod/appProdUrlMatcher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/center.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/center.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/classes.map" afterPath="$PROJECT_DIR$/app/cache/dev/classes.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/prod/classes.map" afterPath="$PROJECT_DIR$/app/cache/prod/classes.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/classes.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/classes.php.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/classes.php" afterPath="$PROJECT_DIR$/app/cache/dev/classes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/prod/classes.php" afterPath="$PROJECT_DIR$/app/cache/prod/classes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/config/d/dcf56c3e0ab3f5c47198edf125e0ed9b.php" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/config/d/dcf56c3e0ab3f5c47198edf125e0ed9b.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/logs/dev.log" afterPath="$PROJECT_DIR$/app/logs/dev.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/config/e/e80672e0f40c6ad36ca5193d52d7849e.php" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/config/e/e80672e0f40c6ad36ca5193d52d7849e.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/footer.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/footer.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/header.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/header.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" afterPath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/leftBar.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/leftBar.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/output.min.js" afterPath="$PROJECT_DIR$/web/assets/output.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml" afterPath="$PROJECT_DIR$/app/config/parameters.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/assetic/routing.yml" afterPath="$PROJECT_DIR$/app/cache/dev/assetic/routing.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/scripts/test1.js" afterPath="$PROJECT_DIR$/app/Resources/scripts/test1.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/scripts/test2.js" afterPath="$PROJECT_DIR$/app/Resources/scripts/test2.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\Github_Projects\MusicPlayer\app\Resources\scripts\angular.min.js" afterPath="$PROJECT_DIR$/app/Resources/scripts_inactive/angular.min.js" />
     </list>
     <ignored path="BeyondPlayer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -504,40 +48,20 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="upload.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/page_templates/upload.html.twig">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/upload.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="136">
-              <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="629">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="leftBar.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/leftBar.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="340">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="center.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="center.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/center.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22818792" vertical-offset="0" max-vertical-offset="894">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="408">
+              <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -546,28 +70,48 @@
       <file leaf-file-name="test1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test2.js">
+      <file leaf-file-name="angular.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/assets/angular/angular.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
-              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="482273">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/default/test.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="272">
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="493">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.576923" vertical-offset="279" max-vertical-offset="1173">
-              <caret line="54" column="29" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.41051453" vertical-offset="398" max-vertical-offset="1292">
+              <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
               <folding>
                 <element signature="e#40#99#0#PHP" expanded="true" />
               </folding>
@@ -587,7 +131,6 @@
         <option value="$PROJECT_DIR$/app/Resources/scripts/test.js" />
         <option value="$PROJECT_DIR$/app/Resources/scripts/output.min.js" />
         <option value="$PROJECT_DIR$/app/Resources/stylesheets/test.scss" />
-        <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/app/Resources/stylesheets/index.scss" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
@@ -596,12 +139,19 @@
         <option value="$PROJECT_DIR$/app/Resources/views/footer.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/scripts/bootstrap.file-input.js" />
         <option value="$PROJECT_DIR$/app/Resources/views/page_templates/upload.html.twig.html" />
-        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/scripts/test2.js" />
         <option value="$PROJECT_DIR$/app/Resources/views/leftBar.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/scripts/test1.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/test.html" />
+        <option value="$PROJECT_DIR$/app/Resources/scripts/angular.js" />
+        <option value="$PROJECT_DIR$/app/Resources/scripts/angular-sanitize.js" />
+        <option value="$PROJECT_DIR$/Gruntfile.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/default/test.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/views/page_templates/upload.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/center.html.twig" />
+        <option value="$PROJECT_DIR$/app/Resources/scripts/test1.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
       </list>
     </option>
   </component>
@@ -614,8 +164,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1932" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -671,6 +220,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeyondPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MusicPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -786,7 +353,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="page_templates" />
+              <option name="myItemId" value="html_templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -856,6 +423,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="scripts_inactive" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeyondPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MusicPlayer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -876,7 +465,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Github_Projects\MusicPlayer\web\assets\angular" />
       <recent name="E:\Symfony_projects\MusicPlayer\app\Resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Github_Projects\MusicPlayer\app\Resources\scripts_inactive" />
+      <recent name="E:\Github_Projects\MusicPlayer\app\Resources\scripts" />
+      <recent name="E:\Github_Projects\MusicPlayer\app\Resources\scriptsWithLoadPriority" />
     </key>
   </component>
   <component name="RunManager">
@@ -919,11 +514,18 @@
       <option name="number" value="Default" />
       <updated>1433875076152</updated>
     </task>
+    <task id="LOCAL-00001" summary="de database login was aangepast">
+      <created>1437477226063</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1437477226063</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="0" width="1932" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -932,7 +534,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Framework" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.246875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24686848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -942,6 +544,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -963,6 +566,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="de database login was aangepast" />
+    <option name="LAST_COMMIT_MESSAGE" value="de database login was aangepast" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -971,42 +576,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="629">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/center.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="221">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1122">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/footer.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/leftBar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="221">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="408">
@@ -1018,7 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1071">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,13 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/scripts/angular.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4318">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/stylesheets/index.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6064442" vertical-offset="0" max-vertical-offset="869">
@@ -1208,11 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <marker date="1437382340694" expanded="true" signature="-1:-1" placeholder="&lt;IfModule mod_negotiation.c&gt;" />
-            <marker date="1437382340694" expanded="true" signature="-1:-1" placeholder="&lt;IfModule mod_rewrite.c&gt;" />
-            <marker date="1437382340694" expanded="true" signature="-1:-1" placeholder="&lt;IfModule !mod_rewrite.c&gt;" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1220,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
           <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1228,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="920">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1243,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="920">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1251,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="920">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="920">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1267,7 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17114094" vertical-offset="0" max-vertical-offset="894">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,7 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24720357" vertical-offset="0" max-vertical-offset="1122">
           <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1283,31 +832,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.112458654" vertical-offset="0" max-vertical-offset="2295">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/Resources/scripts_inactive/angular.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05704698" vertical-offset="0" max-vertical-offset="894">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/page_templates/upload.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="136">
-          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4318">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="629">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="629">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1315,41 +853,92 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="340">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5173913" vertical-offset="0" max-vertical-offset="1768">
+          <caret line="28" column="66" selection-start-line="28" selection-start-column="66" selection-end-line="28" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/scripts_inactive/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="531.44214" vertical-offset="0" max-vertical-offset="482273">
+          <caret line="28354" column="0" selection-start-line="28354" selection-start-column="0" selection-end-line="28354" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+        <state vertical-scroll-proportion="0.14782609" vertical-offset="0" max-vertical-offset="920">
           <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/scripts_inactive/angular-sanitize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11713">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/assets/angular/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="482273">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/upload.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.576923" vertical-offset="279" max-vertical-offset="1173">
-          <caret line="54" column="29" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="29" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test1.js">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="493">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/default/test.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="272">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/center.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22818792" vertical-offset="0" max-vertical-offset="894">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="408">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41051453" vertical-offset="398" max-vertical-offset="1292">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
+          <folding>
+            <element signature="e#40#99#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

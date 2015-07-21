@@ -56,8 +56,15 @@ class DefaultController extends Controller
      */
     public function uploadForm()
     {
-        return $this->render('page_templates/upload.html.twig', array());
+        return $this->render('html_templates/upload.html.twig', array());
     }
 
+    /**
+     * @Route("app/test", name="test")
+     */
+    public function test()
+    {
+        return $this->render('default/test.html.twig', array());
+    }
 
 }
