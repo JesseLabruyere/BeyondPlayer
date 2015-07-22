@@ -5,10 +5,13 @@
 
         <p>Menu</p>
 
-        <div class="btn-group-vertical" role="group" aria-label="...">
-            <button class="btn btn-default" type="button" id="leftbar_listen">Listen</button>
-            <button class="btn btn-default" type="button" id="leftbar_upload" ng-click="functions.loadUploadPage(item, $event)">Upload</button>
-        </div>
+        {# this directive is used to define the ng-clicks #}
+        <left-menu-directive>
+            <div class="btn-group-vertical" role="group" aria-label="...">
+                <button class="btn btn-default" type="button" id="leftbar_listen" ng-click="functions.loadListenPage(item, $event)">Listen</button>
+                <button class="btn btn-default" type="button" id="leftbar_upload" ng-click="functions.loadUploadPage(item, $event)">Upload</button>
+            </div>
+        </left-menu-directive>
 
         {% endblock %}
     </body>
