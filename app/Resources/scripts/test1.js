@@ -42,10 +42,7 @@ app.directive('leftMenuDirective', function() {
             /*JSON call*/
             var response = $http.get("app/uploadForm");
             response.success(function (data, status, headers, config) {
-                alert('loading');
                 $('#pageCenter').html(data);
-                /*initializeFileInput();*/
-                /*$('input[type=file]').bootstrapFileInput();*/
             });
             response.error(function (data, status, headers, config) {
                 alert("AJAX failed!");

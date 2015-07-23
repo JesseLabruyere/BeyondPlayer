@@ -152,6 +152,28 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
             }
 
+            if (0 === strpos($pathinfo, '/app/upload')) {
+                // upload
+                if (rtrim($pathinfo, '/') === '/app/upload') {
+                    if (substr($pathinfo, -1) !== '/') {
+                        return $this->redirect($pathinfo.'/', 'upload');
+                    }
+
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::upload',  '_route' => 'upload',);
+                }
+
+                // deleteUpload
+                if ($pathinfo === '/app/upload/upload') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deleteUpload',  '_route' => 'deleteUpload',);
+                }
+
+            }
+
+            // checkPath
+            if ($pathinfo === '/app/checkPath') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUrl',  '_route' => 'checkPath',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

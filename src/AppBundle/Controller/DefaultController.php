@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Utility\UploadHandler;
 
 class DefaultController extends Controller
 {
@@ -65,6 +66,44 @@ class DefaultController extends Controller
     public function test()
     {
         return $this->render('default/test.html.twig', array());
+    }
+
+    /**
+     * @Route("app/upload/", name="upload")
+     *
+     * route for uploading files
+     */
+    public function upload()
+    {
+        error_reporting(E_ALL | E_STRICT);
+        $rootURL = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+
+        /* script_url is the current route http://localhost.com/app/upload/ */
+        /* upload_dir is the directory path were the images reside MusicPlayer/web/uploads/ */
+        /* upload_url is the url to the folder with images http://localhost.com/uploads/ */
+        $options = array ('script_url' =>  $rootURL . 'app/upload/', 'upload_dir' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/', 'upload_url' => $rootURL . 'uploads/');
+
+        $upload_handler = new UploadHandler($options);
+
+        /* we have to return an response else symfony will throw errors */
+        return new Response();
+    }
+
+    /**
+     * @Route("app/upload/upload", name="deleteUpload")
+     */
+    public function deleteUpload()
+    {
+
+    }
+
+
+    /**
+     * @Route("app/checkPath", name="checkPath")
+     */
+    public function getUrl(){
+        $root = $_SERVER['DOCUMENT_ROOT'];
+        return new Response($root);
     }
 
 }

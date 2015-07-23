@@ -12,4 +12,6 @@
 
 error_reporting(E_ALL | E_STRICT);
 require('UploadHandler.php');
-$upload_handler = new UploadHandler();
+/*$options = array ('upload_dir' => dirname(__FILE__) . '/uploads/');*/
+$options = array ('upload_dir' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/');
+$upload_handler = new UploadHandler($options);
