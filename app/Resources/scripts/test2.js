@@ -16,9 +16,9 @@ function assignEventHandlers() {
     });
 
     /* onchange for the fileInput*/
-    $( document).on( "change", "#fileInput", function() {
+/*    $( document).on( "change", "#fileInput", function() {
         uploadFile(this);
-    });
+    });*/
 }
 
 /*function that loads the uploadpage*/
@@ -36,3 +36,4 @@ function uploadFile(fileInput){
 
     }
 }
+

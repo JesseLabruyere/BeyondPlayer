@@ -42,8 +42,10 @@ app.directive('leftMenuDirective', function() {
             /*JSON call*/
             var response = $http.get("app/uploadForm");
             response.success(function (data, status, headers, config) {
+                alert('loading');
                 $('#pageCenter').html(data);
-                $('input[type=file]').bootstrapFileInput();
+                /*initializeFileInput();*/
+                /*$('input[type=file]').bootstrapFileInput();*/
             });
             response.error(function (data, status, headers, config) {
                 alert("AJAX failed!");
@@ -64,7 +66,18 @@ app.directive('leftMenuDirective', function() {
     };
 });
 
-
+/*function initializeFileInput() {
+    $(function () {
+        $('#fileInput').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('<p/>').text(file.name).appendTo(document.body);
+                });
+            }
+        });
+    });
+}*/
 
 
 

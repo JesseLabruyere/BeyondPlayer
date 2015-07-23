@@ -24,10 +24,12 @@ html, body {
 #mainContainer .center-row .leftbar {
   height: 100%;
   min-height: 100%;
+  overflow-y: scroll;
 }
 #mainContainer .center-row .center {
   height: 100%;
   min-height: 100%;
+  overflow-y: scroll;
 }
 #mainContainer .footer-row {
   /*position: fixed;*/
