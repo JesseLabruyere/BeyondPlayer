@@ -10,6 +10,9 @@ use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Utility\UploadHandler;
+use AppBundle\Entity\AudioFile;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\File;
 
 class DefaultController extends Controller
 {
@@ -104,6 +107,77 @@ class DefaultController extends Controller
     public function getUrl(){
         $root = $_SERVER['DOCUMENT_ROOT'];
         return new Response($root);
+    }
+
+
+
+
+    /**
+     * @Route("app/getUploadForm", name="getUploadForm")
+     *
+     * We create a form for uploading files, that will be submitted conform the VichUploadBundle configuration
+     */
+    public function getUploadForm(Request $request){
+
+        /* the entity that will be added using the form */
+        $audioFile = new AudioFile();
+
+        $form = $this->createFormBuilder($audioFile)
+            ->add('name', 'text')
+            ->add('description', 'text')
+            ->add('file', 'file', array(
+                'label' => 'Audio File'
+            ))
+            ->add('submit', 'submit', array('label' => 'uploaden'))
+            ->getForm();
+
+/*        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // perform some action, such as saving the task to the database
+            return $this->redirectToRoute('task_success');
+        }
+
+        return new Response();*/
+
+        /* this code will check if the form was submitted if not it will do nothing */
+        $form->handleRequest($request);
+
+        /* isValid() returns false if the form was not submitted */
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            // perform some action, such as saving the task to the database
+/*            $name = $audioFile->getFile();
+            return new Response($name);*/
+            /* setting the values that are not covered by the form*/
+
+            $audioFile->setLength(10);
+            $audioFile->setSize(10);
+            $audioFile->setFileName($audioFile->getFile());
+
+            $em->persist($audioFile);
+            $em->flush();
+
+            return $this->redirectToRoute('task_success');
+
+            /*return new Response($audioFile->getFile());*/
+        } else {
+
+            return $this->render('html_templates/upload_form.html.twig', array(
+                'form' => $form->createView(),
+            ));
+
+        }
+    }
+
+    /**
+     * @Route("app/task_success", name="task_success")
+     *
+     * We create a form for uploading files, that will be submitted conform the VichUploadBundle configuration
+     */
+    public function taskSuccess() {
+        return new Response('success!');
     }
 
 }

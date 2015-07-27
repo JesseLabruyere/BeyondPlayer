@@ -36,6 +36,8 @@ class appDevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         'upload' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::upload',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/upload/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'deleteUpload' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::deleteUpload',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/upload/upload',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'checkPath' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::getUrl',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/checkPath',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'getUploadForm' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/getUploadForm',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'task_success' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/task_success',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
     );
 
     /**
