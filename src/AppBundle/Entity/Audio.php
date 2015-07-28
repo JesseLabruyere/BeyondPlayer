@@ -1,13 +1,13 @@
 <?php
-
+// src/AppBundle/Entity/Audio.php
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @Vich\Uploadable
  */
 class Audio
 {
@@ -16,106 +16,93 @@ class Audio
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
-
-    // ..... other fields
+    public $id;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     *
-     * @var File $audioFile
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
-    protected $audioFile;
+    public $name;
 
     /**
-     * @ORM\Column(type="string", length=255, name="audioName")
-     *
-     * @var string $audioName
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    protected $audioName;
+    public $path;
 
     /**
-     * @ORM\Column(type="datetime")
-     *
-     * @var \DateTime $updatedAt
+     * @Assert\File(maxSize="6000000")
      */
-    protected $updatedAt;
+    private $file;
 
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     */
-    public function setAudioFile(File $audioFile = null)
+    public function getAbsolutePath()
     {
-        $this->audioFile = $audioFile;
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->path;
+    }
 
-        if ($audioFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTime('now');
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'files/audio_files';
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
         }
-    }
 
-    /**
-     * @return File
-     */
-    public function getAudioFile()
-    {
-        return $this->audioFile;
-    }
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
 
-    /**
-     * @param string $imageName
-     */
-    public function setAudioName($audioName)
-    {
-        $this->audioName = $audioName;
-    }
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
 
-    /**
-     * @return string
-     */
-    public function getAudioName()
-    {
-        return $this->audioName;
-    }
+        // set the path property to the filename where you've saved the file
+        $this->path = $this->getFile()->getClientOriginalName();
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Product
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
     }
 }

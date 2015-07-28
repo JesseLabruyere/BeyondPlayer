@@ -120,10 +120,11 @@ class DefaultController extends Controller
     public function getUploadForm(Request $request){
 
         /* the entity that will be added using the form */
-        $product = new Audio();
+        $audio = new Audio();
 
-        $form = $this->createFormBuilder($product)
-            ->add('audioFile', 'file')
+        $form = $this->createFormBuilder($audio)
+            ->add('name', 'text')
+            ->add('file', 'file')
             ->add('submit', 'submit', array('label' => 'uploaden'))
             ->getForm();
 
@@ -141,9 +142,12 @@ class DefaultController extends Controller
 
         /* isValid() returns false if the form was not submitted */
         if ($form->isValid()) {
+            /* upload the file*/
+            $audio->upload();
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($product);
+            /* persist the object */
+            $em->persist($audio);
             $em->flush();
 
             return $this->redirectToRoute('task_success');

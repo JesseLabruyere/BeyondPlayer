@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity
- * @Vich\Uploadable
  */
 class Product
 {
