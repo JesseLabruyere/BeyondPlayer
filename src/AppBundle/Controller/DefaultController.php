@@ -128,25 +128,16 @@ class DefaultController extends Controller
             ->add('submit', 'submit', array('label' => 'uploaden'))
             ->getForm();
 
-        /*        $form->handleRequest($request);
-
-                if ($form->isValid()) {
-                    // perform some action, such as saving the task to the database
-                    return $this->redirectToRoute('task_success');
-                }
-
-                return new Response();*/
-
         /* this code will check if the form was submitted if not it will do nothing */
         $form->handleRequest($request);
 
         /* isValid() returns false if the form was not submitted */
         if ($form->isValid()) {
-            /* upload the file*/
-            $audio->upload();
-            $em = $this->getDoctrine()->getManager();
+            /* we save the originalFileName*/
+            /*$audio->setOriginalFileName($audio->getFile()->getClientOriginalName());*/
 
             /* persist the object */
+            $em = $this->getDoctrine()->getManager();
             $em->persist($audio);
             $em->flush();
 
