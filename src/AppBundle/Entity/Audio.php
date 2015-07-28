@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ORM\Entity
  * @Vich\Uploadable
  */
-class Product
+class Audio
 {
     /**
      * @ORM\Id
@@ -24,16 +24,16 @@ class Product
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      *
-     * @var File $imageFile
+     * @var File $audioFile
      */
-    protected $imageFile;
+    protected $audioFile;
 
     /**
-     * @ORM\Column(type="string", length=255, name="image_name")
+     * @ORM\Column(type="string", length=255, name="audioName")
      *
-     * @var string $imageName
+     * @var string $audioName
      */
-    protected $imageName;
+    protected $audioName;
 
     /**
      * @ORM\Column(type="datetime")
@@ -51,11 +51,11 @@ class Product
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      */
-    public function setImageFile(File $image = null)
+    public function setAudioFile(File $audioFile = null)
     {
-        $this->imageFile = $image;
+        $this->audioFile = $audioFile;
 
-        if ($image) {
+        if ($audioFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTime('now');
@@ -65,31 +65,31 @@ class Product
     /**
      * @return File
      */
-    public function getImageFile()
+    public function getAudioFile()
     {
-        return $this->imageFile;
+        return $this->audioFile;
     }
 
     /**
      * @param string $imageName
      */
-    public function setImageName($imageName)
+    public function setAudioName($audioName)
     {
-        $this->imageName = $imageName;
+        $this->audioName = $audioName;
     }
 
     /**
      * @return string
      */
-    public function getImageName()
+    public function getAudioName()
     {
-        return $this->imageName;
+        return $this->audioName;
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -105,14 +105,14 @@ class Product
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

@@ -7,10 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 /*use AppBundle\model\testModel;*/
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Product;
+//use AppBundle\Entity\Product;
+use AppBundle\Entity\Audio;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Utility\UploadHandler;
-use AppBundle\Entity\AudioFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -120,25 +120,21 @@ class DefaultController extends Controller
     public function getUploadForm(Request $request){
 
         /* the entity that will be added using the form */
-        $audioFile = new AudioFile();
+        $product = new Audio();
 
-        $form = $this->createFormBuilder($audioFile)
-            ->add('name', 'text')
-            ->add('description', 'text')
-            ->add('file', 'file', array(
-                'label' => 'Audio File'
-            ))
+        $form = $this->createFormBuilder($product)
+            ->add('audioFile', 'file')
             ->add('submit', 'submit', array('label' => 'uploaden'))
             ->getForm();
 
-/*        $form->handleRequest($request);
+        /*        $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            // perform some action, such as saving the task to the database
-            return $this->redirectToRoute('task_success');
-        }
+                if ($form->isValid()) {
+                    // perform some action, such as saving the task to the database
+                    return $this->redirectToRoute('task_success');
+                }
 
-        return new Response();*/
+                return new Response();*/
 
         /* this code will check if the form was submitted if not it will do nothing */
         $form->handleRequest($request);
@@ -147,21 +143,12 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            // perform some action, such as saving the task to the database
-/*            $name = $audioFile->getFile();
-            return new Response($name);*/
-            /* setting the values that are not covered by the form*/
-
-            $audioFile->setLength(10);
-            $audioFile->setSize(10);
-            $audioFile->setFileName($audioFile->getFile());
-
-            $em->persist($audioFile);
+            $em->persist($product);
             $em->flush();
 
             return $this->redirectToRoute('task_success');
 
-            /*return new Response($audioFile->getFile());*/
+            /*return new Response((string)print_r($product));*/
         } else {
 
             return $this->render('html_templates/upload_form.html.twig', array(

@@ -17,7 +17,6 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
-      <parameter key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -580,20 +579,6 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
-    <parameter key="vich_uploader.default_filename_attribute_suffix">_name</parameter>
-    <parameter key="vich_uploader.mappings" type="collection">
-      <parameter key="audio_file" type="collection">
-        <parameter key="uri_prefix">/files/audio_files</parameter>
-        <parameter key="upload_destination">E:\Github_Projects\MusicPlayer\app/../web/files/audio_files</parameter>
-        <parameter key="inject_on_load">false</parameter>
-        <parameter key="delete_on_update">true</parameter>
-        <parameter key="delete_on_remove">true</parameter>
-        <parameter key="namer">null</parameter>
-        <parameter key="directory_namer">null</parameter>
-        <parameter key="db_driver">orm</parameter>
-      </parameter>
-    </parameter>
-    <parameter key="vich_uploader.file_injector.class">Vich\UploaderBundle\Injector\FileInjector</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -1112,8 +1097,6 @@
               <argument key="reset">form.type.reset</argument>
               <argument key="currency">form.type.currency</argument>
               <argument key="entity">form.type.entity</argument>
-              <argument key="vich_file">vich_uploader.form.type.file</argument>
-              <argument key="vich_image">vich_uploader.form.type.image</argument>
             </argument>
             <argument type="collection">
               <argument key="form" type="collection">
@@ -2277,14 +2260,6 @@
       </call>
       <call method="addExtension">
         <argument type="service">
-          <service class="Vich\UploaderBundle\Twig\Extension\UploaderExtension" public="false">
-            <tag name="twig.extension"/>
-            <argument type="service" id="vich_uploader.templating.helper.uploader_helper"/>
-          </service>
-        </argument>
-      </call>
-      <call method="addExtension">
-        <argument type="service">
           <service class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
             <tag name="twig.extension"/>
             <argument type="service" id="var_dumper.cloner"/>
@@ -2490,45 +2465,6 @@
       <argument type="service">
         <service class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
           <argument type="service" id="service_container"/>
-          <call method="addEventSubscriber">
-            <argument type="service">
-              <service class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener" public="false">
-                <tag name="doctrine.event_subscriber" priority="50"/>
-                <argument>audio_file</argument>
-                <argument type="service">
-                  <service class="Vich\UploaderBundle\Adapter\ORM\DoctrineORMAdapter" public="false"/>
-                </argument>
-                <argument type="service" id="vich_uploader.metadata_reader"/>
-                <argument type="service" id="vich_uploader.upload_handler"/>
-              </service>
-            </argument>
-          </call>
-          <call method="addEventSubscriber">
-            <argument type="service">
-              <service class="Vich\UploaderBundle\EventListener\Doctrine\RemoveListener" public="false">
-                <tag name="doctrine.event_subscriber" priority="0"/>
-                <argument>audio_file</argument>
-                <argument type="service">
-                  <service class="Vich\UploaderBundle\Adapter\ORM\DoctrineORMAdapter" public="false"/>
-                </argument>
-                <argument type="service" id="vich_uploader.metadata_reader"/>
-                <argument type="service" id="vich_uploader.upload_handler"/>
-              </service>
-            </argument>
-          </call>
-          <call method="addEventSubscriber">
-            <argument type="service">
-              <service class="Vich\UploaderBundle\EventListener\Doctrine\UploadListener" public="false">
-                <tag name="doctrine.event_subscriber" priority="0"/>
-                <argument>audio_file</argument>
-                <argument type="service">
-                  <service class="Vich\UploaderBundle\Adapter\ORM\DoctrineORMAdapter" public="false"/>
-                </argument>
-                <argument type="service" id="vich_uploader.metadata_reader"/>
-                <argument type="service" id="vich_uploader.upload_handler"/>
-              </service>
-            </argument>
-          </call>
         </service>
       </argument>
       <argument type="collection"/>
@@ -2681,98 +2617,6 @@
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
       <argument type="service" id="security.authorization_checker" on-invalid="null"/>
-    </service>
-    <service id="vich_uploader.upload_handler" class="Vich\UploaderBundle\Handler\UploadHandler">
-      <argument type="service" id="vich_uploader.property_mapping_factory"/>
-      <argument type="service" id="vich_uploader.storage.file_system"/>
-      <argument type="service" id="vich_uploader.file_injector"/>
-      <argument type="service" id="debug.event_dispatcher"/>
-    </service>
-    <service id="vich_uploader.storage.file_system" class="Vich\UploaderBundle\Storage\FileSystemStorage">
-      <argument type="service" id="vich_uploader.property_mapping_factory"/>
-    </service>
-    <service id="vich_uploader.file_injector" class="Vich\UploaderBundle\Injector\FileInjector">
-      <argument type="service" id="vich_uploader.storage.file_system"/>
-    </service>
-    <service id="vich_uploader.templating.helper.uploader_helper" class="Vich\UploaderBundle\Templating\Helper\UploaderHelper">
-      <tag name="templating.helper" alias="vich_uploader"/>
-      <argument type="service" id="vich_uploader.storage.file_system"/>
-    </service>
-    <service id="vich_uploader.metadata_reader" class="Vich\UploaderBundle\Metadata\MetadataReader" public="false">
-      <argument type="service">
-        <service class="Metadata\MetadataFactory" public="false">
-          <argument type="service">
-            <service class="Vich\UploaderBundle\Metadata\Driver\ChainDriver" public="false">
-              <argument type="collection">
-                <argument type="service">
-                  <service class="Vich\UploaderBundle\Metadata\Driver\AnnotationDriver" public="false">
-                    <argument type="service" id="annotation_reader"/>
-                  </service>
-                </argument>
-                <argument type="service">
-                  <service class="Vich\UploaderBundle\Metadata\Driver\YamlDriver" public="false">
-                    <argument type="service">
-                      <service class="Vich\UploaderBundle\Metadata\Driver\FileLocator" public="false">
-                        <argument type="collection"/>
-                      </service>
-                    </argument>
-                  </service>
-                </argument>
-                <argument type="service">
-                  <service class="Vich\UploaderBundle\Metadata\Driver\XmlDriver" public="false">
-                    <argument type="service">
-                      <service class="Vich\UploaderBundle\Metadata\Driver\FileLocator" public="false">
-                        <argument type="collection"/>
-                      </service>
-                    </argument>
-                  </service>
-                </argument>
-              </argument>
-            </service>
-          </argument>
-          <call method="setCache">
-            <argument type="service">
-              <service class="Metadata\Cache\FileCache" public="false">
-                <argument>E:\Github_Projects\MusicPlayer\app\cache\dev/vich_uploader</argument>
-              </service>
-            </argument>
-          </call>
-        </service>
-      </argument>
-    </service>
-    <service id="vich_uploader.property_mapping_factory" class="Vich\UploaderBundle\Mapping\PropertyMappingFactory" public="false">
-      <argument type="service" id="service_container"/>
-      <argument type="service" id="vich_uploader.metadata_reader"/>
-      <argument type="collection">
-        <argument key="audio_file" type="collection">
-          <argument key="uri_prefix">/files/audio_files</argument>
-          <argument key="upload_destination">E:\Github_Projects\MusicPlayer\app/../web/files/audio_files</argument>
-          <argument key="inject_on_load">false</argument>
-          <argument key="delete_on_update">true</argument>
-          <argument key="delete_on_remove">true</argument>
-          <argument key="namer">null</argument>
-          <argument key="directory_namer">null</argument>
-          <argument key="db_driver">orm</argument>
-        </argument>
-      </argument>
-      <argument>_name</argument>
-    </service>
-    <service id="vich_uploader.storage_factory" class="Vich\UploaderBundle\Storage\StorageFactory">
-      <argument type="service" id="service_container"/>
-    </service>
-    <service id="vich_uploader.namer_uniqid" class="Vich\UploaderBundle\Naming\UniqidNamer"/>
-    <service id="vich_uploader.namer_origname" class="Vich\UploaderBundle\Naming\OrignameNamer"/>
-    <service id="vich_uploader.form.type.file" class="Vich\UploaderBundle\Form\Type\VichFileType">
-      <tag name="form.type" alias="vich_file"/>
-      <argument type="service" id="vich_uploader.storage.file_system"/>
-      <argument type="service" id="vich_uploader.upload_handler"/>
-      <argument type="service" id="translator"/>
-    </service>
-    <service id="vich_uploader.form.type.image" class="Vich\UploaderBundle\Form\Type\VichImageType">
-      <tag name="form.type" alias="vich_image"/>
-      <argument type="service" id="vich_uploader.storage.file_system"/>
-      <argument type="service" id="vich_uploader.upload_handler"/>
-      <argument type="service" id="translator"/>
     </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig"/>
@@ -3057,7 +2901,6 @@
           <argument key="logout_url">templating.helper.logout_url</argument>
           <argument key="security">templating.helper.security</argument>
           <argument key="assetic">assetic.helper.dynamic</argument>
-          <argument key="vich_uploader">vich_uploader.templating.helper.uploader_helper</argument>
         </argument>
       </call>
     </service>
@@ -3131,10 +2974,6 @@
       <call method="addPath">
         <argument>E:\Github_Projects\MusicPlayer\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
-      </call>
-      <call method="addPath">
-        <argument>E:\Github_Projects\MusicPlayer\vendor\vich\uploader-bundle/Resources/views</argument>
-        <argument>VichUploader</argument>
       </call>
       <call method="addPath">
         <argument>E:\Github_Projects\MusicPlayer\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
@@ -3240,7 +3079,6 @@
     <service id="doctrine.orm.default_metadata_cache" alias="doctrine_cache.providers.doctrine.orm.default_metadata_cache"/>
     <service id="doctrine.orm.default_result_cache" alias="doctrine_cache.providers.doctrine.orm.default_result_cache"/>
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
-    <service id="vich_uploader.storage" alias="vich_uploader.storage.file_system"/>
     <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
     <service id="console.command.sensiolabs_security_command_securitycheckercommand" alias="sensio_distribution.security_checker.command"/>
   </services>

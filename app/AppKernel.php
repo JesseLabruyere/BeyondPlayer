@@ -24,14 +24,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
-            /*
-             * symfony VichUploaderBundle, is a bundle for fileUploads
-             *
-             * The VichUploaderBundle is a Symfony2 bundle that attempts to
-             * ease file uploads that are attached to ORM entities, MongoDB ODM documents,
-             * PHPCR ODM documents or Propel models.
-             */
-            new Vich\UploaderBundle\VichUploaderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
