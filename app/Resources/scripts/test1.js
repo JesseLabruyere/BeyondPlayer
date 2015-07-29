@@ -40,9 +40,10 @@ app.directive('leftMenuDirective', function() {
         /*adding new function called loadUploadPage to the 'functions' object*/
         $scope.functions.loadUploadPage = function (item, event) {
             /*JSON call*/
-            var response = $http.get("app/uploadForm");
+            var response = $http.get("app/getUploadForm");
             response.success(function (data, status, headers, config) {
                 $('#pageCenter').html(data);
+                setAjaxForm('#upload_form');
             });
             response.error(function (data, status, headers, config) {
                 alert("AJAX failed!");

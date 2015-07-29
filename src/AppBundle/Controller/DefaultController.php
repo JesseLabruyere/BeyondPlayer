@@ -122,7 +122,9 @@ class DefaultController extends Controller
         /* the entity that will be added using the form */
         $audio = new Audio();
 
+        /* setAction is needed because we will embed the form in a page, so the url wont match */
         $form = $this->createFormBuilder($audio)
+            ->setAction($this->generateUrl('getUploadForm'))
             ->add('name', 'text')
             ->add('file', 'file')
             ->add('submit', 'submit', array('label' => 'uploaden'))
@@ -133,15 +135,14 @@ class DefaultController extends Controller
 
         /* isValid() returns false if the form was not submitted */
         if ($form->isValid()) {
-            /* we save the originalFileName*/
-            /*$audio->setOriginalFileName($audio->getFile()->getClientOriginalName());*/
 
             /* persist the object */
             $em = $this->getDoctrine()->getManager();
             $em->persist($audio);
             $em->flush();
 
-            return $this->redirectToRoute('task_success');
+            return new Response('success!');
+            /*return $this->redirectToRoute('task_success');*/
 
             /*return new Response((string)print_r($product));*/
         } else {
