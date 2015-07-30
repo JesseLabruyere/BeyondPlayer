@@ -9,8 +9,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
 //use AppBundle\Entity\Product;
 use AppBundle\Entity\Audio;
+use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
-use AppBundle\Utility\UploadHandler;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -53,14 +53,6 @@ class DefaultController extends Controller
         return new Response('Created product id '.$product->getId());
 
 
-    }
-
-    /**
-     * @Route("app/uploadForm", name="uploadForm")
-     */
-    public function uploadForm()
-    {
-        return $this->render('html_templates/upload.html.twig', array());
     }
 
     /**
@@ -109,13 +101,66 @@ class DefaultController extends Controller
         return new Response($root);
     }
 
+    /**
+     * @Route("app/getRegistrationForm", name="getRegistrationForm")
+     *
+     * We create a form for registering new users, that will also be submitted to this route
+     */
+    public function getRegistrationForm(Request $request){
 
+        /* the entity that will be added using the form */
+        $user = new User();
+
+        /* setAction is needed because we will embed the form in a page, so the url wont match */
+        $form = $this->createFormBuilder($user)
+            ->setAction($this->generateUrl('getRegistrationForm'))
+            ->add('email', 'text', array('label' => 'Email'))
+            ->add('username', 'text', array('label' => 'Username'))
+            ->add('password', 'repeated', array(
+                'first_name'  => 'password',
+                'second_name' => 'confirm',
+                'type'        => 'password',
+                'label' => 'Password'
+            ))
+            ->add('submit', 'submit', array('label' => 'Login'))
+            ->getForm();
+
+        /* this code will check if the form was submitted if not it will do nothing */
+        $form->handleRequest($request);
+
+        /* isValid() returns false if the form was not submitted */
+        if ($form->isValid()) {
+
+            /* we will encode the password */
+            $plainPassword = $user->getPassword();
+            $encoder = $this->container->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $plainPassword);
+            $user->setPassword($encoded);
+
+            /* persist the object */
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return new Response('success!');
+            /*return $this->redirectToRoute('task_success');*/
+
+            /*return new Response((string)print_r($product));*/
+        } else {
+
+            return $this->render('html_templates/registration_form.html.twig', array(
+                'form' => $form->createView(),
+            ));
+
+        }
+
+    }
 
 
     /**
      * @Route("app/getUploadForm", name="getUploadForm")
      *
-     * We create a form for uploading files, that will be submitted conform the VichUploadBundle configuration
+     * We create a form for uploading files, that will also be submitted to this route
      */
     public function getUploadForm(Request $request){
 
@@ -163,4 +208,8 @@ class DefaultController extends Controller
         return new Response('success!');
     }
 
+
+    public function coupleAudioToPlaylist() {
+       //..
+    }
 }

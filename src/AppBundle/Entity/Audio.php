@@ -43,6 +43,14 @@ class Audio
     // variable that is used to temporarily store an old path
     private $temp;
 
+    // variable that stores the uploadDirectory
+    private $uploadDirectory;
+
+    /* constuctor*/
+    public function __construct(){
+        $this->uploadDirectory = 'files/audio_files';
+    }
+
     /**
      * @param string $name
      */
@@ -76,7 +84,12 @@ class Audio
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'files/audio_files';
+        return $this->uploadDirectory;
+    }
+
+    public function setUploadDir($dir)
+    {
+        $this->uploadDirectory = $dir;
     }
 
     /**

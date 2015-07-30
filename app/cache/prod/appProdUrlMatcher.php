@@ -79,17 +79,9 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  '_route' => 'getUploadForm',);
             }
 
-            if (0 === strpos($pathinfo, '/app/t')) {
-                // task_success
-                if ($pathinfo === '/app/task_success') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
-                }
-
-                // testUploadForm
-                if ($pathinfo === '/app/testUploadForm') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testUploadForm',  '_route' => 'testUploadForm',);
-                }
-
+            // task_success
+            if ($pathinfo === '/app/task_success') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
             }
 
         }

@@ -137,19 +137,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/app')) {
-            // nothomepage
-            if ($pathinfo === '/app/trol') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
-            }
+            if (0 === strpos($pathinfo, '/app/t')) {
+                // nothomepage
+                if ($pathinfo === '/app/trol') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
+                }
 
-            // uploadForm
-            if ($pathinfo === '/app/uploadForm') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadForm',  '_route' => 'uploadForm',);
-            }
+                // test
+                if ($pathinfo === '/app/test') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
+                }
 
-            // test
-            if ($pathinfo === '/app/test') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
             }
 
             if (0 === strpos($pathinfo, '/app/upload')) {
@@ -174,9 +172,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUrl',  '_route' => 'checkPath',);
             }
 
-            // getUploadForm
-            if ($pathinfo === '/app/getUploadForm') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  '_route' => 'getUploadForm',);
+            if (0 === strpos($pathinfo, '/app/get')) {
+                // getRegistrationForm
+                if ($pathinfo === '/app/getRegistrationForm') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getRegistrationForm',  '_route' => 'getRegistrationForm',);
+                }
+
+                // getUploadForm
+                if ($pathinfo === '/app/getUploadForm') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  '_route' => 'getUploadForm',);
+                }
+
             }
 
             // task_success
