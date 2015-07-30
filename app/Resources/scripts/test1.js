@@ -60,7 +60,6 @@ app.directive('leftMenuDirective', function() {
             var response = $http.get("app/getRegistrationForm");
             response.success(function (data, status, headers, config) {
                 $('#pageCenter').html(data);
-                setAjaxForm('#registration_form');
             });
             response.error(function (data, status, headers, config) {
                 alert("AJAX failed!");
