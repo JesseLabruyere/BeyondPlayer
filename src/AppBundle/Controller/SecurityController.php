@@ -39,7 +39,8 @@ class SecurityController extends Controller
     {
         // this controller will not be executed,
         // as the route is handled by the Security system
-
+        // we return an empty response anyway because that is something symfony enforces
+        return new Response();
     }
 
 }

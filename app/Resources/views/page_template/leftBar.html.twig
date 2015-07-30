@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        {% block body %}
+
+        <p>Menu</p>
+
+        {# this directive is used to define the ng-clicks notice the custom HTML5 tags #}
+        <left-menu-directive>
+            <div class="btn-group-vertical" role="group" aria-label="...">
+                {# the buttons have angularjs function#}
+                <button class="btn btn-default" type="button" id="leftbar_listen" ng-click="functions.loadListenPage(item, $event)">Listen</button>
+                <button class="btn btn-default" type="button" id="leftbar_upload" ng-click="functions.loadUploadPage(item, $event)">Upload</button>
+                <button class="btn btn-default" type="button" id="leftbar_addUser" ng-click="functions.loadAddUserForm(item, $event)">+User</button>
+            </div>
+        </left-menu-directive>
+
+        {% endblock %}
+    </body>
+</html>

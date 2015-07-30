@@ -6,9 +6,6 @@ security:
         AppBundle\Entity\User:
             algorithm: bcrypt
             cost: 12
-    #    Symfony\Component\Security\Core\User\User:
-    #        algorithm: bcrypt
-    #        cost: 12
 
     providers:
         # ...
@@ -16,17 +13,6 @@ security:
             entity:
                 class: AppBundle:User
                 property: username
-
-    #    in_memory:
-    #        memory:
-    #            users:
-    #                ryan:
-    #                    password: ryanpass
-    #                    roles: 'ROLE_USER'
-    #                admin:
-    #                    password: kitten
-    #                    roles: 'ROLE_ADMIN'
-
 
     # the order of the firewalls matter the more specific ones should be defined first
     firewalls:
@@ -43,7 +29,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        # the Defa
+        # the Default firewall
         default:
             # all pages after the root require authentication
             pattern:    ^/
@@ -63,20 +49,12 @@ security:
                 target: /
 
     access_control:
-
         # anyone can access the login form ... not really working too well.. the deticated firewall works best
         #- { path: loginAction, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # anyone can access the login form
         #- { path: loginCheckAction, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # require ROLE_USER for this page
         - { path: ^/, roles: ROLE_USER }
-
-
-
-
-
-
-
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

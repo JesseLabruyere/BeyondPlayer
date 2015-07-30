@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 /*use AppBundle\model\testModel;*/
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
-//use AppBundle\Entity\Product;
+use AppBundle\Entity\Product;
 use AppBundle\Entity\Audio;
 use AppBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,16 +17,13 @@ use Symfony\Component\HttpFoundation\File\File;
 class DefaultController extends Controller
 {
 
-
-
-
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction()
     {
         // whenevert a twig page is being rendered variabeles can be passed in an array
-        return $this->render('default/index.html.twig', array( 'headerTitle' => 'MusicPlayer'));
+        return $this->render('page_template/index.html.twig', array( 'headerTitle' => 'MusicPlayer'));
     }
 
     /**
@@ -137,10 +134,36 @@ class DefaultController extends Controller
             $encoded = $encoder->encodePassword($user, $plainPassword);
             $user->setPassword($encoded);
 
+
+            // TODO way to check if username and email do not exist yet
             /* persist the object */
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
-            $em->flush();
+
+            /* this may throw a: Integrity constraint violation: 1062 Duplicate entry */
+            try {
+                // ...
+                $em->flush();
+            }
+            catch(\Doctrine\DBAL\DBALException $e)
+            {
+
+
+                if( $e->getCode() === '23000' )
+                {
+
+
+                    /*echo $e->getMessage();*/
+                    return new Response('username or email already used');
+
+                    // Will output an SQLSTATE[23000] message, similar to:
+                    // Integrity constraint violation: 1062 Duplicate entry 'x'
+                    // ... for key 'UNIQ_BB4A8E30E7927C74'
+                }
+                /*else throw $e;*/
+                return new Response('username or email already used ///// ' . $e);
+            }
+
 
             return new Response('success!');
             /*return $this->redirectToRoute('task_success');*/

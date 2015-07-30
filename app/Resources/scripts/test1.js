@@ -43,7 +43,6 @@ app.directive('leftMenuDirective', function() {
             var response = $http.get("app/getUploadForm");
             response.success(function (data, status, headers, config) {
                 $('#pageCenter').html(data);
-                setAjaxForm('#upload_form');
             });
             response.error(function (data, status, headers, config) {
                 alert("AJAX failed!");
@@ -55,6 +54,18 @@ app.directive('leftMenuDirective', function() {
             $('#pageCenter').html('<h1>Listenpage</h1>');
         };
 
+        /*adding new function called loadAddUserForm to the 'functions' object*/
+        $scope.functions.loadAddUserForm = function (item, event) {
+            /*JSON call*/
+            var response = $http.get("app/getRegistrationForm");
+            response.success(function (data, status, headers, config) {
+                $('#pageCenter').html(data);
+                setAjaxForm('#registration_form');
+            });
+            response.error(function (data, status, headers, config) {
+                alert("AJAX failed!");
+            });
+        };
     };
 
     return {

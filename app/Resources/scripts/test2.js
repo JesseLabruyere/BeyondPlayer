@@ -18,6 +18,7 @@ function setAjaxForm(formId)
     $(formId).ajaxForm(function() {
         alert("Thank you for your upload!");
     });
+
 }
 
 
