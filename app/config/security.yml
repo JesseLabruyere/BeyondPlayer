@@ -27,17 +27,56 @@ security:
     #                    password: kitten
     #                    roles: 'ROLE_ADMIN'
 
+
+    # the order of the firewalls matter the more specific ones should be defined first
     firewalls:
-        # ...
+        # this firewall makes sure anyone can access the loginpage
+        login_firewall:
+                pattern:   ^/app/login$
+                anonymous: ~
+                security: false
+
+        # The dev firewall isn't important, it just makes sure that Symfony's development tools -
+        # which live under URLs like /_profiler and /_wdt aren't blocked by your security.
+        # All other URLs will be handled by the default firewall
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        # the Defa
         default:
             # all pages after the root require authentication
             pattern:    ^/
-            http_basic: ~
+            # this is basic and wont allow you to log back out again
+            #http_basic: ~
             provider: db_provider
 
+            # see SecurityController.php for the configuration
+            form_login:
+                login_path: loginAction
+                check_path: loginCheckAction
+
+            # when browses this path he will be logged out and redirected to the target url
+            # [!] to change this url you have to also change the url in routing.yml
+            logout:
+                path:   /app/logout
+                target: /
+
     access_control:
+
+        # anyone can access the login form ... not really working too well.. the deticated firewall works best
+        #- { path: loginAction, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # anyone can access the login form
+        #- { path: loginCheckAction, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # require ROLE_USER for this page
-        - { path: ^/app/getUploadForm, roles: ROLE_USER }
+        - { path: ^/, roles: ROLE_USER }
+
+
+
+
+
+
+
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

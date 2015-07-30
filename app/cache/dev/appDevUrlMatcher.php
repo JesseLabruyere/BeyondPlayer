@@ -190,6 +190,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
             }
 
+            if (0 === strpos($pathinfo, '/app/log')) {
+                if (0 === strpos($pathinfo, '/app/login')) {
+                    // loginAction
+                    if ($pathinfo === '/app/login') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'loginAction',);
+                    }
+
+                    // loginCheckAction
+                    if ($pathinfo === '/app/login_check') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginCheckAction',  '_route' => 'loginCheckAction',);
+                    }
+
+                }
+
+                // logout
+                if ($pathinfo === '/app/logout') {
+                    return array('_route' => 'logout');
+                }
+
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

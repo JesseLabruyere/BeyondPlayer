@@ -38,6 +38,9 @@ class appDevUrlGenerator extends Symfony\Component\Routing\Generator\UrlGenerato
         'getRegistrationForm' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::getRegistrationForm',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/getRegistrationForm',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'getUploadForm' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/getUploadForm',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'task_success' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/task_success',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'loginAction' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/login',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'loginCheckAction' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'AppBundle\\Controller\\SecurityController::loginCheckAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/login_check',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'logout' => array (  0 =>   array (  ),  1 =>   array (  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/app/logout',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
     );
 
     /**

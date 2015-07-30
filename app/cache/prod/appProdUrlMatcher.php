@@ -37,19 +37,17 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         }
 
         if (0 === strpos($pathinfo, '/app')) {
-            // nothomepage
-            if ($pathinfo === '/app/trol') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
-            }
+            if (0 === strpos($pathinfo, '/app/t')) {
+                // nothomepage
+                if ($pathinfo === '/app/trol') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
+                }
 
-            // uploadForm
-            if ($pathinfo === '/app/uploadForm') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::uploadForm',  '_route' => 'uploadForm',);
-            }
+                // test
+                if ($pathinfo === '/app/test') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
+                }
 
-            // test
-            if ($pathinfo === '/app/test') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
             }
 
             if (0 === strpos($pathinfo, '/app/upload')) {
@@ -74,14 +72,43 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUrl',  '_route' => 'checkPath',);
             }
 
-            // getUploadForm
-            if ($pathinfo === '/app/getUploadForm') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  '_route' => 'getUploadForm',);
+            if (0 === strpos($pathinfo, '/app/get')) {
+                // getRegistrationForm
+                if ($pathinfo === '/app/getRegistrationForm') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getRegistrationForm',  '_route' => 'getRegistrationForm',);
+                }
+
+                // getUploadForm
+                if ($pathinfo === '/app/getUploadForm') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadForm',  '_route' => 'getUploadForm',);
+                }
+
             }
 
             // task_success
             if ($pathinfo === '/app/task_success') {
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
+            }
+
+            if (0 === strpos($pathinfo, '/app/log')) {
+                if (0 === strpos($pathinfo, '/app/login')) {
+                    // loginAction
+                    if ($pathinfo === '/app/login') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'loginAction',);
+                    }
+
+                    // loginCheckAction
+                    if ($pathinfo === '/app/login_check') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginCheckAction',  '_route' => 'loginCheckAction',);
+                    }
+
+                }
+
+                // logout
+                if ($pathinfo === '/app/logout') {
+                    return array('_route' => 'logout');
+                }
+
             }
 
         }
