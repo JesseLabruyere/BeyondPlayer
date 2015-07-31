@@ -12,13 +12,5 @@ $( document ).ready(function() {
 function assignEventHandlers() {
 }
 
-/* this code adds the ajaxForm action to a form based on a form id*/
-function setAjaxForm(formId)
-{
-    $(formId).ajaxForm(function() {
-        alert("Thank you for your upload!");
-    });
-
-}
 
 

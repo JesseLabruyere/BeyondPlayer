@@ -119,7 +119,7 @@ class DefaultController extends Controller
                 'type'        => 'password',
                 'label' => 'Password'
             ))
-            ->add('submit', 'submit', array('label' => 'Login'))
+            ->add('submit', 'submit', array('label' => 'Confirm'))
             ->getForm();
 
         /* this code will check if the form was submitted if not it will do nothing */
@@ -128,44 +128,36 @@ class DefaultController extends Controller
         /* isValid() returns false if the form was not submitted */
         if ($form->isValid()) {
 
+            /* We check if the username and email do not exist in the database */
+            $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+            $userByName = $repository->findOneBy( array('username' => $user->getUsername()) );
+
+            if (!$userByName) {
+                /* no results with this username where found */
+            } else {
+                return new Response( json_encode( array('success' => false, 'reason' => 'username already exists') ) );
+            }
+
+            $userByEmail = $repository->findOneBy( array('email' => $user->getEmail()) );
+
+            if (!$userByEmail) {
+                /* no results with this email where found */
+            } else {
+                return new Response( json_encode( array('success' => false, 'reason' => 'email already exists') ) );
+            }
+
             /* we will encode the password */
             $plainPassword = $user->getPassword();
             $encoder = $this->container->get('security.password_encoder');
             $encoded = $encoder->encodePassword($user, $plainPassword);
             $user->setPassword($encoded);
 
-
-            // TODO way to check if username and email do not exist yet
             /* persist the object */
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
+            $em->flush();
 
-            /* this may throw a: Integrity constraint violation: 1062 Duplicate entry */
-            try {
-                // ...
-                $em->flush();
-            }
-            catch(\Doctrine\DBAL\DBALException $e)
-            {
-
-
-                if( $e->getCode() === '23000' )
-                {
-
-
-                    /*echo $e->getMessage();*/
-                    return new Response('username or email already used');
-
-                    // Will output an SQLSTATE[23000] message, similar to:
-                    // Integrity constraint violation: 1062 Duplicate entry 'x'
-                    // ... for key 'UNIQ_BB4A8E30E7927C74'
-                }
-                /*else throw $e;*/
-                return new Response('username or email already used ///// ' . $e);
-            }
-
-
-            return new Response('success!');
+            return new Response( json_encode( array('success' => true) ) );
             /*return $this->redirectToRoute('task_success');*/
 
             /*return new Response((string)print_r($product));*/
@@ -209,7 +201,7 @@ class DefaultController extends Controller
             $em->persist($audio);
             $em->flush();
 
-            return new Response('success!');
+            return new Response( json_encode( array('success' => true) ) );
             /*return $this->redirectToRoute('task_success');*/
 
             /*return new Response((string)print_r($product));*/
