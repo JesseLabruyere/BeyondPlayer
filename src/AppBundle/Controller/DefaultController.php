@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Audio;
 use AppBundle\Entity\User;
+use AppBundle\Entity\Playlist;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
@@ -152,9 +153,17 @@ class DefaultController extends Controller
             $encoded = $encoder->encodePassword($user, $plainPassword);
             $user->setPassword($encoded);
 
-            /* persist the object */
+            // we create the default playlist
+            $defaultPlaylist = new Playlist();
+            $defaultPlaylist->setListName("Uploads");
+            // adding/relating the playlist to the user
+            // we still have to persist them individually
+            $user->addPlayList($defaultPlaylist);
+
+            /* persist the objects */
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
+            $em->persist($defaultPlaylist);
             $em->flush();
 
             return new Response( json_encode( array('success' => true) ) );

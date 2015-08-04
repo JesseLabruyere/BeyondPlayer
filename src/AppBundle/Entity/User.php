@@ -5,9 +5,10 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(name="app_users")
+ * @ORM\Table(name="User")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
 class User implements AdvancedUserInterface, \Serializable
@@ -41,10 +42,17 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $isActive;
 
+    // één user heeft meerdere playlists
+    /**
+     * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
+     */
+    private $playLists;
+
     
     public function __construct()
     {
         $this->isActive = true;
+        $this->playLists = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
     }
@@ -242,4 +250,38 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
 
+
+    /**
+     * Add playLists
+     *
+     * @param \AppBundle\Entity\Playlist $playList
+     * @return User
+     */
+    public function addPlayList(\AppBundle\Entity\Playlist $playList)
+    {
+        // in reality we add the user to the playlist, and not the other way around
+        $playList->setUser($this);
+    
+        return $this;
+    }
+
+    /**
+     * Remove playLists
+     *
+     * @param \AppBundle\Entity\Playlist $playLists
+     */
+    public function removePlayList(\AppBundle\Entity\Playlist $playLists)
+    {
+        $this->playLists->removeElement($playLists);
+    }
+
+    /**
+     * Get playLists
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayLists()
+    {
+        return $this->playLists;
+    }
 }
