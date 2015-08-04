@@ -41,7 +41,6 @@ class Playlist {
         $this->listItems = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *
