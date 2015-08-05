@@ -11,6 +11,7 @@ use AppBundle\Entity\Product;
 use AppBundle\Entity\Audio;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Playlist;
+use AppBundle\Entity\ListItem;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
@@ -205,14 +206,32 @@ class DefaultController extends Controller
         /* isValid() returns false if the form was not submitted */
         if ($form->isValid()) {
 
-            /* persist the object */
+            /* get current user */
+            /*$user = $this->get('security.token_storage')->getToken()->getUser();*/
+            $user = $this->getUser();
+
+            /* create a new ListItem and add the audio to it*/
+            $listItem = new ListItem();
+            $listItem->setAudio($audio);
+
+            /* get the right playlist form the db */
+            $playlistRepository = $this->getDoctrine()->getRepository('AppBundle:Playlist');
+            $uploadList = $playlistRepository->findOneBy( array('user' => $user, 'listName' => 'Uploads') );
+
+            /* add the listItem to the PlayList*/
+            $uploadList->addListItem($listItem);
+
+
+            /* persist the objects */
             $em = $this->getDoctrine()->getManager();
             $em->persist($audio);
+            $em->persist($uploadList);
+            $em->persist($listItem);
             $em->flush();
 
             return new Response( json_encode( array('success' => true) ) );
-            /*return $this->redirectToRoute('task_success');*/
 
+            /*return $this->redirectToRoute('task_success');*/
             /*return new Response((string)print_r($product));*/
         } else {
 

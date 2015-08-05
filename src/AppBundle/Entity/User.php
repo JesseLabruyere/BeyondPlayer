@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Playlist;
+use Doctrine\ORM\EntityManager;
 
 /**
  * @ORM\Table(name="User")
@@ -42,15 +44,22 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $isActive;
 
-    // één user heeft meerdere playlists
+    // één user heeft meerdere playlists, één playlist heeft één user
     /**
      * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
      */
     private $playLists;
 
-    
-    public function __construct()
+    /*
+     *  doctrine entity manager
+     */
+    protected $em;
+
+    // we injecteren de entitymanager zodat we deze in de entity kunnen gebruiken
+    // te injecteren klassen staan gedefinieerd in services.yml
+    public function __construct(EntityManager $em)
     {
+        $this->em = $em;
         $this->isActive = true;
         $this->playLists = new ArrayCollection();
         // may not be needed, see section on salt below
