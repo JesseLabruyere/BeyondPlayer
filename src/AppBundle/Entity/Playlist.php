@@ -5,12 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use JsonSerializable;
 
 /**
  * @ORM\Table(name="playlist")
  * @ORM\Entity
  */
-class Playlist {
+class Playlist implements JsonSerializable{
 
     /**
      * @ORM\Column(type="integer")
@@ -107,6 +108,8 @@ class Playlist {
     {
         // we add the playlist to the listItem and not the other way around
         $listItem->setPlaylist($this);
+        // we add the listItem to the arrayCollection, we use the id as key value
+        $this->listItems->add($listItem);
 
         return $this;
     }
@@ -129,5 +132,42 @@ class Playlist {
     public function getListItems()
     {
         return $this->listItems;
+    }
+
+    /**
+     * get listItem bij Id
+     *
+     * @param int $id
+     * @return \AppBundle\Entity\ListItem
+     */
+    public function getListItemById($id)
+    {
+        for($i = 0; $i < count($this->listItems); $i++)
+        {
+            if($this->listItems->get($i)->getId() == $id) {
+                return $this->listItems->get($i);
+            }
+        }
+    }
+
+    /*
+     * get the first Listitem
+     *
+     * @return \AppBundle\Entity\ListItem
+     */
+    public function getFirstItem()
+    {
+        //return $this->listItems->get()
+        return $this->listItems->first();
+    }
+
+    /* function that gets used when calling json_encode on objects*/
+    public function jsonSerialize()
+    {
+        return [
+            'id'=> $this->id,
+            'listName' => $this->listName,
+            'listItems' => $this->listItems->getValues()
+        ];
     }
 }

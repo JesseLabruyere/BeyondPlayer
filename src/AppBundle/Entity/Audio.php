@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use JsonSerializable;
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
-class Audio
+class Audio implements JsonSerializable
 {
     /**
      * @ORM\Id
@@ -43,12 +43,10 @@ class Audio
     // variable that is used to temporarily store an old path
     private $temp;
 
-    // variable that stores the uploadDirectory
-    private $uploadDirectory;
 
     /* constuctor*/
     public function __construct(){
-        $this->uploadDirectory = 'files/audio_files';
+
     }
 
     /**
@@ -82,16 +80,9 @@ class Audio
 
     protected function getUploadDir()
     {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return $this->uploadDirectory;
+        return 'files/audio_files';
     }
-
-    public function setUploadDir($dir)
-    {
-        $this->uploadDirectory = $dir;
-    }
-
+    
     /**
      * Sets file.
      *
@@ -236,5 +227,18 @@ class Audio
     public function getPath()
     {
         return $this->path;
+    }
+
+    /* function that gets used when calling json_encode on objects*/
+    public function jsonSerialize()
+    {
+        return [
+            'id'=> $this->id,
+            'name' => $this->name,
+            'originalFilename' => $this->originalFileName,
+            'path' => $this->path,
+            'file' => $this->file,
+            'uploadDirectory' => $this->uploadDirectory
+        ];
     }
 }

@@ -251,8 +251,46 @@ class DefaultController extends Controller
         return new Response('success!');
     }
 
+    /**
+     * @Route("app/getplaylist/{name}", name="getPlaylist")
+     *
+     * returns a playlist with all its Audio objects based on a name
+     */
+    public function getPlaylist($name) {
 
-    public function coupleAudioToPlaylist() {
-       //..
+        if(!isset($name)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no name parameter given') ));
+        }
+
+        /* get current User object*/
+        $user = $this->getUser();
+        /* get the right playlist*/
+        $playList = $user->getPlayListByName($name);
+
+        if(!isset($playList)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
+        }
+
+        return new Response(json_encode( array('success' => true, 'playlist' => $playList, 'queryName' => $name) ));
+    }
+
+
+    /**
+     * @Route("app/testgetitemfromplaylist", name="testgetitemfromplaylist")
+     *
+     * returns a playlist with all its Audio objects based on a name
+     */
+    public function testgetitemfromplaylist() {
+
+        if(!isset($name)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no name parameter given') ));
+        }
+
+        /* get current User object*/
+        $user = $this->getUser();
+        $playList = $user->getPlayListByName('Uploads');
+        //$playlistRepository = $this->getDoctrine()->getRepository('AppBundle:Playlist');
+        //$playList = $playlistRepository->findOneBy( array('user' => $user, 'listName' => 'Uploads') );
+        return new Response(json_encode($playList));
     }
 }

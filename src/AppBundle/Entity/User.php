@@ -50,16 +50,9 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $playLists;
 
-    /*
-     *  doctrine entity manager
-     */
-    protected $em;
 
-    // we injecteren de entitymanager zodat we deze in de entity kunnen gebruiken
-    // te injecteren klassen staan gedefinieerd in services.yml
-    public function __construct(EntityManager $em)
+    public function __construct()
     {
-        $this->em = $em;
         $this->isActive = true;
         $this->playLists = new ArrayCollection();
         // may not be needed, see section on salt below
@@ -270,7 +263,9 @@ class User implements AdvancedUserInterface, \Serializable
     {
         // in reality we add the user to the playlist, and not the other way around
         $playList->setUser($this);
-    
+        // adding the playlist to the arrayCollection
+        $this->playLists->add($playList);
+
         return $this;
     }
 
@@ -293,4 +288,22 @@ class User implements AdvancedUserInterface, \Serializable
     {
         return $this->playLists;
     }
+
+    /**
+     * Get playLists
+     *
+     * @param string $listName
+     * @return \AppBundle\Entity\Playlist
+     *
+     */
+    public function getPlayListByName($listName){
+
+        for($i = 0; $i < count($this->playLists); $i++)
+        {
+            if( strcmp($this->playLists->get($i)->getListName(), $listName) == 0 ) {
+                return $this->playLists->get($i);
+            }
+        }
+    }
+
 }

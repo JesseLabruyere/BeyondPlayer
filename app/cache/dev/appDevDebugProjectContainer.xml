@@ -3069,7 +3069,6 @@
         <argument>null</argument>
       </call>
     </service>
-    <service id="em" alias="doctrine.orm.default_entity_manager"/>
     <service id="session.storage" alias="session.storage.native"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher"/>
     <service id="debug.templating.engine.twig" alias="templating"/>

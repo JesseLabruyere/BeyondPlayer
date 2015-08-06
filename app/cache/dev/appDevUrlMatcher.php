@@ -190,6 +190,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
             }
 
+            // getPlaylist
+            if (0 === strpos($pathinfo, '/app/getplaylist') && preg_match('#^/app/getplaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
+            }
+
+            // testgetitemfromplaylist
+            if ($pathinfo === '/app/testgetitemfromplaylist') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testgetitemfromplaylist',  '_route' => 'testgetitemfromplaylist',);
+            }
+
             if (0 === strpos($pathinfo, '/app/log')) {
                 if (0 === strpos($pathinfo, '/app/login')) {
                     // loginAction

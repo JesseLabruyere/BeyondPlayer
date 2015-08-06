@@ -4,13 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JsonSerializable;
 
 
 /**
  * @ORM\Table(name="list_item")
  * @ORM\Entity
  */
-class ListItem {
+class ListItem implements JsonSerializable{
 
     /**
      * @ORM\Column(type="integer")
@@ -88,5 +89,14 @@ class ListItem {
     public function getAudio()
     {
         return $this->audio;
+    }
+
+    /* function that gets used when calling json_encode on objects*/
+    public function jsonSerialize()
+    {
+        return [
+            'id'=> $this->id,
+            'audio' => $this->audio->jsonSerialize()
+        ];
     }
 }
