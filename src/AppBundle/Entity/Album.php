@@ -32,13 +32,6 @@ class Album implements JsonSerializable {
      */
     private $audioItems;
 
-    // één User heeft meerdere Albums, één Album heeft één User
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="albums")
-     * @ORM\JoinColumn(name="userId", referencedColumnName="id")
-     */
-    private $user;
-
     public function __construct() {
         $this->audioItems = new ArrayCollection();
     }
@@ -99,22 +92,6 @@ class Album implements JsonSerializable {
         $audio->setAlbum($this);
         /* adding the Audio to the arrayCollection*/
         $this->audioItems->add($audio);
-    }
-
-    /**
-     * @return \AppBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param \AppBundle\Entity\User $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
     }
 
     /* function that gets used when calling json_encode on objects*/

@@ -27,7 +27,7 @@ class ListItem implements JsonSerializable{
      */
     private $playlist;
 
-    // meerdere listItems hebben per stuk één Audio
+    // meerdere listItems hebben per stuk één Audio, één Audio heeft meerdere listItems
     /**
      * @ORM\ManyToOne(targetEntity="Audio")
      * @ORM\JoinColumn(name="audioId", referencedColumnName="id")

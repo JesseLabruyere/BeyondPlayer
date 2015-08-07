@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\AlbumItem;
 use AppBundle\Entity\Playlist;
 use Doctrine\ORM\EntityManager;
 
@@ -50,9 +51,9 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $playLists;
 
-    // één user heeft meerdere albums, één album heeft één user
+    // één user heeft meerdere AlbumItems, één AlbumItem heeft één User
     /**
-     * @ORM\OneToMany(targetEntity="Album", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="AlbumItem", mappedBy="user")
      */
     private $albums;
 
@@ -333,8 +334,15 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function addAlbum($album)
     {
-        $album->setUser($this);
-        $this->albums->add($album);
+        /* we make a new AlbumItem */
+        $albumItem = new AlbumItem();
+        /* we set the user to this user*/
+        $albumItem->setUser($this);
+        /* we add the album to the albumItem*/
+        $albumItem->setAlbum($album);
+
+        /* add the albumItem to albums*/
+        $this->albums->add($albumItem);
     }
 
     /**
@@ -348,8 +356,8 @@ class User implements AdvancedUserInterface, \Serializable
 
         for($i = 0; $i < count($this->albums); $i++)
         {
-            if( strcmp($this->albums->get($i)->getName(), $albumName) == 0 ) {
-                return $this->albums->get($i);
+            if( strcmp($this->albums->get($i)->getAlbum()->getName(), $albumName) == 0 ) {
+                return $this->albums->get($i)->getAlbum();
             }
         }
     }
