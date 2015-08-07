@@ -96,7 +96,7 @@ class ListItem implements JsonSerializable{
     {
         return [
             'id'=> $this->id,
-            'audio' => $this->audio->jsonSerialize()
+            'audio' => $this->audio
         ];
     }
 }
