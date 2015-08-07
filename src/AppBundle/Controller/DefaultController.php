@@ -274,6 +274,32 @@ class DefaultController extends Controller
         return new Response(json_encode( array('success' => true, 'playlist' => $playList, 'queryName' => $name) ));
     }
 
+    /**
+     * @Route("app/getalbum/{name}", name="getAlbum")
+     *
+     * returns an album with all its Audio objects based on a name
+     */
+    public function getAlbum($name) {
+
+        if(!isset($name)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no name parameter given') ));
+        }
+
+        /* get current User object*/
+        $user = $this->getUser();
+        /* get the right playlist*/
+        $playList = $user->getAlbumByName($name);
+
+        if(!isset($playList)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
+        }
+
+        return new Response(json_encode( array('success' => true, 'playlist' => $playList, 'queryName' => $name) ));
+    }
+
+
+
+
 
     /**
      * @Route("app/testgetitemfromplaylist", name="testgetitemfromplaylist")

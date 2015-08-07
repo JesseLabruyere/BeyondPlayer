@@ -17,28 +17,35 @@ class Audio implements JsonSerializable
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      */
-    public $name;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    public $originalFileName;
+    private $originalFileName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $path;
+    private $path;
 
     /**
      * @Assert\File(maxSize="6000000")
      */
     private $file;
+
+    // één Album heeft meerdere Audio, Audio hebben één Album
+    /**
+     * @ORM\ManyToOne(targetEntity="Album", inversedBy="$audioItems")
+     * @ORM\JoinColumn(name="albumId", referencedColumnName="id")
+     */
+    private $album;
 
     // variable that is used to temporarily store an old path
     private $temp;
@@ -229,6 +236,23 @@ class Audio implements JsonSerializable
         return $this->path;
     }
 
+    /**
+     * @return \AppBundle\Entity\Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Album $album
+     */
+    public function setAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->album = $album;
+    }
+
+
     /* function that gets used when calling json_encode on objects*/
     public function jsonSerialize()
     {
@@ -238,7 +262,9 @@ class Audio implements JsonSerializable
             'originalFilename' => $this->originalFileName,
             'path' => $this->path,
             'file' => $this->file,
-            'uploadDirectory' => $this->getUploadDir()
+            'uploadDirectory' => $this->getUploadDir(),
+            'albumName' => ( isset($this->album) ? $this->album->getName() : "") ,
+            'albumId' => ( isset($this->album) ? $this->album->getId() : "")
         ];
     }
 }

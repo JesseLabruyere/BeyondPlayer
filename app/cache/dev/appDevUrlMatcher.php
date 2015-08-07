@@ -190,9 +190,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
             }
 
-            // getPlaylist
-            if (0 === strpos($pathinfo, '/app/getplaylist') && preg_match('#^/app/getplaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
+            if (0 === strpos($pathinfo, '/app/get')) {
+                // getPlaylist
+                if (0 === strpos($pathinfo, '/app/getplaylist') && preg_match('#^/app/getplaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
+                }
+
+                // getAlbum
+                if (0 === strpos($pathinfo, '/app/getalbum') && preg_match('#^/app/getalbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
+                }
+
             }
 
             // testgetitemfromplaylist

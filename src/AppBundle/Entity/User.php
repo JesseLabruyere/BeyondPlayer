@@ -50,11 +50,17 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $playLists;
 
+    // één user heeft meerdere albums, één album heeft één user
+    /**
+     * @ORM\OneToMany(targetEntity="Album", mappedBy="user")
+     */
+    private $albums;
 
     public function __construct()
     {
         $this->isActive = true;
         $this->playLists = new ArrayCollection();
+        $this->albums = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
     }
@@ -305,5 +311,50 @@ class User implements AdvancedUserInterface, \Serializable
             }
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAlbums()
+    {
+        return $this->albums;
+    }
+
+    /**
+     * @param mixed $albums
+     */
+    public function setAlbums($albums)
+    {
+        $this->albums = $albums;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Album $album
+     */
+    public function addAlbum($album)
+    {
+        $album->setUser($this);
+        $this->albums->add($album);
+    }
+
+    /**
+     * Get album
+     *
+     * @param string $albumName
+     * @return \AppBundle\Entity\Album
+     *
+     */
+    public function getAlbumByName($albumName){
+
+        for($i = 0; $i < count($this->albums); $i++)
+        {
+            if( strcmp($this->albums->get($i)->getName(), $albumName) == 0 ) {
+                return $this->albums->get($i);
+            }
+        }
+    }
+
+
+
 
 }
