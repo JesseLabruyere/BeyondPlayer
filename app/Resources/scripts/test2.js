@@ -12,5 +12,8 @@ $( document ).ready(function() {
 function assignEventHandlers() {
 }
 
-
-
+function renderPlaylistData(data) {
+    for(var i = 0; i < data.length; i++) {
+        $('#playListView').append("<p>[id:] "+ data[i]['id'] +" [name:] "+ data[i]['listName'] +"</p>")
+    }
+}

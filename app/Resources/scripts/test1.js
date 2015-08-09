@@ -29,7 +29,8 @@ app.controller('MyController', ['$scope', '$http', function($scope, $http) {
 */
 
 /* all real dom manipulation should be done in directives*/
-app.directive('leftMenuDirective', function() {
+/* we can see some dependency injection going on, of the $q service*/
+app.directive('leftMenuDirective', function($q) {
 
     // we link onclick
     var linkFn = function ($scope, $http) {
@@ -65,6 +66,42 @@ app.directive('leftMenuDirective', function() {
                 alert("AJAX failed!");
             });
         };
+
+        /*adding new function called loadPlaylistView to the 'functions' object*/
+        $scope.functions.loadPlaylistView = function (item, event) {
+            /*JSON call*/
+/*            var response = $http.get("app/getPlaylistView");
+            response.success(function (data, status, headers, config) {
+                $('#pageCenter').html(data);
+            });
+            response.error(function (data, status, headers, config) {
+                alert("AJAX failed!");
+            });*/
+            // this way we can que multiple ajax calls, and give them the same callback
+            $q.all({
+                view: $http.get('app/getPlaylistView')
+                    .error(function (data, status, headers, config) {
+                        alert("AJAX failed!");
+                    })
+                ,
+                data: $http.get('app/getPlaylists')
+                    .error(function (data, status, headers, config) {
+                        alert("AJAX failed!");
+                    })
+            }).then(function(results) {
+                var view = results.view.data;
+                var data = results.data.data;
+
+                $('#pageCenter').html(view);
+
+                var playlists = data['playlists'];
+
+                if(playlists !== undefined && data['success']){
+                    renderPlaylistData(playlists);
+                }
+            });
+        };
+
     };
 
     return {

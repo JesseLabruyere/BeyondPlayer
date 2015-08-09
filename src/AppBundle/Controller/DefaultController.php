@@ -275,6 +275,25 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("app/getPlaylists", name="getPlaylists")
+     *
+     * returns a playlist with all its Audio objects based on a name
+     */
+    public function getPlaylists() {
+
+        /* get current User object*/
+        $user = $this->getUser();
+        /* get the right playlist*/
+        $playLists = $user->getPlayLists()->getValues();
+
+        if(!isset($playLists)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
+        }
+
+        return new Response(json_encode( array('success' => true, 'playlists' => $playLists ) ));
+    }
+
+    /**
      * @Route("app/getalbum/{name}", name="getAlbum")
      *
      * returns an album with all its Audio objects based on a name
@@ -299,24 +318,14 @@ class DefaultController extends Controller
 
 
 
-
-
     /**
-     * @Route("app/testgetitemfromplaylist", name="testgetitemfromplaylist")
+     * @Route("app/getPlaylistView", name="getPlaylistView")
      *
-     * returns a playlist with all its Audio objects based on a name
+     * returns the playlist view
      */
-    public function testgetitemfromplaylist() {
-
-        if(!isset($name)) {
-            return new Response(json_encode( array('success' => false, 'reason' => 'no name parameter given') ));
-        }
-
-        /* get current User object*/
-        $user = $this->getUser();
-        $playList = $user->getPlayListByName('Uploads');
-        //$playlistRepository = $this->getDoctrine()->getRepository('AppBundle:Playlist');
-        //$playList = $playlistRepository->findOneBy( array('user' => $user, 'listName' => 'Uploads') );
-        return new Response(json_encode($playList));
+    public function getPlaylistView() {
+        return $this->render('html_templates/playlist_view.html.twig');
     }
+
+
 }

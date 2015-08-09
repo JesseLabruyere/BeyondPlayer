@@ -196,16 +196,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
                 }
 
+                // getPlaylists
+                if ($pathinfo === '/app/getPlaylists') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylists',  '_route' => 'getPlaylists',);
+                }
+
                 // getAlbum
                 if (0 === strpos($pathinfo, '/app/getalbum') && preg_match('#^/app/getalbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
                 }
 
-            }
+                // getPlaylistView
+                if ($pathinfo === '/app/getPlaylistView') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylistView',  '_route' => 'getPlaylistView',);
+                }
 
-            // testgetitemfromplaylist
-            if ($pathinfo === '/app/testgetitemfromplaylist') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::testgetitemfromplaylist',  '_route' => 'testgetitemfromplaylist',);
             }
 
             if (0 === strpos($pathinfo, '/app/log')) {
