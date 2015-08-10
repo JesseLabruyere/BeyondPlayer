@@ -5,7 +5,13 @@
         <p>this is the center!</p>
 
         <div  id='pageCenter'>
+
         </div>
+
+        {# here the templates will be loaded using angular#}
+        <ng-view>
+
+        </ng-view>
 
         {% endblock %}
         <!-- verbatim tag zorgt ervoor dat de content die erin staat niet gerenderd wordt door de twig engine.

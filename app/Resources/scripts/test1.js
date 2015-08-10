@@ -1,115 +1,112 @@
 /**
  * Created by Jesse on 10-6-2015.
  */
-var app = angular.module('app',['ngSanitize']);
+var app = angular.module('app',['ngSanitize', 'ngRoute']);
 
-/* mainly used for editting the models of elements*/
+/* this code initializes some values */
 /*
-app.controller('MyController', ['$scope', '$http', function($scope, $http) {
-    */
-/*creating a new object called functions*//*
-
-    $scope.functions = {};
-    */
-/*adding new function called loadUploadPage to the 'functions' object*//*
-
-    $scope.functions.loadUploadPage = function(item, event) {
-
-        var response = $http.get("app/uploadForm");
-
-        response.success(function(data, status, headers, config) {
-            $('#pageCenter').html(data);
-            $('input[type=file]').bootstrapFileInput();
-        });
-        response.error(function(data, status, headers, config) {
-            alert("AJAX failed!");
-        });
+$scope.init = function () {
+    if ($routeParams.Id) {
+        //get an existing object
+    } else {
+        //create a new object
     }
-}]);
+    $scope.isSaving = false;
+}
+
+$scope.init();
 */
 
-/* all real dom manipulation should be done in directives*/
-/* we can see some dependency injection going on, of the $q service*/
-app.directive('leftMenuDirective', function($q) {
 
-    // we link onclick
-    var linkFn = function ($scope, $http) {
+app.controller('initialisationController', ['$scope', function($scope) {
+    $scope.functions = {};
+}]);
 
-        /*creating a new object called functions*/
-        $scope.functions = {};
+/* routing */
+app.config(function($routeProvider) {
+    $routeProvider
 
-        /*adding new function called loadUploadPage to the 'functions' object*/
-        $scope.functions.loadUploadPage = function (item, event) {
-            /*JSON call*/
-            var response = $http.get("app/getUploadForm");
-            response.success(function (data, status, headers, config) {
-                $('#pageCenter').html(data);
-            });
-            response.error(function (data, status, headers, config) {
-                alert("AJAX failed!");
-            });
-        };
+        // uploadForm
+        .when('/', {
+            templateUrl : 'app/empty',
+            controller  : ''
+        })
+        .when('/upload', {
+            templateUrl : 'app/getUploadForm',
+            controller  : 'uploadController'
+        })
+        .when('/registration', {
+            templateUrl : 'app/getRegistrationForm',
+            controller  : 'registrationController'
+        })
+        .when('/playlists', {
+            templateUrl : 'app/getPlaylistView',
+            controller  : 'playlistsController'
+        })
+        .when('/albums', {
+            templateUrl : 'app/getAlbumView',
+            controller  : 'albumsController'
+        });
 
-        /*adding new function called loadListenPage to the 'functions' object*/
-        $scope.functions.loadListenPage = function (item, event) {
-            $('#pageCenter').html('<h1>Listenpage</h1>');
-        };
-
-        /*adding new function called loadAddUserForm to the 'functions' object*/
-        $scope.functions.loadAddUserForm = function (item, event) {
-            /*JSON call*/
-            var response = $http.get("app/getRegistrationForm");
-            response.success(function (data, status, headers, config) {
-                $('#pageCenter').html(data);
-            });
-            response.error(function (data, status, headers, config) {
-                alert("AJAX failed!");
-            });
-        };
-
-        /*adding new function called loadPlaylistView to the 'functions' object*/
-        $scope.functions.loadPlaylistView = function (item, event) {
-            /*JSON call*/
-/*            var response = $http.get("app/getPlaylistView");
-            response.success(function (data, status, headers, config) {
-                $('#pageCenter').html(data);
-            });
-            response.error(function (data, status, headers, config) {
-                alert("AJAX failed!");
-            });*/
-            // this way we can que multiple ajax calls, and give them the same callback
-            $q.all({
-                view: $http.get('app/getPlaylistView')
-                    .error(function (data, status, headers, config) {
-                        alert("AJAX failed!");
-                    })
-                ,
-                data: $http.get('app/getPlaylists')
-                    .error(function (data, status, headers, config) {
-                        alert("AJAX failed!");
-                    })
-            }).then(function(results) {
-                var view = results.view.data;
-                var data = results.data.data;
-
-                $('#pageCenter').html(view);
-
-                var playlists = data['playlists'];
-
-                if(playlists !== undefined && data['success']){
-                    renderPlaylistData(playlists);
-                }
-            });
-        };
-
-    };
-
-    return {
-        /*'A' can be used if we use the directive as an attribute*/
-        restrict: 'E',
-        controller: linkFn
-    };
 });
+
+// create the controller and inject Angular's $scope
+app.controller('uploadController', function($scope) {
+});
+
+app.controller('registrationController', function($scope) {
+});
+
+app.controller('playlistsController', function($scope, $http) {
+
+    $scope.functions = {};
+
+    $scope.functions.loadPlaylistView = function (item, event) {
+        var response = $http.get("app/getPlaylists");
+
+        response.success(function (data, status, headers, config) {
+            if(data['playlists'] !== undefined && data['success']){
+                $scope.playlists = data['playlists'];
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
+    $scope.functions.loadPlaylistView();
+
+});
+
+app.controller('albumsController', function($scope, $http) {
+
+    $scope.functions = {};
+
+    $scope.functions.loadAlbumsView = function (item, event) {
+        var response = $http.get("app/getAlbums");
+
+        response.success(function (data, status, headers, config) {
+            if(data['albums'] !== undefined && data['success']){
+                $scope.albums = data['albums'];
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
+    $scope.functions.loadAlbumsView();
+
+});
+
+
+
+
+
 
 /*function initializeFileInput() {
     $(function () {
@@ -138,8 +135,91 @@ angular.module('bindHtmlExample', ['ngSanitize'])
     }]);
 */
 
+/* QUEING AJAX CALLS*/
+/*adding new function called loadPlaylistView to the 'functions' object*/
+/* $scope.functions.loadPlaylistView = function (item, event) {
+ *//*JSON call*//*
+ *//*            var response = $http.get("app/getPlaylistView");
+ response.success(function (data, status, headers, config) {
+ $('#pageCenter').html(data);
+ });
+ response.error(function (data, status, headers, config) {
+ alert("AJAX failed!");
+ });*//*
+ // this way we can que multiple ajax calls, and give them the same callback
+ $q.all({
+ view: $http.get('app/getPlaylistView')
+ .error(function (data, status, headers, config) {
+ alert("AJAX failed!");
+ })
+ ,
+ data: $http.get('app/getPlaylists')
+ .error(function (data, status, headers, config) {
+ alert("AJAX failed!");
+ })
+ }).then(function(results) {
+ var view = results.view.data;
+ var data = results.data.data;
+
+ $('#pageCenter').html(view);
+
+ var playlists = data['playlists'];
+
+ if(playlists !== undefined && data['success']){
+ renderPlaylistData(playlists);
+ }
+ });
+ };*/
+
+/* DIRECTIVE */
+/* all real dom manipulation should be done in directives*/
+/* we can see some dependency injection going on, of the $q service*/
+/*app.directive('leftMenuDirective', function($q) {
+
+    // we link onclick
+    var linkFn = function ($scope, $http) {
+
+        *//*creating a new object called functions*//*
+        $scope.functions = {};
+
+        *//*adding new function called loadUploadPage to the 'functions' object*//*
+        $scope.functions.loadUploadPage = function (item, event) {
+            *//*JSON call*//*
+            var response = $http.get("app/getUploadForm");
+            response.success(function (data, status, headers, config) {
+                $('#pageCenter').html(data);
+            });
+            response.error(function (data, status, headers, config) {
+                alert("AJAX failed!");
+            });
+        };
+
+        *//*adding new function called loadListenPage to the 'functions' object*//*
+        $scope.functions.loadListenPage = function (item, event) {
+            $('#pageCenter').html('<h1>Listenpage</h1>');
+        };
+
+        *//*adding new function called loadAddUserForm to the 'functions' object*//*
+        $scope.functions.loadAddUserForm = function (item, event) {
+            *//*JSON call*//*
+            var response = $http.get("app/getRegistrationForm");
+            response.success(function (data, status, headers, config) {
+                $('#pageCenter').html(data);
+            });
+            response.error(function (data, status, headers, config) {
+                alert("AJAX failed!");
+            });
+        };
 
 
 
+    };
+
+    return {
+        *//*'A' can be used if we use the directive as an attribute*//*
+        restrict: 'E',
+        controller: linkFn
+    };
+});*/
 
 

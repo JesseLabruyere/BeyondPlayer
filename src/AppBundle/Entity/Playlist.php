@@ -169,6 +169,7 @@ class Playlist implements JsonSerializable{
         return [
             'id'=> $this->id,
             'listName' => $this->listName,
+            'count' => count($this->listItems->getValues()),
             'listItems' => $this->listItems->getValues()
         ];
     }

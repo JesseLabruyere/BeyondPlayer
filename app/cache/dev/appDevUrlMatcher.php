@@ -206,11 +206,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
                 }
 
+                // getAlbums
+                if ($pathinfo === '/app/getAlbums') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbums',  '_route' => 'getAlbums',);
+                }
+
                 // getPlaylistView
                 if ($pathinfo === '/app/getPlaylistView') {
                     return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylistView',  '_route' => 'getPlaylistView',);
                 }
 
+                // getAlbumView
+                if ($pathinfo === '/app/getAlbumView') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbumView',  '_route' => 'getAlbumView',);
+                }
+
+            }
+
+            // getEmpty
+            if ($pathinfo === '/app/empty') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getEmpty',  '_route' => 'getEmpty',);
             }
 
             if (0 === strpos($pathinfo, '/app/log')) {

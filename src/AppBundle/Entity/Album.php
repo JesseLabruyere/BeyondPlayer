@@ -100,6 +100,7 @@ class Album implements JsonSerializable {
         return [
             'id'=> $this->id,
             'name' => $this->name,
+            'count' => count($this->audioItems->getValues()),
             'tracks' => $this->audioItems->getValues()
         ];
     }

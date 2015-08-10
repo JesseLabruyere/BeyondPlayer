@@ -9,11 +9,16 @@
         <left-menu-directive>
             <div class="btn-group-vertical" role="group" aria-label="...">
                 {# the buttons have angularjs function#}
-                <button class="btn btn-default" type="button" id="leftbar_listen" ng-click="functions.loadListenPage(item, $event)">Listen</button>
-                <button class="btn btn-default" type="button" id="leftbar_addUser" ng-click="functions.loadPlaylistView(item, $event)">PlayLists</button>
-                <button class="btn btn-default" type="button" id="leftbar_addUser" ng-click="functions.loadAlbumView(item, $event)">Albums</button>
-                <button class="btn btn-default" type="button" id="leftbar_upload" ng-click="functions.loadUploadPage(item, $event)">Upload</button>
-                <button class="btn btn-default" type="button" id="leftbar_addUser" ng-click="functions.loadAddUserForm(item, $event)">+User</button>
+{#                <button class="btn btn-default" type="button" id="leftbar_listen" &#123;&#35;ng-click="functions.loadListenPage(item, $event)"&#35;&#125;><a href="#">Listen</a></button>
+                <button class="btn btn-default" type="button" id="leftbar_addUser" &#123;&#35;ng-click="functions.loadPlaylistView(item, $event)">&#35;&#125;><a href="#">PlayLists</a></button>
+                <button class="btn btn-default" type="button" id="leftbar_addUser" &#123;&#35;ng-click="functions.loadAlbumView(item, $event)"&#35;&#125;><a href="#">Albums</a></button>#}
+                {#<a href="#upload"><button class="btn btn-default" type="button" id="leftbar_upload" &#123;&#35;ng-click="functions.loadUploadPage(item, $event)"&#35;&#125;>Upload</button></a>#}
+                <a class="btn btn-default" href="#">Listen</a>
+                <a class="btn btn-default" href="#playlists">PlayLists</a>
+                <a class="btn btn-default" href="#albums">Albums</a>
+                <a class="btn btn-default" href="#upload">Upload</a>
+                <a class="btn btn-default" href="#registration">+User</a>
+                {#<button class="btn btn-default" type="button" id="leftbar_addUser" &#123;&#35;ng-click="functions.loadAddUserForm(item, $event)"&#35;&#125;>+User</button>#}
             </div>
         </left-menu-directive>
 

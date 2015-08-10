@@ -316,6 +316,25 @@ class DefaultController extends Controller
         return new Response(json_encode( array('success' => true, 'playlist' => $playList, 'queryName' => $name) ));
     }
 
+    /**
+     * @Route("app/getAlbums", name="getAlbums")
+     *
+     * returns a playlist with all its Audio objects based on a name
+     */
+    public function getAlbums() {
+
+        /* get current User object*/
+        $user = $this->getUser();
+        /* get the right playlist*/
+        $albums = $user->getAlbums()->getValues();
+
+        if(!isset($albums)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
+        }
+
+        return new Response(json_encode( array('success' => true, 'albums' => $albums ) ));
+    }
+
 
 
     /**
@@ -325,6 +344,24 @@ class DefaultController extends Controller
      */
     public function getPlaylistView() {
         return $this->render('html_templates/playlist_view.html.twig');
+    }
+
+    /**
+     * @Route("app/getAlbumView", name="getAlbumView")
+     *
+     * returns the playlist view
+     */
+    public function getAlbumView() {
+        return $this->render('html_templates/album_view.html.twig');
+    }
+
+    /**
+     * @Route("app/empty", name="getEmpty")
+     *
+     * returns the playlist view
+     */
+    public function getEmpty() {
+        return new response('');
     }
 
 

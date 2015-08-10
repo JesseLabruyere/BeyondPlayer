@@ -2,4 +2,29 @@
 
 <div id="playListView">
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Songs</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# the ng-repeat stops with the same element as it starts #}
+            <tr ng-repeat-start="playlist in playlists"  ng-repeat-end>
+                <td ng-bind="playlist.id"> </td>
+                <td ng-bind="playlist.listName"> </td>
+                <td ng-bind="playlist.count"> </td>
+            </tr>
+        </tbody>
+    </table>
+    {# repeating data will be loaded with angular ng-repeat #}
+{#    <header ng-repeat-start="playlist in playlists" ng-bind="playlist.id">
+    </header>
+    <div ng-bind="playlist.listName">
+    </div>
+    <footer ng-repeat-end>
+    </footer>#}
+
 </div>

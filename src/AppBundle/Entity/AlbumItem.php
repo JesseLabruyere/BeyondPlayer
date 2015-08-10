@@ -17,7 +17,7 @@ use JsonSerializable;
  * @ORM\Table(name="album_item")
  * @ORM\Entity
  */
-class AlbumItem {
+class AlbumItem implements JsonSerializable {
 
     /**
      * @ORM\Column(type="integer")
