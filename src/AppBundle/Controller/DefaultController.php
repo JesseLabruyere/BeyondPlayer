@@ -252,7 +252,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("app/getplaylist/{name}", name="getPlaylist")
+     * @Route("app/getPlaylist/{name}", name="getPlaylist")
      *
      * returns a playlist with all its Audio objects based on a name
      */
@@ -271,7 +271,7 @@ class DefaultController extends Controller
             return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
         }
 
-        return new Response(json_encode( array('success' => true, 'playlist' => $playList, 'queryName' => $name) ));
+        return new Response(json_encode( array('success' => true, 'playlist' => $playList) ));
     }
 
     /**
@@ -294,7 +294,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("app/getalbum/{name}", name="getAlbum")
+     * @Route("app/getAlbum/{name}", name="getAlbum")
      *
      * returns an album with all its Audio objects based on a name
      */
@@ -307,13 +307,13 @@ class DefaultController extends Controller
         /* get current User object*/
         $user = $this->getUser();
         /* get the right playlist*/
-        $playList = $user->getAlbumByName($name);
+        $album = $user->getAlbumByName($name);
 
-        if(!isset($playList)) {
+        if(!isset($album)) {
             return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
         }
 
-        return new Response(json_encode( array('success' => true, 'playlist' => $playList, 'queryName' => $name) ));
+        return new Response(json_encode( array('success' => true, 'album' => $album) ));
     }
 
     /**
@@ -338,12 +338,30 @@ class DefaultController extends Controller
 
 
     /**
+     * @Route("app/getPlaylistsView", name="getPlaylistsView")
+     *
+     * returns the playlist view
+     */
+    public function getPlaylistsView() {
+        return $this->render('html_templates/playlists_view.html.twig');
+    }
+
+    /**
      * @Route("app/getPlaylistView", name="getPlaylistView")
      *
      * returns the playlist view
      */
     public function getPlaylistView() {
         return $this->render('html_templates/playlist_view.html.twig');
+    }
+
+    /**
+     * @Route("app/getAlbumsView", name="getAlbumsView")
+     *
+     * returns the playlist view
+     */
+    public function getAlbumsView() {
+        return $this->render('html_templates/albums_view.html.twig');
     }
 
     /**

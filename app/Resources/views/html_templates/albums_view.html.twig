@@ -1,0 +1,23 @@
+{# app/Resources/views/html_templates/albums_view.html.twig #}
+
+<div id="albumsView">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Songs</th>
+            </tr>
+        </thead>
+        <tbody>
+        {# the ng-repeat stops with the same element as it starts #}
+            <tr ng-repeat-start="item in albums"  ng-repeat-end>
+                <td ng-bind="item.album.id"> </td>
+                <td> <a ng-bind="item.album.name" ng-href="#albums/{% verbatim %}{{item.album.name}}{% endverbatim %}"> </a> </td>
+                <td ng-bind="item.album.count"> </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

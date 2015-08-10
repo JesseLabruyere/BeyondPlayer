@@ -40,12 +40,20 @@ app.config(function($routeProvider) {
             controller  : 'registrationController'
         })
         .when('/playlists', {
-            templateUrl : 'app/getPlaylistView',
+            templateUrl : 'app/getPlaylistsView',
             controller  : 'playlistsController'
         })
+        .when('/playlists/:playlistName', {
+            templateUrl : 'app/getPlaylistView',
+            controller  : 'playlistController'
+        })
         .when('/albums', {
-            templateUrl : 'app/getAlbumView',
+            templateUrl : 'app/getAlbumsView',
             controller  : 'albumsController'
+        })
+        .when('/albums/:albumName', {
+            templateUrl : 'app/getAlbumView',
+            controller  : 'albumController'
         });
 
 });
@@ -61,7 +69,7 @@ app.controller('playlistsController', function($scope, $http) {
 
     $scope.functions = {};
 
-    $scope.functions.loadPlaylistView = function (item, event) {
+    $scope.functions.loadPlaylistsView = function (item, event) {
         var response = $http.get("app/getPlaylists");
 
         response.success(function (data, status, headers, config) {
@@ -76,8 +84,29 @@ app.controller('playlistsController', function($scope, $http) {
 
     };
 
-    $scope.functions.loadPlaylistView();
+    $scope.functions.loadPlaylistsView();
 
+});
+
+app.controller('playlistController', function($scope, $http, $routeParams) {
+    $scope.functions = {};
+
+    $scope.functions.loadPlaylistView = function (item, event) {
+        var response = $http.get("app/getPlaylist/" + $routeParams.playlistName);
+
+        response.success(function (data, status, headers, config) {
+            if(data['playlist'] !== undefined && data['success']){
+                $scope.songs = data['playlist']['listItems'];
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
+    $scope.functions.loadPlaylistView();
 });
 
 app.controller('albumsController', function($scope, $http) {
@@ -101,6 +130,27 @@ app.controller('albumsController', function($scope, $http) {
 
     $scope.functions.loadAlbumsView();
 
+});
+
+app.controller('albumController', function($scope, $http, $routeParams) {
+    $scope.functions = {};
+
+    $scope.functions.loadPlaylistView = function (item, event) {
+        var response = $http.get("app/getAlbum/" + $routeParams.albumName);
+
+        response.success(function (data, status, headers, config) {
+            if(data['album'] !== undefined && data['success']){
+                $scope.songs = data['album']['tracks'];
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
+    $scope.functions.loadPlaylistView();
 });
 
 

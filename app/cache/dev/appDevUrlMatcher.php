@@ -191,34 +191,56 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             if (0 === strpos($pathinfo, '/app/get')) {
-                // getPlaylist
-                if (0 === strpos($pathinfo, '/app/getplaylist') && preg_match('#^/app/getplaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
+                if (0 === strpos($pathinfo, '/app/getPlaylist')) {
+                    // getPlaylist
+                    if (preg_match('#^/app/getPlaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
+                    }
+
+                    // getPlaylists
+                    if ($pathinfo === '/app/getPlaylists') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylists',  '_route' => 'getPlaylists',);
+                    }
+
                 }
 
-                // getPlaylists
-                if ($pathinfo === '/app/getPlaylists') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylists',  '_route' => 'getPlaylists',);
+                if (0 === strpos($pathinfo, '/app/getAlbum')) {
+                    // getAlbum
+                    if (preg_match('#^/app/getAlbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
+                    }
+
+                    // getAlbums
+                    if ($pathinfo === '/app/getAlbums') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbums',  '_route' => 'getAlbums',);
+                    }
+
                 }
 
-                // getAlbum
-                if (0 === strpos($pathinfo, '/app/getalbum') && preg_match('#^/app/getalbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
+                if (0 === strpos($pathinfo, '/app/getPlaylist')) {
+                    // getPlaylistsView
+                    if ($pathinfo === '/app/getPlaylistsView') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylistsView',  '_route' => 'getPlaylistsView',);
+                    }
+
+                    // getPlaylistView
+                    if ($pathinfo === '/app/getPlaylistView') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylistView',  '_route' => 'getPlaylistView',);
+                    }
+
                 }
 
-                // getAlbums
-                if ($pathinfo === '/app/getAlbums') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbums',  '_route' => 'getAlbums',);
-                }
+                if (0 === strpos($pathinfo, '/app/getAlbum')) {
+                    // getAlbumsView
+                    if ($pathinfo === '/app/getAlbumsView') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbumsView',  '_route' => 'getAlbumsView',);
+                    }
 
-                // getPlaylistView
-                if ($pathinfo === '/app/getPlaylistView') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylistView',  '_route' => 'getPlaylistView',);
-                }
+                    // getAlbumView
+                    if ($pathinfo === '/app/getAlbumView') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbumView',  '_route' => 'getAlbumView',);
+                    }
 
-                // getAlbumView
-                if ($pathinfo === '/app/getAlbumView') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbumView',  '_route' => 'getAlbumView',);
                 }
 
             }

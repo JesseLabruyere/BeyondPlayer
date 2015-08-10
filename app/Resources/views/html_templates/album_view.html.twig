@@ -1,4 +1,4 @@
-{# app/Resources/views/html_templates/album_view.html.twig #}
+{# app/Resources/views/html_templates/playlist_view.html.twig #}
 
 <div id="albumView">
 
@@ -7,17 +7,16 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Songs</th>
+                <th>link</th>
             </tr>
         </thead>
         <tbody>
         {# the ng-repeat stops with the same element as it starts #}
-            <tr ng-repeat-start="item in albums"  ng-repeat-end>
-                <td ng-bind="item.album.id"> </td>
-                <td ng-bind="item.album.name"> </td>
-                <td ng-bind="item.album.count"> </td>
+            <tr ng-repeat-start="item in songs"  ng-repeat-end >
+                <td ng-bind="item.id"> </td>
+                <td ng-bind="item.name"> </td>
+                <td ng-bind="item.uploadDirectory + '/' + item.path"> </td>
             </tr>
         </tbody>
     </table>
-
 </div>

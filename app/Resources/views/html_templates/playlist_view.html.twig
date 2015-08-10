@@ -7,15 +7,15 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Songs</th>
+                <th>link</th>
             </tr>
         </thead>
         <tbody>
         {# the ng-repeat stops with the same element as it starts #}
-            <tr ng-repeat-start="playlist in playlists"  ng-repeat-end>
-                <td ng-bind="playlist.id"> </td>
-                <td ng-bind="playlist.listName"> </td>
-                <td ng-bind="playlist.count"> </td>
+            <tr ng-repeat-start="item in songs"  ng-repeat-end >
+                <td ng-bind="item.audio.id"> </td>
+                <td ng-bind="item.audio.name"> </td>
+                <td ng-bind="item.audio.uploadDirectory + '/' + item.audio.path"> </td>
             </tr>
         </tbody>
     </table>
