@@ -266,7 +266,6 @@ class DefaultController extends Controller
         $user = $this->getUser();
         /* get the right playlist*/
         $playList = $user->getPlayListByName($name);
-
         if(!isset($playList)) {
             return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
         }

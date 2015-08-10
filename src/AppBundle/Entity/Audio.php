@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 use JsonSerializable;
 /**
  * @ORM\Entity
@@ -40,12 +41,11 @@ class Audio implements JsonSerializable
      */
     private $file;
 
-    // één Album heeft meerdere Audio, Audio hebben één Album
+    // één Audio heeft meerdere albums, AlbumAudioLinks hebben één Audio
     /**
-     * @ORM\ManyToOne(targetEntity="Album", inversedBy="$audioItems")
-     * @ORM\JoinColumn(name="albumId", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="AlbumAudioLink", mappedBy="audio")
      */
-    private $album;
+    private $albums;
 
     // variable that is used to temporarily store an old path
     private $temp;
@@ -53,7 +53,7 @@ class Audio implements JsonSerializable
 
     /* constuctor*/
     public function __construct(){
-
+        $this->albums = new ArrayCollection();
     }
 
     /**
@@ -237,21 +237,45 @@ class Audio implements JsonSerializable
     }
 
     /**
-     * @return \AppBundle\Entity\Album
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function getAlbum()
+    public function getAlbums()
     {
-        return $this->album;
+        return $this->albums;
     }
 
     /**
-     * @param \AppBundle\Entity\Album $album
+     * @param \Doctrine\Common\Collections\ArrayCollection $albums
      */
-    public function setAlbum(\AppBundle\Entity\Album $album)
+    public function setAlbums(\Doctrine\Common\Collections\ArrayCollection $albums)
     {
-        $this->album = $album;
+        $this->albums = $albums;
     }
 
+    /**
+     * @param \AppBundle\Entity\AlbumAudioLink $albumLink
+     */
+    public function addAlbum(\AppBundle\Entity\AlbumAudioLink $albumLink)
+    {
+        $albumLink->setAudio($this);
+        $this->albums->add($albumLink);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlbumData()
+    {
+        $data = array();
+
+        for($i = 0; $i < count($this->albums); $i++)
+        {
+            $album = $this->albums->get($i)->getAlbum();
+            $data[$i] = (object) array('id' => $album->getId(),'name' => $album->getName());
+        }
+
+        return $data;
+    }
 
     /* function that gets used when calling json_encode on objects*/
     public function jsonSerialize()
@@ -263,8 +287,7 @@ class Audio implements JsonSerializable
             'path' => $this->path,
             'file' => $this->file,
             'uploadDirectory' => $this->getUploadDir(),
-            'albumName' => ( isset($this->album) ? $this->album->getName() : "") ,
-            'albumId' => ( isset($this->album) ? $this->album->getId() : "")
+            'albums' => $this->getAlbumData()
         ];
     }
 }

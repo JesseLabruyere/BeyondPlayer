@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8c55a2d-d9e0-4765-a2aa-37dc13b8c107" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/AlbumAudioLink.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Playlist.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/html_templates/albums_view.html.twig" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/html_templates/playlists_view.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php.meta" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Album.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Album.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Audio.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Audio.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/logs/dev.log" afterPath="$PROJECT_DIR$/app/logs/dev.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" afterPath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/assets/output.min.js" afterPath="$PROJECT_DIR$/web/assets/output.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/html_templates/playlist_view.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/html_templates/playlist_view.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/scripts/test1.js" afterPath="$PROJECT_DIR$/app/Resources/scripts/test1.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BeyondPlayer.iws" />
@@ -44,28 +38,8 @@
       <file leaf-file-name="test1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2016" max-vertical-offset="4777">
-              <caret line="142" column="55" selection-start-line="142" selection-start-column="55" selection-end-line="142" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="album_view.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="476">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="albums_view.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/albums_view.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2852349" vertical-offset="0" max-vertical-offset="894">
-              <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1761" max-vertical-offset="4777">
+              <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -74,8 +48,8 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.90909094" vertical-offset="5033" max-vertical-offset="6664">
-              <caret line="299" column="7" selection-start-line="299" selection-start-column="7" selection-end-line="299" selection-end-column="7" />
+            <state vertical-scroll-proportion="-25.23077" vertical-offset="5753" max-vertical-offset="6647">
+              <caret line="377" column="32" selection-start-line="377" selection-start-column="32" selection-end-line="377" selection-end-column="32" />
               <folding>
                 <element signature="e#40#99#0#PHP" expanded="true" />
               </folding>
@@ -83,11 +57,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playlist_view.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/playlist_view.html.twig">
+      <file leaf-file-name="albums_view.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/albums_view.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="612">
-              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+            <state vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="493">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="album_view.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="476">
+              <caret line="17" column="87" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -106,8 +90,8 @@
       <file leaf-file-name="Album.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Album.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-67.34615" vertical-offset="0" max-vertical-offset="1921">
-              <caret line="103" column="13" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="19" />
+            <state vertical-scroll-proportion="-3.709091" vertical-offset="510" max-vertical-offset="1938">
+              <caret line="42" column="27" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="27" />
               <folding>
                 <element signature="e#70#102#0#PHP" expanded="true" />
               </folding>
@@ -115,33 +99,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlbumItem.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AlbumItem.php">
+      <file leaf-file-name="AlbumAudioLink.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AlbumAudioLink.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1666">
-              <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+            <state vertical-scroll-proportion="-15.423077" vertical-offset="840" max-vertical-offset="1734">
+              <caret line="73" column="30" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="30" />
               <folding>
-                <element signature="e#116#148#0#PHP" expanded="true" />
+                <element signature="e#79#111#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="center.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/page_template/center.html.twig">
+      <file leaf-file-name="Audio.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Audio.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
-              <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.63870245" vertical-offset="4036" max-vertical-offset="5083">
+              <caret line="271" column="9" selection-start-line="271" selection-start-column="9" selection-end-line="271" selection-end-column="9" />
+              <folding>
+                <element signature="e#69#101#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListItem.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ListItem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.2363634" vertical-offset="103" max-vertical-offset="1802">
+              <caret line="25" column="45" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="leftBar.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/page_template/leftBar.html.twig">
+      <file leaf-file-name="Playlist.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Playlist.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="544">
-              <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
+            <state vertical-scroll-proportion="-12.192307" vertical-offset="40" max-vertical-offset="3043">
+              <caret line="24" column="41" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -155,8 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Resources/views/page_templates/upload.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/center.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/leftBar.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/default/test.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/stylesheets/index.scss" />
@@ -189,7 +183,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Upload.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/PlayList.php" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Audio.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/ListItem.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/page_template/index.html.twig" />
@@ -197,15 +190,18 @@
         <option value="$PROJECT_DIR$/app/Resources/views/page_template/center.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/scripts/test2.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Playlist.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Album.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AlbumItem.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/page_template/leftBar.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/html_templates/playlist_view.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/html_templates/playlists_view.html.twig" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/app/Resources/scripts/test1.js" />
-        <option value="$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/html_templates/albums_view.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AlbumItem.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AlbumAudio.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Album.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AlbumAudioLink.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Audio.php" />
       </list>
     </option>
   </component>
@@ -714,10 +710,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Github_Projects\MusicPlayer\src\AppBundle\Entity" />
       <recent name="E:\Github_Projects\MusicPlayer\app\Resources\views\html_templates" />
       <recent name="E:\Github_Projects\MusicPlayer\app\config" />
       <recent name="E:\Github_Projects\MusicPlayer\app\config\budles" />
-      <recent name="E:\Github_Projects\MusicPlayer\src\AppBundle\Entity" />
       <recent name="E:\Github_Projects\MusicPlayer\src\AppBundle\Utility" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -924,7 +920,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439212698299</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="angular routing met parameters">
+      <created>1439221505472</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1439221505472</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -970,7 +972,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="de database login was aangepast" />
     <MESSAGE value="angularjs JSON call" />
     <MESSAGE value="directive voor onclick uitgetest" />
     <MESSAGE value="fileupload html ingevoegd" />
@@ -995,7 +996,8 @@
     <MESSAGE value="meerdere users kunnen nu hetzelfde Album hebben" />
     <MESSAGE value="playlists ophalen beginsel" />
     <MESSAGE value="routing met angularjs, en templates" />
-    <option name="LAST_COMMIT_MESSAGE" value="routing met angularjs, en templates" />
+    <MESSAGE value="angular routing met parameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="angular routing met parameters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1004,13 +1006,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="493">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/scripts/forms.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="323">
@@ -1221,16 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ListItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1836">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding>
-            <element signature="e#36#68#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/default/test.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07606264" vertical-offset="0" max-vertical-offset="894">
@@ -1277,47 +1262,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Playlist.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.5" vertical-offset="2115" max-vertical-offset="3043">
-          <caret line="171" column="18" selection-start-line="171" selection-start-column="18" selection-end-line="171" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Audio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3736017" vertical-offset="3747" max-vertical-offset="4641">
-          <caret line="46" column="7" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-89.01818" vertical-offset="510" max-vertical-offset="6358">
-          <caret line="318" column="31" selection-start-line="318" selection-start-column="20" selection-end-line="318" selection-end-column="31" />
-          <folding>
-            <element signature="e#68#100#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/page_template/leftBar.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="544">
           <caret line="18" column="68" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="68" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AlbumItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1666">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-          <folding>
-            <element signature="e#116#148#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1329,46 +1278,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/playlist_view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.90909094" vertical-offset="5033" max-vertical-offset="6664">
-          <caret line="299" column="7" selection-start-line="299" selection-start-column="7" selection-end-line="299" selection-end-column="7" />
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="612">
+          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-188.3077" vertical-offset="510" max-vertical-offset="6358">
+          <caret line="318" column="31" selection-start-line="318" selection-start-column="20" selection-end-line="318" selection-end-column="31" />
           <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
+            <element signature="e#68#100#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Album.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AlbumItem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-67.34615" vertical-offset="0" max-vertical-offset="1921">
-          <caret line="103" column="13" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="19" />
+        <state vertical-scroll-proportion="-15.692307" vertical-offset="0" max-vertical-offset="1666">
+          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
           <folding>
-            <element signature="e#70#102#0#PHP" expanded="true" />
+            <element signature="e#116#148#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ListItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.2363634" vertical-offset="103" max-vertical-offset="1802">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Playlist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.192307" vertical-offset="40" max-vertical-offset="3043">
+          <caret line="24" column="41" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/scripts/test1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2016" max-vertical-offset="4777">
-          <caret line="142" column="55" selection-start-line="142" selection-start-column="55" selection-end-line="142" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1761" max-vertical-offset="4777">
+          <caret line="141" column="32" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/album_view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="476">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/playlist_view.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="612">
-          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+        <state vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="476">
+          <caret line="17" column="87" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
           <folding />
         </state>
       </provider>
@@ -1383,9 +1348,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/html_templates/albums_view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2852349" vertical-offset="0" max-vertical-offset="894">
-          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+        <state vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="493">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.23077" vertical-offset="5753" max-vertical-offset="6647">
+          <caret line="377" column="32" selection-start-line="377" selection-start-column="32" selection-end-line="377" selection-end-column="32" />
+          <folding>
+            <element signature="e#40#99#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/AlbumAudioLink.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.423077" vertical-offset="840" max-vertical-offset="1734">
+          <caret line="73" column="30" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="30" />
+          <folding>
+            <element signature="e#79#111#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Album.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.709091" vertical-offset="510" max-vertical-offset="1938">
+          <caret line="42" column="27" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="27" />
+          <folding>
+            <element signature="e#70#102#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Audio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63870245" vertical-offset="4036" max-vertical-offset="5083">
+          <caret line="271" column="9" selection-start-line="271" selection-start-column="9" selection-end-line="271" selection-end-column="9" />
+          <folding>
+            <element signature="e#69#101#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -13,9 +13,9 @@
         <tbody>
         {# the ng-repeat stops with the same element as it starts #}
             <tr ng-repeat-start="item in songs"  ng-repeat-end >
-                <td ng-bind="item.id"> </td>
-                <td ng-bind="item.name"> </td>
-                <td ng-bind="item.uploadDirectory + '/' + item.path"> </td>
+                <td ng-bind="item.audio.id"> </td>
+                <td ng-bind="item.audio.name"> </td>
+                <td ng-bind="item.audio.uploadDirectory + '/' + item.audio.path"> </td>
             </tr>
         </tbody>
     </table>
