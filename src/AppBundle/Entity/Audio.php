@@ -41,9 +41,9 @@ class Audio implements JsonSerializable
      */
     private $file;
 
-    // één Audio heeft meerdere albums, AlbumAudioLinks hebben één Audio
+    // één Audio heeft meerdere Albums, Albums hebben meerdere Audio
     /**
-     * @ORM\OneToMany(targetEntity="AlbumAudioLink", mappedBy="audio")
+     * @ORM\ManyToMany(targetEntity="Album", mappedBy="audioItems")
      */
     private $albums;
 
@@ -253,12 +253,12 @@ class Audio implements JsonSerializable
     }
 
     /**
-     * @param \AppBundle\Entity\AlbumAudioLink $albumLink
+     * @param \AppBundle\Entity\Album $album
      */
-    public function addAlbum(\AppBundle\Entity\AlbumAudioLink $albumLink)
+    public function addAlbum(\AppBundle\Entity\Album $album)
     {
-        $albumLink->setAudio($this);
-        $this->albums->add($albumLink);
+        $album->addAudio($this);
+        $this->albums->add($album);
     }
 
     /**
@@ -270,7 +270,7 @@ class Audio implements JsonSerializable
 
         for($i = 0; $i < count($this->albums); $i++)
         {
-            $album = $this->albums->get($i)->getAlbum();
+            $album = $this->albums->get($i);
             $data[$i] = (object) array('id' => $album->getId(),'name' => $album->getName());
         }
 

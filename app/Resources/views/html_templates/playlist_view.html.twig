@@ -12,10 +12,10 @@
         </thead>
         <tbody>
         {# the ng-repeat stops with the same element as it starts #}
-            <tr ng-repeat-start="item in songs"  ng-repeat-end >
-                <td ng-bind="item.audio.id"> </td>
-                <td ng-bind="item.audio.name"> </td>
-                <td ng-bind="item.audio.uploadDirectory + '/' + item.audio.path"> </td>
+            <tr ng-repeat-start="song in songs"  ng-repeat-end >
+                <td ng-bind="song.id"> </td>
+                <td ng-bind="song.name"> </td>
+                <td > <a ng-bind="song.uploadDirectory + '/' + song.path" ng-href="/{% verbatim %}{{song.uploadDirectory}}/{{song.path}}{% endverbatim %}"></a> </td>
             </tr>
         </tbody>
     </table>

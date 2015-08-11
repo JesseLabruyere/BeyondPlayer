@@ -51,9 +51,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $playLists;
 
-    // één user heeft meerdere AlbumItems, één AlbumItem heeft één User
+    // één user heeft meerdere Albums, één Album heeft meerdere Users
     /**
-     * @ORM\OneToMany(targetEntity="AlbumItem", mappedBy="user")
+     *
+     * @ORM\ManyToMany(targetEntity="Album")
+     * @ORM\JoinTable(name="user_album")
      */
     private $albums;
 
@@ -334,15 +336,8 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function addAlbum($album)
     {
-        /* we make a new AlbumItem */
-        $albumItem = new AlbumItem();
-        /* we set the user to this user*/
-        $albumItem->setUser($this);
-        /* we add the album to the albumItem*/
-        $albumItem->setAlbum($album);
-
         /* add the albumItem to albums*/
-        $this->albums->add($albumItem);
+        $this->albums->add($album);
     }
 
     /**
@@ -356,8 +351,8 @@ class User implements AdvancedUserInterface, \Serializable
 
         for($i = 0; $i < count($this->albums); $i++)
         {
-            if( strcmp($this->albums->get($i)->getAlbum()->getName(), $albumName) == 0 ) {
-                return $this->albums->get($i)->getAlbum();
+            if( strcmp($this->albums->get($i)->getName(), $albumName) == 0 ) {
+                return $this->albums->get($i);
             }
         }
     }

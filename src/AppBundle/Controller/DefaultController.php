@@ -210,23 +210,17 @@ class DefaultController extends Controller
             /*$user = $this->get('security.token_storage')->getToken()->getUser();*/
             $user = $this->getUser();
 
-            /* create a new ListItem and add the audio to it*/
-            $listItem = new ListItem();
-            $listItem->setAudio($audio);
-
             /* get the right playlist form the db */
             $playlistRepository = $this->getDoctrine()->getRepository('AppBundle:Playlist');
             $uploadList = $playlistRepository->findOneBy( array('user' => $user, 'listName' => 'Uploads') );
 
             /* add the listItem to the PlayList*/
-            $uploadList->addListItem($listItem);
-
+            $uploadList->addAudio($audio);
 
             /* persist the objects */
             $em = $this->getDoctrine()->getManager();
             $em->persist($audio);
             $em->persist($uploadList);
-            $em->persist($listItem);
             $em->flush();
 
             return new Response( json_encode( array('success' => true) ) );

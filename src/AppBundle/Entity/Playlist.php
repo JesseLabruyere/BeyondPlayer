@@ -31,17 +31,18 @@ class Playlist implements JsonSerializable{
      */
     private $listName;
 
-
-    // één playList heeft meerdere listItems, listItems hebben één playList
+    // playLists hebben meerdere Audio, Audio hebben meerdere playLists
     /**
-     * @ORM\OneToMany(targetEntity="ListItem", mappedBy="playlist")
+     *
+     * @ORM\ManyToMany(targetEntity="Audio")
+     * @ORM\JoinTable(name="playlist_audio")
      */
-    private $listItems;
+    private $audioItems;
 
 
 
     public function __construct() {
-        $this->listItems = new ArrayCollection();
+        $this->audioItems = new ArrayCollection();
     }
 
     /**
@@ -103,15 +104,13 @@ class Playlist implements JsonSerializable{
     /**
      * Add listItems
      *
-     * @param \AppBundle\Entity\ListItem $listItem
+     * @param \AppBundle\Entity\Audio $audio
      * @return Playlist
      */
-    public function addListItem(\AppBundle\Entity\ListItem $listItem)
+    public function addAudio(\AppBundle\Entity\Audio $audio)
     {
-        // we add the playlist to the listItem and not the other way around
-        $listItem->setPlaylist($this);
         // we add the listItem to the arrayCollection, we use the id as key value
-        $this->listItems->add($listItem);
+        $this->audioItems->add($audio);
 
         return $this;
     }
@@ -119,11 +118,11 @@ class Playlist implements JsonSerializable{
     /**
      * Remove listItems
      *
-     * @param \AppBundle\Entity\ListItem $listItems
+     * @param \AppBundle\Entity\Audio $audio
      */
-    public function removeListItem(\AppBundle\Entity\ListItem $listItems)
+    public function remove(\AppBundle\Entity\Audio $audio)
     {
-        $this->listItems->removeElement($listItems);
+        $this->audioItems->removeElement($audio);
     }
 
     /**
@@ -133,21 +132,21 @@ class Playlist implements JsonSerializable{
      */
     public function getListItems()
     {
-        return $this->listItems;
+        return $this->audioItems;
     }
 
     /**
-     * get listItem bij Id
+     * get Audio bij Id
      *
      * @param int $id
-     * @return \AppBundle\Entity\ListItem
+     * @return \AppBundle\Entity\Audio
      */
     public function getListItemById($id)
     {
-        for($i = 0; $i < count($this->listItems); $i++)
+        for($i = 0; $i < count($this->audioItems); $i++)
         {
-            if($this->listItems->get($i)->getId() == $id) {
-                return $this->listItems->get($i);
+            if($this->audioItems->get($i)->getId() == $id) {
+                return $this->audioItems->get($i);
             }
         }
     }
@@ -160,7 +159,7 @@ class Playlist implements JsonSerializable{
     public function getFirstItem()
     {
         //return $this->listItems->get()
-        return $this->listItems->first();
+        return $this->audioItems->first();
     }
 
     /* function that gets used when calling json_encode on objects*/
@@ -169,8 +168,8 @@ class Playlist implements JsonSerializable{
         return [
             'id'=> $this->id,
             'listName' => $this->listName,
-            'count' => count($this->listItems->getValues()),
-            'listItems' => $this->listItems->getValues()
+            'count' => count($this->audioItems->getValues()),
+            'listItems' => $this->audioItems->getValues()
         ];
     }
 }

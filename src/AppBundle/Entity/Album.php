@@ -26,15 +26,15 @@ class Album implements JsonSerializable {
      */
     private $name;
 
-    // één Album heeft meerdere AlbumAudioLinks, AlbumAudioLinks hebben één Album
+    // één Album heeft meerdere Audio, Audio hebben meerdere Album
     /**
-     * @ORM\OneToMany(targetEntity="AlbumAudioLink", mappedBy="album")
-     *
+     * @ORM\ManyToMany(targetEntity="Audio", inversedBy="albums")
+     * @ORM\JoinTable(name="album_audio")
      */
-    private $albumItems;
+    private $audioItems;
 
     public function __construct() {
-        $this->albumItems = new ArrayCollection();
+        $this->audioItems = new ArrayCollection();
     }
 
     /**
@@ -72,27 +72,28 @@ class Album implements JsonSerializable {
     /**
      * @return mixed
      */
-    public function getAlbumItems()
+    public function getAudioItems()
     {
-        return $this->albumItems;
+        return $this->audioItems;
     }
 
     /**
-     * @param mixed $albumItems
+     * @param mixed $audioItems
      */
-    public function setAlbumItems($albumItems)
+    public function setAudioItems($audioItems)
     {
-        $this->albumItems = $albumItems;
+        $this->audioItems = $audioItems;
     }
 
+
     /**
-     * @param \AppBundle\Entity\AlbumAudioLink $audioLink
+     * @param \AppBundle\Entity\Audio $audio
      */
-    public function addAudio(\AppBundle\Entity\AlbumAudioLink $audioLink){
+    public function addAudio(\AppBundle\Entity\Audio $audio){
         /* setting the album on the Audio*/
-        $audioLink->setAlbum($this);
+        $audio->addAlbum($this);
         /* adding the Audio to the arrayCollection*/
-        $this->albumItems->add($audioLink);
+        $this->audioItems->add($audio);
     }
 
     /* function that gets used when calling json_encode on objects*/
@@ -101,8 +102,8 @@ class Album implements JsonSerializable {
         return [
             'id'=> $this->id,
             'name' => $this->name,
-            'count' => count($this->albumItems->getValues()),
-            'tracks' => $this->albumItems->getValues()
+            'count' => count($this->audioItems->getValues()),
+            'tracks' => $this->audioItems->getValues()
         ];
     }
 
