@@ -35,6 +35,10 @@ app.config(function($routeProvider) {
             templateUrl : 'app/getUploadForm',
             controller  : 'uploadController'
         })
+        .when('/uploads', {
+            templateUrl : 'app/getUploadsView',
+            controller  : 'uploadsController'
+        })
         .when('/registration', {
             templateUrl : 'app/getRegistrationForm',
             controller  : 'registrationController'
@@ -60,6 +64,69 @@ app.config(function($routeProvider) {
 
 // create the controller and inject Angular's $scope
 app.controller('uploadController', function($scope) {
+});
+
+app.controller('uploadsController', function($scope, $http, $routeParams) {
+    $scope.functions = {};
+
+    $scope.functions.loadUploadsView = function (item, event) {
+        var response = $http.get("app/getUploads");
+
+        response.success(function (data, status, headers, config) {
+            if(data['uploads'] !== undefined && data['success']){
+                $scope.songs = data['uploads']['listItems'];
+
+                if(data['playlists'] !== undefined){
+                    $scope.playlists = data['playlists'];
+                }
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
+    $scope.functions.loadUploadsView();
+
+    $scope.functions.removeItem = function (id, index) {
+
+         var response = $http.get("app/removeAudio/" + id);
+
+         response.success(function (data, status, headers, config) {
+             if(data['success']){
+                alert("Upload removed");
+                $scope.functions.removeItemFromData(index);
+             }
+         });
+
+         response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+         });
+
+    };
+
+    $scope.functions.removeItemFromData = function (index) {
+        $scope.songs.splice(index, 1);
+    };
+
+    $scope.functions.addToList = function (listId, songId) {
+
+        var response = $http.get("app/addToPlaylist/"+ listId +"/" + songId);
+
+        response.success(function (data, status, headers, config) {
+            if(data['success']){
+                alert("Added to playlist");
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
 });
 
 app.controller('registrationController', function($scope) {
@@ -151,7 +218,10 @@ app.controller('albumController', function($scope, $http, $routeParams) {
     };
 
     $scope.functions.loadPlaylistView();
+
 });
+
+
 
 
 

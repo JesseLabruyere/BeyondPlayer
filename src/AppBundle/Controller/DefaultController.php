@@ -29,66 +29,30 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("app/trol", name="nothomepage")
+     * @Route("app/removeAudio/{audioId}", name="removeAudio")
      */
-    public function wow()
+    public function removeAudio($audioId)
     {
-        /*
-         * The action's view can be rendered using render() method
-         * or @Template annotation as demonstrated in DemoController.
-         *          return $this->render('default/index.html.twig');
-         */
+        if(!isset($audioId))
+        {
+            return new Response( json_encode( array('success' => false, 'reason' => 'no audioId parameter was given') ) );
+        }
 
-        $product = new Product();
-        $product->setName('A Foo Bar');
-        $product->setPrice('19.99');
-        $product->setDescription('Lorem ipsum dolor');
+        $user = $this->getUser();
+        $uploadList = $user->getUploads();
+        $audio = $uploadList->getListItemById($audioId);
 
+        if(!isset($audio))
+        {
+            return new Response( json_encode( array('success' => false, 'reason' => 'audio with id: ' . $audioId . ' not found') ) );
+        }
+
+        /* persist the objects */
         $em = $this->getDoctrine()->getManager();
-
-        $em->persist($product);
+        $em->remove($audio);
         $em->flush();
 
-        return new Response('Created product id '.$product->getId());
-
-
-    }
-
-    /**
-     * @Route("app/test", name="test")
-     */
-    public function test()
-    {
-        return $this->render('default/test.html.twig', array());
-    }
-
-    /**
-     * @Route("app/upload/", name="upload")
-     *
-     * route for uploading files
-     */
-    public function upload()
-    {
-        error_reporting(E_ALL | E_STRICT);
-        $rootURL = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-
-        /* script_url is the current route http://localhost.com/app/upload/ */
-        /* upload_dir is the directory path were the images reside MusicPlayer/web/uploads/ */
-        /* upload_url is the url to the folder with images http://localhost.com/uploads/ */
-        $options = array ('script_url' =>  $rootURL . 'app/upload/', 'upload_dir' => $_SERVER['DOCUMENT_ROOT'] . '/uploads/', 'upload_url' => $rootURL . 'uploads/');
-
-        $upload_handler = new UploadHandler($options);
-
-        /* we have to return an response else symfony will throw errors */
-        return new Response();
-    }
-
-    /**
-     * @Route("app/upload/upload", name="deleteUpload")
-     */
-    public function deleteUpload()
-    {
-
+        return new Response( json_encode( array('success' => true) ) );
     }
 
 
@@ -159,12 +123,12 @@ class DefaultController extends Controller
             $defaultPlaylist->setListName("Uploads");
             // adding/relating the playlist to the user
             // we still have to persist them individually
-            $user->addPlayList($defaultPlaylist);
+            $user->setUploads($defaultPlaylist);
 
             /* persist the objects */
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
             $em->persist($defaultPlaylist);
+            $em->persist($user);
             $em->flush();
 
             return new Response( json_encode( array('success' => true) ) );
@@ -211,8 +175,7 @@ class DefaultController extends Controller
             $user = $this->getUser();
 
             /* get the right playlist form the db */
-            $playlistRepository = $this->getDoctrine()->getRepository('AppBundle:Playlist');
-            $uploadList = $playlistRepository->findOneBy( array('user' => $user, 'listName' => 'Uploads') );
+            $uploadList = $user->getUploads();
 
             /* add the listItem to the PlayList*/
             $uploadList->addAudio($audio);
@@ -287,6 +250,55 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("app/addToPlaylist/{listId}/{audioId}", name="addToPlaylist")
+     *
+     * returns a playlist with all its Audio objects based on a name
+     */
+    public function addToPlaylist($listId, $audioId) {
+
+        /* check the parameters*/
+        if(!isset($listId)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no listId given') ));
+        }
+        if(!isset($audioId)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no audioId given') ));
+        }
+
+        /* get current User object*/
+        $user = $this->getUser();
+        /* get the uploads */
+        $uploads = $user->getUploads();
+
+        /* get the right playlist*/
+        $playList = $user->getPlayListById($listId);
+        if(!isset($playList)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'playList with id: '. $listId .' not found') ));
+        }
+
+        /* check if the playList does not contain this respective audio already */
+        $duplicate = $playList->getListItemById($audioId);
+        if(isset($duplicate)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'playList with id: '. $listId .' already contains audio with id: '. $audioId) ));
+        }
+
+        /* find the audio using the id*/
+        $audio = $uploads->getListItemById($audioId);
+        if(!isset($audio)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'audio with id: '. $audioId .' not found') ));
+        }
+
+        /* add the audio to the playList */
+        $playList->addAudio($audio);
+
+        /* persist the objects */
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($playList);
+        $em->flush();
+
+        return new Response(json_encode( array('success' => true) ));
+    }
+
+    /**
      * @Route("app/getAlbum/{name}", name="getAlbum")
      *
      * returns an album with all its Audio objects based on a name
@@ -328,6 +340,25 @@ class DefaultController extends Controller
         return new Response(json_encode( array('success' => true, 'albums' => $albums ) ));
     }
 
+    /**
+     * @Route("app/getUploads", name="getUploads")
+     *
+     * returns a playlist with all its Audio objects based on a name
+     */
+    public function getUploads() {
+
+        /* get current User object*/
+        $user = $this->getUser();
+        /* get the right playlist*/
+        $uploads = $user->getUploads();
+
+        if(!isset($uploads)) {
+            return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
+        }
+
+        return new Response(json_encode( array('success' => true, 'uploads' => $uploads, 'playlists' => $user->getPlaylistData()) ));
+    }
+
 
 
     /**
@@ -364,6 +395,15 @@ class DefaultController extends Controller
      */
     public function getAlbumView() {
         return $this->render('html_templates/album_view.html.twig');
+    }
+
+    /**
+     * @Route("app/getUploadsView", name="getUploadsView")
+     *
+     * returns the playlist view
+     */
+    public function getUploadsView() {
+        return $this->render('html_templates/uploads_view.html.twig');
     }
 
     /**

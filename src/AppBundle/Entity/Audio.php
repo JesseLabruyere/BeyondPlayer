@@ -36,8 +36,9 @@ class Audio implements JsonSerializable
      */
     private $path;
 
+    // 50mb
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(maxSize="50000k")
      */
     private $file;
 

@@ -137,34 +137,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         if (0 === strpos($pathinfo, '/app')) {
-            if (0 === strpos($pathinfo, '/app/t')) {
-                // nothomepage
-                if ($pathinfo === '/app/trol') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::wow',  '_route' => 'nothomepage',);
-                }
-
-                // test
-                if ($pathinfo === '/app/test') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::test',  '_route' => 'test',);
-                }
-
-            }
-
-            if (0 === strpos($pathinfo, '/app/upload')) {
-                // upload
-                if (rtrim($pathinfo, '/') === '/app/upload') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'upload');
-                    }
-
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::upload',  '_route' => 'upload',);
-                }
-
-                // deleteUpload
-                if ($pathinfo === '/app/upload/upload') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::deleteUpload',  '_route' => 'deleteUpload',);
-                }
-
+            // removeAudio
+            if (0 === strpos($pathinfo, '/app/removeAudio') && preg_match('#^/app/removeAudio/(?P<audioId>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'removeAudio')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::removeAudio',));
             }
 
             // checkPath
@@ -190,20 +165,25 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
             }
 
-            if (0 === strpos($pathinfo, '/app/get')) {
-                if (0 === strpos($pathinfo, '/app/getPlaylist')) {
-                    // getPlaylist
-                    if (preg_match('#^/app/getPlaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
-                    }
-
-                    // getPlaylists
-                    if ($pathinfo === '/app/getPlaylists') {
-                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylists',  '_route' => 'getPlaylists',);
-                    }
-
+            if (0 === strpos($pathinfo, '/app/getPlaylist')) {
+                // getPlaylist
+                if (preg_match('#^/app/getPlaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
                 }
 
+                // getPlaylists
+                if ($pathinfo === '/app/getPlaylists') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylists',  '_route' => 'getPlaylists',);
+                }
+
+            }
+
+            // addToPlaylist
+            if (0 === strpos($pathinfo, '/app/addToPlaylist') && preg_match('#^/app/addToPlaylist/(?P<listId>[^/]++)/(?P<audioId>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'addToPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::addToPlaylist',));
+            }
+
+            if (0 === strpos($pathinfo, '/app/get')) {
                 if (0 === strpos($pathinfo, '/app/getAlbum')) {
                     // getAlbum
                     if (preg_match('#^/app/getAlbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
@@ -215,6 +195,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbums',  '_route' => 'getAlbums',);
                     }
 
+                }
+
+                // getUploads
+                if ($pathinfo === '/app/getUploads') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploads',  '_route' => 'getUploads',);
                 }
 
                 if (0 === strpos($pathinfo, '/app/getPlaylist')) {
@@ -241,6 +226,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                         return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbumView',  '_route' => 'getAlbumView',);
                     }
 
+                }
+
+                // getUploadsView
+                if ($pathinfo === '/app/getUploadsView') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploadsView',  '_route' => 'getUploadsView',);
                 }
 
             }

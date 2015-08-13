@@ -45,6 +45,12 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $isActive;
 
+    // één user heeft één playlist met uploads, één playlist met uploads heeft één user
+    /**
+     * @ORM\OneToOne(targetEntity="Playlist")
+     */
+    private $uploads;
+
     // één user heeft meerdere playlists, één playlist heeft één user
     /**
      * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
@@ -316,6 +322,40 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * Get playLists
+     *
+     * @param string $listName
+     * @return \AppBundle\Entity\Playlist
+     *
+     */
+    public function getPlayListById($listId){
+
+        for($i = 0; $i < count($this->playLists); $i++)
+        {
+            if( $this->playLists->get($i)->getId() == $listId) {
+                return $this->playLists->get($i);
+            }
+        }
+    }
+
+    /**
+     * Get the name and id of the playlists
+     *
+     * @return array
+     */
+    public function getPlaylistData()
+    {
+        $data = array();
+        for($i = 0; $i < count($this->playLists); $i++)
+        {
+            $playlist = $this->playLists->get($i);
+            $data[$i] = (object) array('id' => $playlist->getId(), 'listName' => $playlist->getListName());
+        }
+        return $data;
+    }
+
+
+    /**
      * @return mixed
      */
     public function getAlbums()
@@ -357,7 +397,21 @@ class User implements AdvancedUserInterface, \Serializable
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUploads()
+    {
+        return $this->uploads;
+    }
 
+    /**
+     * @param \AppBundle\Entity\Playlist $uploads
+     */
+    public function setUploads($uploads)
+    {
+        $this->uploads = $uploads;
+    }
 
 
 }

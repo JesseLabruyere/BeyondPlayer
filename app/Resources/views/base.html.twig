@@ -14,14 +14,22 @@
     <body>
 
         {% block body %}{% endblock %}
-            {# loading angular is the right order will fix the 'angular is not defined' error, if we uglify these scripts bad things happen #}
+            {# loading angular in the right order will fix the 'angular is not defined' error, if we uglify these scripts bad things happen #}
             <script src="/assets/angular/angular.js"></script>
             <script src="/assets/angular/angular-sanitize.js"></script>
             <script src="/assets/angular/angular-route.js"></script>
 
-
+            {# TODO currently not used #}
             <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+
+            {# JQuery #}
             <script src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
+
+            {# Mediaelementjs #}
+            <script src="/assets/johndyer-mediaelement-64dcb19/build/mediaelement-and-player.min.js"></script>
+            <link rel="stylesheet" href="/assets/johndyer-mediaelement-64dcb19/build/mediaelementplayer.css" /></code>
+
+            {# Custom javascript #}
             <script src="{{ asset('/assets/output.min.js') }}"></script>
 
             <script src="http://malsup.github.com/jquery.form.js"></script>
