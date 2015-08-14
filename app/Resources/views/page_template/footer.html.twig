@@ -2,8 +2,21 @@
 <html>
     <body>
         {% block body %}
-        <p>this is the footer!</p>
-        <audio src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" width="320"></audio>
+        <div ng-controller="footerController">
+            <p>this is the footer!</p>
+            <table>
+                <tr>
+                    <td ng-repeat-start="song in queueData">
+                        <a ng-bind="song.id"></a>
+                        <a ng-bind="song.name"></a>
+                    </td>
+                    <td ng-repeat-end><a></a></td>
+                <tr>
+            </table>
+            {#<audio src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" width="320"></audio>#}
+            {#<audio width="320" ng-src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3"></audio>#}
+            <audio width="320" ng-src="{% verbatim %}{{selected.fullPath}}{% endverbatim %}"></audio>
+        </div>
         {% endblock %}
     </body>
 </html>

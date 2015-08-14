@@ -10,5 +10,5 @@ $( document ).ready(function() {
 
 /* function that adds the eventhandlers to elements*/
 function assignEventHandlers() {
-    $('video,audio').mediaelementplayer(/* Options */);
+    /*$('video,audio').mediaelementplayer(*//* Options *//*);*/
 }

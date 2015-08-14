@@ -23,12 +23,12 @@
                             {#<span class="caret"></span>#}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li class="dropdown-header">PlayLists</li>
+                            <li class="dropdown-header">Playlists</li>
                             <li ng-repeat-start="playlist in playlists" ng-repeat-end><a ng-bind="playlist.listName" ng-click="functions.addToList(playlist.id, song.id)"></a></li>
                         </ul>
                     </div>
                 </td>
-                <td > <button ng-click="functions.removeItem(song.id, $index)">Remove</button> </td>
+                <td > <button class="btn btn-default" ng-click="functions.removeItem(song.id, $index)">Remove</button> </td>
 
 
             </tr>

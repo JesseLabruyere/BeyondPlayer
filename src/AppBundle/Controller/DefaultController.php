@@ -278,7 +278,7 @@ class DefaultController extends Controller
         /* check if the playList does not contain this respective audio already */
         $duplicate = $playList->getListItemById($audioId);
         if(isset($duplicate)) {
-            return new Response(json_encode( array('success' => false, 'reason' => 'playList with id: '. $listId .' already contains audio with id: '. $audioId) ));
+            return new Response(json_encode( array('success' => false, 'reason' => 'duplicate') ));
         }
 
         /* find the audio using the id*/

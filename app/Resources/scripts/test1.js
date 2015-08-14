@@ -17,6 +17,27 @@ $scope.init = function () {
 $scope.init();
 */
 
+/* this service makes communication between controllers possible*/
+app.factory('sharedService', function($rootScope) {
+    var sharedService = {};
+
+    sharedService.songQueue = [];
+
+    sharedService.setSongQueue =  function(data){
+        sharedService.songQueue = data;
+    }
+
+    sharedService.broadcast = function(message) {
+        this.broadcastItem(message);
+    };
+
+    /* broadcast a message to all controllers */
+    sharedService.broadcastItem = function(message) {
+        $rootScope.$broadcast(message);
+    };
+
+    return sharedService;
+});
 
 app.controller('initialisationController', ['$scope', function($scope) {
     $scope.functions = {};
@@ -118,6 +139,8 @@ app.controller('uploadsController', function($scope, $http, $routeParams) {
         response.success(function (data, status, headers, config) {
             if(data['success']){
                 alert("Added to playlist");
+            } else if(data['reason'] == 'duplicate') {
+                alert('The playlist already contains this item');
             }
         });
 
@@ -155,7 +178,7 @@ app.controller('playlistsController', function($scope, $http) {
 
 });
 
-app.controller('playlistController', function($scope, $http, $routeParams) {
+app.controller('playlistController', function($scope, $http, $routeParams, sharedService) {
     $scope.functions = {};
 
     $scope.functions.loadPlaylistView = function (item, event) {
@@ -174,6 +197,12 @@ app.controller('playlistController', function($scope, $http, $routeParams) {
     };
 
     $scope.functions.loadPlaylistView();
+
+    $scope.functions.playPlaylist = function() {
+        /* broadcast using the service so other controllers know the queue has changed*/
+        sharedService.setSongQueue($scope.songs);
+        sharedService.broadcast('queue');
+    }
 });
 
 app.controller('albumsController', function($scope, $http) {
@@ -222,10 +251,36 @@ app.controller('albumController', function($scope, $http, $routeParams) {
 });
 
 
+/* Code for the footer */
 
+app.controller('footerController', function($scope, $http, $routeParams,$timeout, sharedService) {
+    $scope.functions = {};
+    $scope.queueData = [];
+    $scope.selected = {};
+/*    $scope.selected.fullPath = "files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3";*/
 
+    $scope.functions.loadQueue = function (item, event) {
+    };
+    $scope.functions.loadQueue();
 
+    /* When the service broadcasts 'queue'*/
+    $scope.$on('queue', function() {
+        $scope.queueData = sharedService.songQueue;
+        $scope.selected = $scope.queueData[0];
+        $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
 
+        /* angularjs timeout, this is needed otherwise the fullPath link was not set in the dom element yet */
+        /* there is no timeout set,
+        * this is a hack, the intention is to wait until the end of the $digest cycle and then call the function
+        * this works because Timeouts are called after all watches are done.
+        */
+        $timeout(function(){
+            /* enable the player */
+            $('video,audio').mediaelementplayer( /*Options*/ );
+        });
+    });
+
+});
 
 
 /*function initializeFileInput() {
