@@ -3,6 +3,12 @@
  */
 var app = angular.module('app',['ngSanitize', 'ngRoute']);
 
+
+$( document ).ready(function() {
+    buildMediaPlayer();
+});
+
+
 /* this code initializes some values */
 /*
 $scope.init = function () {
@@ -255,9 +261,9 @@ app.controller('albumController', function($scope, $http, $routeParams) {
 
 app.controller('footerController', function($scope, $http, $routeParams,$timeout, sharedService) {
     $scope.functions = {};
-    $scope.queueData = [];
+    $scope.songQueue = [];
     $scope.selected = {};
-/*    $scope.selected.fullPath = "files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3";*/
+    var player;
 
     $scope.functions.loadQueue = function (item, event) {
     };
@@ -265,8 +271,8 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     /* When the service broadcasts 'queue'*/
     $scope.$on('queue', function() {
-        $scope.queueData = sharedService.songQueue;
-        $scope.selected = $scope.queueData[0];
+        $scope.songQueue = sharedService.songQueue;
+        $scope.selected = $scope.songQueue[0];
         $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
 
         /* angularjs timeout, this is needed otherwise the fullPath link was not set in the dom element yet */
@@ -275,13 +281,40 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         * this works because Timeouts are called after all watches are done.
         */
         $timeout(function(){
-            /* enable the player */
-            $('video,audio').mediaelementplayer( /*Options*/ );
+            player.setSrc($scope.selected.fullPath);
+            player.play();
         });
     });
 
+    $scope.functions.nextSong = function (item, event) {
+    };
+
+    /* function that builds the mediaplayer */
+    $scope.functions.buildMediaPlayer = function () {
+        player = new MediaElementPlayer('#audioPLayer', {
+            defaultVideoWidth: 200,
+            defaultVideoHeight: 50,
+            features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
+            success: function (mediaElement, domObject) {}
+        });
+        player.pause();
+        return player;
+    };
+    /* build the player */
+    $scope.functions.buildMediaPlayer();
+
 });
 
+function buildMediaPlayer(){
+    var player = new MediaElementPlayer('#audioPLayer', {
+        defaultVideoWidth: 200,
+        defaultVideoHeight: 50,
+        features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
+        success: function (mediaElement, domObject) {}
+    });
+    player.pause();
+    return player;
+}
 
 /*function initializeFileInput() {
     $(function () {

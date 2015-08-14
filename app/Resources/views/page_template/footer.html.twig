@@ -15,7 +15,12 @@
             </table>
             {#<audio src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" width="320"></audio>#}
             {#<audio width="320" ng-src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3"></audio>#}
-            <audio width="320" ng-src="{% verbatim %}{{selected.fullPath}}{% endverbatim %}"></audio>
+ {#           <div id="">
+                &#123;&#35;<audio width="320" ng-src="{% verbatim %}{{selected.fullPath}}{% endverbatim %}"></audio>&#35;&#125;
+            </div>#}
+            <audio id="audioPLayer" controls="controls">
+                <source type="audio/mp3" src=""/>
+            </audio>
         </div>
         {% endblock %}
     </body>

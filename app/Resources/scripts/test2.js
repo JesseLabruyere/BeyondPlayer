@@ -3,12 +3,3 @@
  *
  * this page contains currently unimportant/old code
  */
-
-$( document ).ready(function() {
-    assignEventHandlers();
-});
-
-/* function that adds the eventhandlers to elements*/
-function assignEventHandlers() {
-    /*$('video,audio').mediaelementplayer(*//* Options *//*);*/
-}
