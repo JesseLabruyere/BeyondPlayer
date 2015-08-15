@@ -306,6 +306,7 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         } else if ($scope.past.length > 0 ){
             /* no items in future repeat items in past*/
             $scope.future = $scope.past;
+            $scope.past = [];
         } else {
             /* no items in future or past abort */
             return;
