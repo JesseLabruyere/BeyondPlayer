@@ -2,15 +2,29 @@
 <html>
     <body>
         {% block body %}
-        <div ng-controller="footerController">
+        <div id="footerController" ng-controller="footerController">
             <p>this is the footer!</p>
             <table>
                 <tr>
-                    <td ng-repeat-start="song in queueData">
+
+                    <td ng-repeat-start="song in past">
                         <a ng-bind="song.id"></a>
                         <a ng-bind="song.name"></a>
                     </td>
                     <td ng-repeat-end><a></a></td>
+
+                    <td>
+                        <a ng-bind="selected.id"></a>
+                        <a ng-bind="selected.name"></a>
+                    </td>
+                    <td><a></a></td>
+
+                    <td ng-repeat-start="song in future">
+                        <a ng-bind="song.id"></a>
+                        <a ng-bind="song.name"></a>
+                    </td>
+                    <td ng-repeat-end><a></a></td>
+
                 <tr>
             </table>
             {#<audio src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" width="320"></audio>#}

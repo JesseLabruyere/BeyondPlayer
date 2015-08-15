@@ -263,6 +263,8 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     $scope.functions = {};
     $scope.songQueue = [];
     $scope.selected = {};
+    $scope.future = [];
+    $scope.past = [];
     var player;
 
     $scope.functions.loadQueue = function (item, event) {
@@ -271,15 +273,24 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     /* When the service broadcasts 'queue'*/
     $scope.$on('queue', function() {
-        $scope.songQueue = sharedService.songQueue;
-        $scope.selected = $scope.songQueue[0];
+        $scope.songQueue = angular.copy(sharedService.songQueue);
+        // no items in the array abort
+        if(! $scope.songQueue.length > 0 ) {
+            return;
+        }
+        // the initial future contains all the songs
+        $scope.future = angular.copy($scope.songQueue);
+        // set the currently playing item to the first item of the future array, and remove it from the future array
+        $scope.selected = $scope.future.splice(0, 1)[0];
         $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
+
 
         /* angularjs timeout, this is needed otherwise the fullPath link was not set in the dom element yet */
         /* there is no timeout set,
         * this is a hack, the intention is to wait until the end of the $digest cycle and then call the function
         * this works because Timeouts are called after all watches are done.
         */
+        // set the source for the player
         $timeout(function(){
             player.setSrc($scope.selected.fullPath);
             player.play();
@@ -287,6 +298,27 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     });
 
     $scope.functions.nextSong = function (item, event) {
+        // add the selected item to the end of the past array
+        $scope.past.push($scope.selected);
+        // set the currently to the first item of the future
+        if($scope.future.length > 0 ) {
+            /* everything ok do nothing */
+        } else if ($scope.past.length > 0 ){
+            /* no items in future repeat items in past*/
+            $scope.future = $scope.past;
+        } else {
+            /* no items in future or past abort */
+            return;
+        }
+        // set selected to the first item of the future, remove item from future
+        $scope.selected = $scope.future.splice(0, 1)[0];
+        $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
+
+        // set the new source for the player
+        $timeout(function(){
+            player.setSrc($scope.selected.fullPath);
+            player.play();
+        });
     };
 
     /* function that builds the mediaplayer */
@@ -295,7 +327,15 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
             defaultVideoWidth: 200,
             defaultVideoHeight: 50,
             features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
-            success: function (mediaElement, domObject) {}
+            success: function (mediaElement, domObject) {
+
+                mediaElement.addEventListener('ended', function (e) {
+                    setTimeout(function () {
+                        $scope.functions.nextSong();
+                    }, 500);
+                }, false);
+
+            }
         });
         player.pause();
         return player;
