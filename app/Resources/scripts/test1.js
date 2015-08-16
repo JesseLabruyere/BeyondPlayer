@@ -5,7 +5,6 @@ var app = angular.module('app',['ngSanitize', 'ngRoute']);
 
 
 $( document ).ready(function() {
-    buildMediaPlayer();
 });
 
 
@@ -263,8 +262,7 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     $scope.functions = {};
     $scope.songQueue = [];
     $scope.selected = {};
-    $scope.future = [];
-    $scope.past = [];
+    $scope.index = 0;
     var player;
 
     $scope.functions.loadQueue = function (item, event) {
@@ -278,12 +276,9 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         if(! $scope.songQueue.length > 0 ) {
             return;
         }
-        // the initial future contains all the songs
-        $scope.future = angular.copy($scope.songQueue);
-        // set the currently playing item to the first item of the future array, and remove it from the future array
-        $scope.selected = $scope.future.splice(0, 1)[0];
+        /* set selected to the first item in the songQueque)*/
+        $scope.selected = $scope.songQueue[$scope.index];
         $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
-
 
         /* angularjs timeout, this is needed otherwise the fullPath link was not set in the dom element yet */
         /* there is no timeout set,
@@ -298,24 +293,19 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     });
 
     $scope.functions.nextSong = function (item, event) {
-        // add the selected item to the end of the past array
-        $scope.past.push($scope.selected);
-        // set the currently to the first item of the future
-        if($scope.future.length > 0 ) {
-            /* everything ok do nothing */
-        } else if ($scope.past.length > 0 ){
-            /* no items in future repeat items in past*/
-            $scope.future = $scope.past;
-            $scope.past = [];
+
+        /* check we are at the end of the list yet, if true reset the index */
+        if(($scope.index + 1) == $scope.songQueue.length){
+            $scope.index = 0;
         } else {
-            /* no items in future or past abort */
-            return;
+            $scope.index++;
         }
+
         // set selected to the first item of the future, remove item from future
-        $scope.selected = $scope.future.splice(0, 1)[0];
+        $scope.selected = $scope.songQueue[$scope.index];
         $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
 
-        // set the new source for the player
+        // set the new source for the player, timeout to make sure all the models are digested
         $timeout(function(){
             player.setSrc($scope.selected.fullPath);
             player.play();
@@ -324,38 +314,34 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     /* function that builds the mediaplayer */
     $scope.functions.buildMediaPlayer = function () {
-        player = new MediaElementPlayer('#audioPLayer', {
-            defaultVideoWidth: 200,
-            defaultVideoHeight: 50,
-            features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
-            success: function (mediaElement, domObject) {
 
-                mediaElement.addEventListener('ended', function (e) {
-                    setTimeout(function () {
-                        $scope.functions.nextSong();
-                    }, 500);
-                }, false);
+            player = new MediaElementPlayer('#audioPLayer', {
+                defaultVideoWidth: 200,
+                defaultVideoHeight: 50,
+                features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
+                success: function (mediaElement, domObject) {
 
-            }
-        });
-        player.pause();
-        return player;
+                    mediaElement.addEventListener('ended', function (e) {
+                        setTimeout(function () {
+                            $scope.functions.nextSong();
+                        }, 500);
+                    }, false);
+
+                }
+            });
+
+            player.pause();
+            return player;
+
     };
-    /* build the player */
-    $scope.functions.buildMediaPlayer();
+
+    /* build the player, timeout to make sure all the models are digested*/
+    $timeout(function(){
+        $scope.functions.buildMediaPlayer();
+    });
 
 });
 
-function buildMediaPlayer(){
-    var player = new MediaElementPlayer('#audioPLayer', {
-        defaultVideoWidth: 200,
-        defaultVideoHeight: 50,
-        features: ['playpause', 'progress', 'current', 'duration', 'volume', 'fullscreen'],
-        success: function (mediaElement, domObject) {}
-    });
-    player.pause();
-    return player;
-}
 
 /*function initializeFileInput() {
     $(function () {

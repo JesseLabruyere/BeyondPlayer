@@ -3,38 +3,37 @@
     <body>
         {% block body %}
         <div id="footerController" ng-controller="footerController">
-            <p>this is the footer!</p>
-            <table>
-                <tr>
 
-                    <td ng-repeat-start="song in past">
-                        <a ng-bind="song.id"></a>
-                        <a ng-bind="song.name"></a>
-                    </td>
-                    <td ng-repeat-end><a></a></td>
+            <div class="row playerRow">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-6 noPadding">
+                    <audio id="audioPLayer" controls="controls" width="100%">
+                        <source type="audio/mp3" src=""/>
+                    </audio>
+                </div>
+                <div class="col-md-4">
+                    <audio id="audioPLayer" controls="controls">
+                        <source type="audio/mp3" src=""/>
+                    </audio>
+                </div>
+            </div>
 
-                    <td>
-                        <a ng-bind="selected.id"></a>
-                        <a ng-bind="selected.name"></a>
-                    </td>
-                    <td><a></a></td>
+            <div class="row songQueueRow">
+                <table>
+                    <tr>
+                        {# the selected item has the selected class #}
+                        <td ng-repeat-start="song in songQueue" ng-class="{selected: index == $index}" ng-repeat-end>
+                            <div class="queueSong">
+                                <a ng-bind="song.id"></a>
+                                <a ng-bind="song.name"></a>
+                            </div>
+                        </td>
+                    <tr>
 
-                    <td ng-repeat-start="song in future">
-                        <a ng-bind="song.id"></a>
-                        <a ng-bind="song.name"></a>
-                    </td>
-                    <td ng-repeat-end><a></a></td>
+                </table>
+            </div>
 
-                <tr>
-            </table>
-            {#<audio src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" width="320"></audio>#}
-            {#<audio width="320" ng-src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3" src="files/audio_files/f57aa0fa3ff458732aba6031e4a7237f53184267.mp3"></audio>#}
- {#           <div id="">
-                &#123;&#35;<audio width="320" ng-src="{% verbatim %}{{selected.fullPath}}{% endverbatim %}"></audio>&#35;&#125;
-            </div>#}
-            <audio id="audioPLayer" controls="controls">
-                <source type="audio/mp3" src=""/>
-            </audio>
         </div>
         {% endblock %}
     </body>

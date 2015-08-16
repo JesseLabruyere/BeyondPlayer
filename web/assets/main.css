@@ -10,6 +10,7 @@ html, body {
 #mainContainer {
   height: 100%;
   min-height: 100%;
+  /* the audioPlayer */
 }
 #mainContainer .header-row {
   height: 150px;
@@ -39,7 +40,46 @@ html, body {
 }
 #mainContainer .footer-row .footer {
   height: 100%;
+}
+#mainContainer .footer-row .footer #footerController {
+  height: 100%;
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow {
   overflow-x: scroll;
+  height: calc(100% - 30px);
+  height: -webkit-calc(100% - 30px);
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow table {
+  height: 100%;
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr {
+  height: 100%;
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td {
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td.selected .queueSong {
+  background-color: yellow;
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td .queueSong {
+  height: 100%;
+  width: 100px;
+  padding: 5px 5px 5px 5px;
+}
+#mainContainer .footer-row .footer #footerController .playerRow {
+  background-color: pink;
+  /* old placeholder should be invisible*/
+}
+#mainContainer .footer-row .footer #footerController .playerRow #audioPLayer {
+  display: none;
+}
+#mainContainer .noPadding {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 /*# sourceMappingURL=main.css.map */
