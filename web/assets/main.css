@@ -73,9 +73,18 @@ html, body {
 #mainContainer .footer-row .footer #footerController .playerRow {
   background-color: pink;
   /* old placeholder should be invisible*/
+  /* fix for the volume slider, that was somtimes pushed off the bar */
 }
 #mainContainer .footer-row .footer #footerController .playerRow #audioPLayer {
   display: none;
+}
+#mainContainer .footer-row .footer #footerController .playerRow .mejs-time-rail {
+  width: calc(100% - 190px) !important;
+  width: -webkit-calc(100% - 190px) !important;
+}
+#mainContainer .footer-row .footer #footerController .playerRow .mejs-time-total {
+  width: calc(100% - 205px) !important;
+  width: -webkit-calc(100% - 205px) !important;
 }
 #mainContainer .noPadding {
   padding-left: 0px;

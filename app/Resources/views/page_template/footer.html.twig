@@ -23,7 +23,8 @@
                 <table>
                     <tr>
                         {# the selected item has the selected class #}
-                        <td ng-repeat-start="song in songQueue" ng-class="{selected: index == $index}" ng-repeat-end>
+                        {# if the item is not currently played, we call the ng-click function #}
+                        <td ng-repeat-start="song in songQueue" ng-class="{selected: index == $index}" ng-click="index != $index && functions.playSong($index)" ng-repeat-end>
                             <div class="queueSong">
                                 <a ng-bind="song.id"></a>
                                 <a ng-bind="song.name"></a>

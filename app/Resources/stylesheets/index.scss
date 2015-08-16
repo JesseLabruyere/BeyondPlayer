@@ -93,6 +93,16 @@ html, body {
           #audioPLayer {
             display: none;
           }
+          /* fix for the volume slider, that was somtimes pushed off the bar */
+          .mejs-time-rail {
+            width: calc(100% - 190px)!important;
+            width: -webkit-calc(100% - 190px)!important;
+          }
+          .mejs-time-total {
+            width: calc(100% - 205px)!important;
+            width: -webkit-calc(100% - 205px)!important;
+          }
+
         }
       }
     }

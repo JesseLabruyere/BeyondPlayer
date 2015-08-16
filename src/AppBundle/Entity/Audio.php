@@ -288,7 +288,8 @@ class Audio implements JsonSerializable
             'path' => $this->path,
             'file' => $this->file,
             'uploadDirectory' => $this->getUploadDir(),
-            'albums' => $this->getAlbumData()
+            'albums' => $this->getAlbumData(),
+            'fullPath' => $this->getUploadDir(). '/' . $this->path
         ];
     }
 }

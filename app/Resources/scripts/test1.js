@@ -7,21 +7,6 @@ var app = angular.module('app',['ngSanitize', 'ngRoute']);
 $( document ).ready(function() {
 });
 
-
-/* this code initializes some values */
-/*
-$scope.init = function () {
-    if ($routeParams.Id) {
-        //get an existing object
-    } else {
-        //create a new object
-    }
-    $scope.isSaving = false;
-}
-
-$scope.init();
-*/
-
 /* this service makes communication between controllers possible*/
 app.factory('sharedService', function($rootScope) {
     var sharedService = {};
@@ -278,18 +263,13 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         }
         /* set selected to the first item in the songQueque)*/
         $scope.selected = $scope.songQueue[$scope.index];
-        $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
 
-        /* angularjs timeout, this is needed otherwise the fullPath link was not set in the dom element yet */
-        /* there is no timeout set,
-        * this is a hack, the intention is to wait until the end of the $digest cycle and then call the function
-        * this works because Timeouts are called after all watches are done.
-        */
-        // set the source for the player
-        $timeout(function(){
+        // set the new source for the player, timeout to make sure all the changes are digested
+        $timeout(function() {
             player.setSrc($scope.selected.fullPath);
             player.play();
         });
+
     });
 
     $scope.functions.nextSong = function (item, event) {
@@ -303,10 +283,25 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
         // set selected to the first item of the future, remove item from future
         $scope.selected = $scope.songQueue[$scope.index];
-        $scope.selected.fullPath = $scope.selected.uploadDirectory + '/' + $scope.selected.path;
 
-        // set the new source for the player, timeout to make sure all the models are digested
-        $timeout(function(){
+        // set the new source for the player, timeout to make sure all the changes are digested
+        $timeout(function() {
+            player.setSrc($scope.selected.fullPath);
+            player.play();
+        });
+
+    };
+
+    $scope.functions.playSong = function (songIndex) {
+        if((songIndex + 1) > $scope.songQueue.length) {
+            return;
+        }
+
+        $scope.index = songIndex;
+        $scope.selected = $scope.songQueue[$scope.index];
+
+        // set the new source for the player, timeout to make sure all the changes are digested
+        $timeout(function() {
             player.setSrc($scope.selected.fullPath);
             player.play();
         });
@@ -335,7 +330,10 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     };
 
-    /* build the player, timeout to make sure all the models are digested*/
+    /* build the player, timeout to make sure all the models are digested
+     * this is a hack, the intention is to wait until the end of the $digest cycle and then call the function
+     * this works because Timeouts are called after all watches are done.
+     */
     $timeout(function(){
         $scope.functions.buildMediaPlayer();
     });
