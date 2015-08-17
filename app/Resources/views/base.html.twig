@@ -14,6 +14,10 @@
     <body>
 
         {% block body %}{% endblock %}
+
+            {# JQuery #}
+            <script src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
+
             {# loading angular in the right order will fix the 'angular is not defined' error, if we uglify these scripts bad things happen #}
             <script src="/assets/angular/angular.js"></script>
             <script src="/assets/angular/angular-sanitize.js"></script>
@@ -22,9 +26,6 @@
             {# TODO currently not used #}
             <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
 
-            {# JQuery #}
-            <script src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
-
             {# Mediaelementjs #}
             <script src="/assets/johndyer-mediaelement-64dcb19/build/mediaelement-and-player.min.js"></script>
             <link rel="stylesheet" href="/assets/johndyer-mediaelement-64dcb19/build/mediaelementplayer.css" /></code>
@@ -32,7 +33,12 @@
             {# Custom javascript #}
             <script src="{{ asset('/assets/output.min.js') }}"></script>
 
+            {# submitting forms using ajax#}
             <script src="http://malsup.github.com/jquery.form.js"></script>
+
+            {# tables with scrollable body's #}
+            <script src="/assets/JQscrollTableBody/jquery.scrollTableBody-1.0.0.js"></script>
+
         {% block javascripts %}{% endblock %}
 
     </body>

@@ -77,7 +77,7 @@ app.config(function($routeProvider) {
 app.controller('uploadController', function($scope) {
 });
 
-app.controller('uploadsController', function($scope, $http, $routeParams) {
+app.controller('uploadsController', function($scope, $http, $timeout, $routeParams) {
     $scope.functions = {};
 
     $scope.functions.loadUploadsView = function (item, event) {
@@ -91,6 +91,11 @@ app.controller('uploadsController', function($scope, $http, $routeParams) {
                     $scope.playlists = data['playlists'];
                 }
             }
+
+            /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
+            $timeout(function() {
+                $('#uploadsView table').scrollTableBody();
+            });
         });
 
         response.error(function (data, status, headers, config) {
@@ -139,7 +144,6 @@ app.controller('uploadsController', function($scope, $http, $routeParams) {
         });
 
     };
-
 });
 
 app.controller('registrationController', function($scope) {

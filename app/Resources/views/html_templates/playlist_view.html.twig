@@ -3,23 +3,25 @@
 <div id="playListView">
 
     <button class="btn btn-default" ng-click="functions.playPlaylist()">Play</button>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>link</th>
-            </tr>
-        </thead>
-        <tbody>
-        {# the ng-repeat stops with the same element as it starts #}
-            <tr ng-repeat-start="song in songs"  ng-repeat-end >
-                <td ng-bind="song.id"> </td>
-                <td ng-bind="song.name"> </td>
-                <td > <a ng-bind="song.fullPath" ng-href="/{% verbatim %}{{song.fullPath}}{% endverbatim %}"></a> </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="scrollableBox">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>link</th>
+                </tr>
+            </thead>
+            <tbody>
+            {# the ng-repeat stops with the same element as it starts #}
+                <tr ng-repeat-start="song in songs"  ng-repeat-end >
+                    <td ng-bind="song.id"> </td>
+                    <td ng-bind="song.name"> </td>
+                    <td > <a ng-bind="song.fullPath" ng-href="/{% verbatim %}{{song.fullPath}}{% endverbatim %}"></a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     {# repeating data will be loaded with angular ng-repeat #}
 {#    <header ng-repeat-start="playlist in playlists" ng-bind="playlist.id">
     </header>

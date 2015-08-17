@@ -30,7 +30,33 @@ html, body {
 #mainContainer .center-row .center {
   height: 100%;
   min-height: 100%;
+  /*overflow-y: scroll;*/
+}
+#mainContainer .center-row .center .scrollableBox {
   overflow-y: scroll;
+}
+#mainContainer .center-row .center #uploadsView {
+  height: 100%;
+  display: flex;
+  /* use the flex model */
+  padding-bottom: 70px;
+  min-height: 100%;
+  flex-flow: row wrap;
+  /*flex-direction: column;*/
+  /* wrapper for scrollable tables, that takes up remaining height using flex*/
+}
+#mainContainer .center-row .center #uploadsView .tableWrapper {
+  flex: 1 100% !important;
+  /*padding-bottom: 50px;*/
+  /* scrollable tbody*/
+}
+#mainContainer .center-row .center #uploadsView .tableWrapper .jqstb-scroll {
+  flex: 1 100% !important;
+  height: 100% !important;
+            /*          table {
+                        flex: 1 100%!important;
+
+                      }*/
 }
 #mainContainer .footer-row {
   /*position: fixed;*/
