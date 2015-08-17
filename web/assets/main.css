@@ -35,28 +35,49 @@ html, body {
 #mainContainer .center-row .center .scrollableBox {
   overflow-y: scroll;
 }
+#mainContainer .center-row .center #playlistView {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+#mainContainer .center-row .center #playlistView .row-fluid.menu {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#mainContainer .center-row .center #playlistView .row-fluid.scrolling-table {
+  flex: 2;
+  display: flex;
+  flex-flow: column;
+}
+#mainContainer .center-row .center #playlistView .row-fluid.scrolling-table .jqstb-header-table {
+  flex: auto;
+}
+#mainContainer .center-row .center #playlistView .row-fluid.scrolling-table .jqstb-scroll {
+  /* no idea why this works but it does */
+  flex: 999 1 0;
+  min-height: 20px;
+}
 #mainContainer .center-row .center #uploadsView {
   height: 100%;
   display: flex;
-  /* use the flex model */
-  padding-bottom: 70px;
-  min-height: 100%;
-  flex-flow: row wrap;
-  /*flex-direction: column;*/
-  /* wrapper for scrollable tables, that takes up remaining height using flex*/
+  flex-flow: column;
 }
-#mainContainer .center-row .center #uploadsView .tableWrapper {
-  flex: 1 100% !important;
-  /*padding-bottom: 50px;*/
-  /* scrollable tbody*/
+#mainContainer .center-row .center #uploadsView .row-fluid.menu {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-#mainContainer .center-row .center #uploadsView .tableWrapper .jqstb-scroll {
-  flex: 1 100% !important;
-  height: 100% !important;
-            /*          table {
-                        flex: 1 100%!important;
-
-                      }*/
+#mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table {
+  flex: 2;
+  display: flex;
+  flex-flow: column;
+}
+#mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table .jqstb-header-table {
+  flex: auto;
+}
+#mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table .jqstb-scroll {
+  /* no idea why this works but it does */
+  flex: 999 1 0;
+  min-height: 20px;
 }
 #mainContainer .footer-row {
   /*position: fixed;*/

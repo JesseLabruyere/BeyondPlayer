@@ -172,7 +172,7 @@ app.controller('playlistsController', function($scope, $http) {
 
 });
 
-app.controller('playlistController', function($scope, $http, $routeParams, sharedService) {
+app.controller('playlistController', function($scope, $http, $routeParams, $timeout, sharedService) {
     $scope.functions = {};
 
     $scope.functions.loadPlaylistView = function (item, event) {
@@ -182,6 +182,11 @@ app.controller('playlistController', function($scope, $http, $routeParams, share
             if(data['playlist'] !== undefined && data['success']){
                 $scope.songs = data['playlist']['listItems'];
             }
+
+            /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
+            $timeout(function() {
+                $('#playlistView table').scrollTableBody();
+            });
         });
 
         response.error(function (data, status, headers, config) {
