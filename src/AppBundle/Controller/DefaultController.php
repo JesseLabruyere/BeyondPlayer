@@ -156,12 +156,22 @@ class DefaultController extends Controller
         /* the entity that will be added using the form */
         $audio = new Audio();
 
+        /* get current User object*/
+        $user = $this->getUser();
+        $playlists = $user->getPlaylistPickerData();
+
         /* setAction is needed because we will embed the form in a page, so the url wont match */
+        /* property_path tells the formbuilder that its not a variable bound to the Audio entity*/
         $form = $this->createFormBuilder($audio)
             ->setAction($this->generateUrl('getUploadForm'))
-            ->add('name', 'text')
-            ->add('file', 'file')
-            ->add('submit', 'submit', array('label' => 'uploaden'))
+            ->add('name', 'text', array('empty_data' => 'use_clientOriginalName') )
+            ->add('file', 'file', array('label' => false))
+            ->add('playlist', 'choice',
+            array(  'choices'  => $playlists,
+                    'required' => false,
+                    'placeholder' => 'None',
+                    'mapped' => false ))
+            ->add('submit', 'submit', array('label' => 'Upload'))
             ->getForm();
 
         /* this code will check if the form was submitted if not it will do nothing */
@@ -174,14 +184,31 @@ class DefaultController extends Controller
             /*$user = $this->get('security.token_storage')->getToken()->getUser();*/
             $user = $this->getUser();
 
+            /* get the optional playlist value */
+            $playlist = $form->get('playlist')->getData();
+
+            $name = $audio->getName();
+
             /* get the right playlist form the db */
             $uploadList = $user->getUploads();
 
             /* add the listItem to the PlayList*/
             $uploadList->addAudio($audio);
 
-            /* persist the objects */
+            /* doctrine manager to persist objects with */
             $em = $this->getDoctrine()->getManager();
+
+            /* check if the optional playlist was set*/
+            if(isset($playlist)){
+                $optionalList = $user->getPlayListById($playlist);
+                if(isset($optionalList)) {
+                    $optionalList->addAudio($audio);
+                    /*persist object*/
+                    $em->persist($optionalList);
+                }
+            }
+
+            /* persist the objects */
             $em->persist($audio);
             $em->persist($uploadList);
             $em->flush();

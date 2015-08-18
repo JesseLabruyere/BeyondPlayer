@@ -354,6 +354,21 @@ class User implements AdvancedUserInterface, \Serializable
         return $data;
     }
 
+    /**
+     * Get data for pickers
+     *
+     * @return array
+     */
+    public function getPlaylistPickerData()
+    {
+        $data = array();
+        for($i = 0; $i < count($this->playLists); $i++)
+        {
+            $playlist = $this->playLists->get($i);
+            $data[$playlist->getId()] = $playlist->getListName();
+        }
+        return $data;
+    }
 
     /**
      * @return mixed

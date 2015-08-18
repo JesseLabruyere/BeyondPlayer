@@ -1,4 +1,53 @@
 {# app/Resources/views/html_templates/upload_form.html.twig #}
-{{ form_start(form, {'attr': {'id': 'upload_form'}}) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+
+<div id="form_box">
+    {{ form_start(form, {'attr': {'id': 'upload_form'}}) }}
+        {#{{ form_widget(form) }}#}
+
+
+        <div class="input-group row">
+            <div class="fileUpload">
+                <span class="custom-span">+</span>
+                <p class="custom-para">Select Song</p>
+                {{ form_row(form.file, {'attr': {'class': 'btn btn-default upload'}}) }}
+            </div>
+            <input id="uploadFile" placeholder="0 files selected" disabled="disabled" />
+        </div>
+
+        <div class="input-group row">
+            {{ form_row(form.name) }}
+        </div>
+
+        <div class="input-group row">
+            {{ form_row(form.playlist, {'attr': {'class': 'selectpicker'}}) }}
+        </div>
+        <div class="input-group row">
+            {{ form_row(form.submit, {'attr': {'class': 'btn btn-default'}}) }}
+        </div>
+    {{ form_end(form) }}
+</div>
+
+
+
+
+<script type="text/javascript">
+    $('.selectpicker').selectpicker();
+
+    /* script needed to style the fileInput */
+    $( "input.upload").change(function() {
+
+        var fileName = $(this).val();
+
+        /* set the value to show what file is selected*/
+        $("#uploadFile").val(fileName);
+
+        /* automaticly suggest a filename based on the file*/
+        var fileNameArray = fileName.split('.');
+        /* pop last item off the array, wich will be the extension */
+        fileNameArray.pop();
+        /* join the array again with no seperator, and now we have the filename without the extension*/
+        var fileNameNoExt = fileNameArray.join("");
+        /* set the filename*/
+        $("#form_name").val(fileNameNoExt);
+    });
+</script>
