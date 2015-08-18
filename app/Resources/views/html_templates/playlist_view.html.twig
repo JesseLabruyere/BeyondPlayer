@@ -12,6 +12,7 @@
 
                 <thead class="fixedHeader">
                     <tr>
+                        <th></th>
                         <th>ID</th>
                         <th>Name</th>
                         <th>link</th>
@@ -21,6 +22,26 @@
                 <tbody>
                 {# the ng-repeat stops with the same element as it starts #}
                     <tr ng-repeat-start="song in songs"  ng-repeat-end >
+                        <td>
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-default" ng-click="functions.addToQueue(song)">+ Queue</button>
+                                    <button class="btn btn-default" ng-click="functions.playSong(song)"> Play ></button>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            + To Playlist
+                                            {#<span class="caret"></span>#}
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                            <li class="dropdown-header">Playlists</li>
+                                            <li ng-repeat-start="playlist in playlists" ng-repeat-end><a ng-bind="playlist.listName" ng-click="functions.addToList(playlist.id, song.id)"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                         <td ng-bind="song.id"> </td>
                         <td ng-bind="song.name"> </td>
                         <td > <a ng-bind="song.fullPath" ng-href="/{% verbatim %}{{song.fullPath}}{% endverbatim %}"></a> </td>

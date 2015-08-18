@@ -356,7 +356,7 @@ class DefaultController extends Controller
             return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
         }
 
-        return new Response(json_encode( array('success' => true, 'uploads' => $uploads, 'playlists' => $user->getPlaylistData()) ));
+        return new Response(json_encode( array('success' => true, 'uploads' => $uploads) ));
     }
 
 

@@ -8,15 +8,14 @@ $( document ).ready(function() {
 });
 
 /* this service makes communication between controllers possible*/
-app.factory('sharedService', function($rootScope) {
+app.factory('sharedService', function($rootScope, $q, $http) {
     var sharedService = {};
 
     sharedService.songQueue = [];
+    sharedService.songToQueue = {};
+    sharedService.playlists = [];
 
-    sharedService.setSongQueue =  function(data){
-        sharedService.songQueue = data;
-    }
-
+    /*---- broadcasting commands to other controllers ----*/
     sharedService.broadcast = function(message) {
         this.broadcastItem(message);
     };
@@ -24,6 +23,85 @@ app.factory('sharedService', function($rootScope) {
     /* broadcast a message to all controllers */
     sharedService.broadcastItem = function(message) {
         $rootScope.$broadcast(message);
+    };
+    /*/////////////////////////////////////////////////////*/
+
+    sharedService.getPlaylists =  function(){
+        var response = $http.get("app/getPlaylists");
+
+        response.success(function (data, status, headers, config) {
+            if(data['playlists'] !== undefined && data['success']){
+                sharedService.playlists = data['playlists'];
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("Connection to server failed!");
+        });
+    };
+    sharedService.getPlaylists();
+
+    sharedService.setSongQueue =  function(data){
+        sharedService.songQueue = data;
+        /* broadcast 'queue' to notify other controllers*/
+        this.broadcast('queue');
+    };
+
+    /* set item to be added to Queue*/
+    sharedService.addToQueue = function (song){
+        sharedService.songToQueue = song;
+        /* broadcast 'addToQueue' to notify other controllers*/
+        this.broadcast('addToQueue');
+    };
+
+    /* set item to be added to Queue and played */
+    sharedService.playSong = function (song){
+        sharedService.songToQueue = song;
+        /* broadcast 'playSong' to notify other controllers*/
+        this.broadcast('playSong');
+    };
+
+    sharedService.removeSong = function (id){
+        var deferred = $q.defer();
+
+        var response = $http.get("app/removeAudio/" + id);
+
+        response.success(function (data, status, headers, config) {
+            if(data['success']){
+                deferred.resolve(data['success']);
+                alert("Song removed");
+            } else {
+                deferred.resolve(false);
+                alert("Could not be removed");
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            deferred.resolve(false);
+            alert("Connection to server failed!");
+        });
+
+        return deferred.promise;
+    };
+
+    sharedService.addToList = function(listId, songId){
+        var deferred = $q.defer();
+
+        var response = $http.get("app/addToPlaylist/"+ listId +"/" + songId);
+
+        response.success(function (data, status, headers, config) {
+            if(data['success']){
+                alert("Added to playlist");
+            } else if(data['reason'] == 'duplicate') {
+                alert('The playlist already contains this item');
+            }
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("Connection to server failed!");
+        });
+
+        return deferred.promise;
     };
 
     return sharedService;
@@ -77,8 +155,9 @@ app.config(function($routeProvider) {
 app.controller('uploadController', function($scope) {
 });
 
-app.controller('uploadsController', function($scope, $http, $timeout, $routeParams) {
+app.controller('uploadsController', function($scope, $http, $timeout, $routeParams, sharedService) {
     $scope.functions = {};
+    $scope.playlists = [];
 
     $scope.functions.loadUploadsView = function (item, event) {
         var response = $http.get("app/getUploads");
@@ -86,10 +165,7 @@ app.controller('uploadsController', function($scope, $http, $timeout, $routePara
         response.success(function (data, status, headers, config) {
             if(data['uploads'] !== undefined && data['success']){
                 $scope.songs = data['uploads']['listItems'];
-
-                if(data['playlists'] !== undefined){
-                    $scope.playlists = data['playlists'];
-                }
+                $scope.playlists = sharedService.playlists;
             }
 
             /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
@@ -106,21 +182,16 @@ app.controller('uploadsController', function($scope, $http, $timeout, $routePara
 
     $scope.functions.loadUploadsView();
 
+    /* function to remove item */
     $scope.functions.removeItem = function (id, index) {
-
-         var response = $http.get("app/removeAudio/" + id);
-
-         response.success(function (data, status, headers, config) {
-             if(data['success']){
-                alert("Upload removed");
+        /* use the method from the service to do this */
+        sharedService.removeSong(id).then( function(success) {
+            if(success){
                 $scope.functions.removeItemFromData(index);
-             }
-         });
-
-         response.error(function (data, status, headers, config) {
-            alert("AJAX failed!");
-         });
-
+            } else {
+                /* do nothing */
+            }
+        });
     };
 
     $scope.functions.removeItemFromData = function (index) {
@@ -128,22 +199,19 @@ app.controller('uploadsController', function($scope, $http, $timeout, $routePara
     };
 
     $scope.functions.addToList = function (listId, songId) {
-
-        var response = $http.get("app/addToPlaylist/"+ listId +"/" + songId);
-
-        response.success(function (data, status, headers, config) {
-            if(data['success']){
-                alert("Added to playlist");
-            } else if(data['reason'] == 'duplicate') {
-                alert('The playlist already contains this item');
-            }
+        sharedService.addToList(listId, songId).then( function () {
+            /* nothing */
         });
-
-        response.error(function (data, status, headers, config) {
-            alert("AJAX failed!");
-        });
-
     };
+
+    $scope.functions.addToQueue = function (song){
+        sharedService.addToQueue(song);
+    };
+
+    $scope.functions.playSong = function (song){
+        sharedService.playSong(song);
+    };
+
 });
 
 app.controller('registrationController', function($scope) {
@@ -174,6 +242,7 @@ app.controller('playlistsController', function($scope, $http) {
 
 app.controller('playlistController', function($scope, $http, $routeParams, $timeout, sharedService) {
     $scope.functions = {};
+    $scope.playlists = [];
 
     $scope.functions.loadPlaylistView = function (item, event) {
         var response = $http.get("app/getPlaylist/" + $routeParams.playlistName);
@@ -181,7 +250,9 @@ app.controller('playlistController', function($scope, $http, $routeParams, $time
         response.success(function (data, status, headers, config) {
             if(data['playlist'] !== undefined && data['success']){
                 $scope.songs = data['playlist']['listItems'];
+                $scope.playlists = sharedService.playlists;
             }
+
 
             /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
             $timeout(function() {
@@ -197,11 +268,25 @@ app.controller('playlistController', function($scope, $http, $routeParams, $time
 
     $scope.functions.loadPlaylistView();
 
+    /* calling the sharedService functions*/
     $scope.functions.playPlaylist = function() {
-        /* broadcast using the service so other controllers know the queue has changed*/
         sharedService.setSongQueue($scope.songs);
-        sharedService.broadcast('queue');
-    }
+    };
+
+    $scope.functions.addToQueue = function (song){
+        sharedService.addToQueue(song);
+    };
+
+    $scope.functions.playSong = function (song){
+        sharedService.playSong(song);
+    };
+
+    $scope.functions.addToList = function (listId, songId){
+        sharedService.addToList(listId, songId).then( function(){
+           /* nothing */
+        });
+    };
+
 });
 
 app.controller('albumsController', function($scope, $http) {
@@ -274,6 +359,43 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         $scope.selected = $scope.songQueue[$scope.index];
 
         // set the new source for the player, timeout to make sure all the changes are digested
+        $timeout(function() {
+            player.setSrc($scope.selected.fullPath);
+            player.play();
+        });
+
+    });
+
+    /* When the service broadcasts 'addToQueue'*/
+    $scope.$on('addToQueue', function() {
+
+        $scope.songQueue.push( angular.copy(sharedService.songToQueue) );
+
+        /* if there is only one item we start playing this */
+        if($scope.songQueue.length === 1 ) {
+            $scope.selected = $scope.songQueue[0];
+            $timeout(function() {
+                player.setSrc($scope.selected.fullPath);
+                player.play();
+            });
+        }
+    });
+
+    /* When the service broadcasts 'playSong'*/
+    $scope.$on('playSong', function() {
+
+        /* when the queue is not empty*/
+        if($scope.songQueue.length > 0) {
+            $scope.songQueue.splice($scope.index, 0, angular.copy(sharedService.songToQueue) );
+            $scope.selected = $scope.songQueue[$scope.index];
+        }
+        /* when the queue is empty*/
+        else {
+            $scope.songQueue.push( angular.copy(sharedService.songToQueue) );
+            $scope.selected = $scope.songQueue[0];
+        }
+
+        /* start to play the song*/
         $timeout(function() {
             player.setSrc($scope.selected.fullPath);
             player.play();
