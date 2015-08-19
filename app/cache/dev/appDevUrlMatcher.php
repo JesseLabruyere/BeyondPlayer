@@ -240,6 +240,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getEmpty',  '_route' => 'getEmpty',);
             }
 
+            // getArtists
+            if ($pathinfo === '/app/getArtists') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getArtists',  '_route' => 'getArtists',);
+            }
+
             if (0 === strpos($pathinfo, '/app/log')) {
                 if (0 === strpos($pathinfo, '/app/login')) {
                     // loginAction

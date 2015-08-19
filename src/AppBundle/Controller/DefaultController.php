@@ -7,11 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 /*use AppBundle\model\testModel;*/
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Product;
 use AppBundle\Entity\Audio;
 use AppBundle\Entity\User;
 use AppBundle\Entity\Playlist;
-use AppBundle\Entity\ListItem;
+use AppBundle\Entity\Genre;
+use AppBundle\Entity\Album;
+use AppBundle\Entity\Artist;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
@@ -159,15 +160,30 @@ class DefaultController extends Controller
         /* get current User object*/
         $user = $this->getUser();
         $playlists = $user->getPlaylistPickerData();
+        $albums = $user->getAlbumsPickerData();
+
+        $artists = $this->getDoctrine()
+                        ->getRepository('AppBundle:Artist')
+                        ->getAllArtistsPickerData();
 
         /* setAction is needed because we will embed the form in a page, so the url wont match */
         /* property_path tells the formbuilder that its not a variable bound to the Audio entity*/
         $form = $this->createFormBuilder($audio)
             ->setAction($this->generateUrl('getUploadForm'))
-            ->add('name', 'text', array('empty_data' => 'use_clientOriginalName') )
+            ->add('name', 'text')
             ->add('file', 'file', array('label' => false))
             ->add('playlist', 'choice',
             array(  'choices'  => $playlists,
+                    'required' => false,
+                    'placeholder' => 'None',
+                    'mapped' => false ))
+            ->add('album', 'choice',
+                array(  'choices'  => $albums,
+                    'required' => false,
+                    'placeholder' => 'None',
+                    'mapped' => false ))
+            ->add('artist', 'choice',
+                array(  'choices'  => $artists,
                     'required' => false,
                     'placeholder' => 'None',
                     'mapped' => false ))
@@ -186,8 +202,10 @@ class DefaultController extends Controller
 
             /* get the optional playlist value */
             $playlist = $form->get('playlist')->getData();
-
-            $name = $audio->getName();
+            /* get the optional artist value */
+            $artist = $form->get('artist')->getData();
+            /* get the optional album value */
+            $album = $form->get('album')->getData();
 
             /* get the right playlist form the db */
             $uploadList = $user->getUploads();
@@ -198,6 +216,30 @@ class DefaultController extends Controller
             /* doctrine manager to persist objects with */
             $em = $this->getDoctrine()->getManager();
 
+            /* check if the optional playlist was set*/
+            if(isset($album)){
+                $optionalAlbum = $user->getAlbumById($album);
+                if(isset($optionalAlbum)) {
+
+                    $optionalAlbum->addAudio($audio);
+                    /*persist object*/
+                    $em->persist($optionalAlbum);
+
+                    $albumSet = true;
+                }
+            }
+
+            if( isset($artist)){
+                $optionalArtist = $this->getDoctrine()
+                                        ->getRepository('AppBundle:Artist')
+                                        ->find($artist);
+                if(isset($optionalArtist)) {
+                    $audio->addArtist($optionalArtist);
+                    /*persist object*/
+                    $em->persist($optionalArtist);
+                }
+
+            }
             /* check if the optional playlist was set*/
             if(isset($playlist)){
                 $optionalList = $user->getPlayListById($playlist);
@@ -440,6 +482,19 @@ class DefaultController extends Controller
      */
     public function getEmpty() {
         return new response('');
+    }
+
+    /**
+     * @Route("app/getArtists", name="getArtists")
+     *
+     * returns artists
+     */
+    public function getArtists(){
+        $artists = $this->getDoctrine()
+            ->getRepository('AppBundle:Artist')
+            ->getAllArtistsPickerData();
+
+        return new Response(json_encode( array('success' => true, 'artists' => $artists) ));
     }
 
 

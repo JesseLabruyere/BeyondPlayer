@@ -29,6 +29,7 @@ html, body {
 }
 #mainContainer .center-row .center {
   padding-right: 0px;
+  padding-left: 0px;
   height: 100%;
   min-height: 100%;
   /*overflow-y: scroll;*/
@@ -49,6 +50,7 @@ html, body {
   flex: 2;
   display: flex;
   flex-flow: column;
+  margin-bottom: -20px;
 }
 #mainContainer .center-row .center #playlistView .row-fluid.scrolling-table .jqstb-header-table {
   flex: auto;
@@ -71,6 +73,7 @@ html, body {
   flex: 2;
   display: flex;
   flex-flow: column;
+  margin-bottom: -20px;
 }
 #mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table .jqstb-header-table {
   flex: auto;
@@ -81,15 +84,25 @@ html, body {
   min-height: 20px;
 }
 #mainContainer .center-row .center #form_box {
+  overflow-x: auto;
   overflow-y: auto;
   height: 100%;
+  padding-left: 50px;
+  padding-top: 10px;
+  /* text-align: center;*/
 }
 #mainContainer .center-row .center #form_box #upload_form {
-  height: 100%;
+  display: inline-block;
   width: 300px;
   /* this part is all for the file input*/
   /* end of the fileupload*/
   /* styling for the inputs*/
+}
+#mainContainer .center-row .center #form_box #upload_form .fileUpload-wrapper {
+  text-align: left;
+  display: inline-block;
+  float: none;
+  margin: 0 auto;
 }
 #mainContainer .center-row .center #form_box #upload_form .fileUpload {
   position: relative;
@@ -112,6 +125,8 @@ html, body {
   filter: alpha(opacity=0);
   height: 100%;
   text-align: center;
+  left: 0;
+  width: 200px;
 }
 #mainContainer .center-row .center #form_box #upload_form .custom-span {
   font-family: Arial;
@@ -135,6 +150,13 @@ html, body {
   margin-left: 0px;
   width: 100%;
   padding-bottom: 10px;
+  text-align: left;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row label {
+  text-align: left;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row.floatCenter {
+  Text-align: center;
 }
 #mainContainer .center-row .center #form_box #upload_form .input-group label {
   width: 65px;

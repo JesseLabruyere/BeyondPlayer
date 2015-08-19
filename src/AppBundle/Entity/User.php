@@ -379,6 +379,22 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * Get data for pickers
+     *
+     * @return array
+     */
+    public function getAlbumsPickerData()
+    {
+        $data = array();
+        for($i = 0; $i < count($this->albums); $i++)
+        {
+            $album = $this->albums->get($i);
+            $data[$album->getId()] = $album->getName();
+        }
+        return $data;
+    }
+
+    /**
      * @param mixed $albums
      */
     public function setAlbums($albums)
@@ -407,6 +423,23 @@ class User implements AdvancedUserInterface, \Serializable
         for($i = 0; $i < count($this->albums); $i++)
         {
             if( strcmp($this->albums->get($i)->getName(), $albumName) == 0 ) {
+                return $this->albums->get($i);
+            }
+        }
+    }
+
+    /**
+     * Get Album
+     *
+     * @param string $albumId
+     * @return \AppBundle\Entity\Album
+     *
+     */
+    public function getAlbumById($albumId){
+
+        for($i = 0; $i < count($this->albums); $i++)
+        {
+            if( $this->albums->get($i)->getId() == $albumId) {
                 return $this->albums->get($i);
             }
         }

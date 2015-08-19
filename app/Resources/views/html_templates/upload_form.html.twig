@@ -5,13 +5,15 @@
         {#{{ form_widget(form) }}#}
 
 
-        <div class="input-group row">
-            <div class="fileUpload">
-                <span class="custom-span">+</span>
-                <p class="custom-para">Select Song</p>
-                {{ form_row(form.file, {'attr': {'class': 'btn btn-default upload'}}) }}
+        <div class="input-group row floatCenter">
+            <div class="fileUpload-wrapper" >
+                <div class="fileUpload">
+                    <span class="custom-span">+</span>
+                    <p class="custom-para">Select Song</p>
+                    {{ form_row(form.file, {'attr': {'class': 'btn btn-default upload'}}) }}
+                </div>
+                <input id="uploadFile" placeholder="0 files selected" disabled="disabled" />
             </div>
-            <input id="uploadFile" placeholder="0 files selected" disabled="disabled" />
         </div>
 
         <div class="input-group row">
@@ -19,9 +21,18 @@
         </div>
 
         <div class="input-group row">
+            {{ form_row(form.artist, {'attr': {'class': 'selectpicker'}}) }}
+        </div>
+
+        <div class="input-group row">
+            {{ form_row(form.album, {'attr': {'class': 'selectpicker'}}) }}
+        </div>
+
+        <div class="input-group row">
             {{ form_row(form.playlist, {'attr': {'class': 'selectpicker'}}) }}
         </div>
-        <div class="input-group row">
+
+        <div class="input-group row floatCenter">
             {{ form_row(form.submit, {'attr': {'class': 'btn btn-default'}}) }}
         </div>
     {{ form_end(form) }}

@@ -51,6 +51,12 @@ class Audio implements JsonSerializable
     // variable that is used to temporarily store an old path
     private $temp;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Artist", inversedBy="audio")
+     * @ORM\JoinColumn(name="artistId", referencedColumnName="id")
+     */
+    private $artist;
+
 
     /* constuctor*/
     public function __construct(){
@@ -254,13 +260,52 @@ class Audio implements JsonSerializable
     }
 
     /**
+     * this method adds the Album object and also links this Audio in the Album object
      * @param \AppBundle\Entity\Album $album
      */
     public function addAlbum(\AppBundle\Entity\Album $album)
     {
-        $album->addAudio($this);
+        $album->linkAudio($this);
         $this->albums->add($album);
     }
+
+
+    /**
+     * this method can be used to just add the album
+     * @param \AppBundle\Entity\Album $album
+     */
+    public function linkAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->albums->add($album);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    /**
+     * this method can be used to just add the artist
+     * @param \AppBundle\Entity\Artist $artist
+     */
+    public function addArtist($artist)
+    {
+        $artist->linkAudio($this);
+        $this->artist = $artist;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Artist $artist
+     */
+    public function linkArtist($artist)
+    {
+        $this->artist = $artist;
+    }
+
+
 
     /**
      * @return mixed

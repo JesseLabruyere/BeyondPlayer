@@ -33,6 +33,12 @@ class Album implements JsonSerializable {
      */
     private $audioItems;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Artist", inversedBy="albums")
+     * @ORM\JoinColumn(name="artistId", referencedColumnName="id")
+     */
+    private $artist;
+
     public function __construct() {
         $this->audioItems = new ArrayCollection();
     }
@@ -85,16 +91,58 @@ class Album implements JsonSerializable {
         $this->audioItems = $audioItems;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
 
     /**
+     * @param mixed $artist
+     */
+    public function setArtist($artist)
+    {
+        $this->artist = $artist;
+    }
+
+    /**
+     * this method adds the Audio object and also this album in the Audio object
      * @param \AppBundle\Entity\Audio $audio
      */
     public function addAudio(\AppBundle\Entity\Audio $audio){
         /* setting the album on the Audio*/
-        $audio->addAlbum($this);
+        $audio->linkAlbum($this);
         /* adding the Audio to the arrayCollection*/
         $this->audioItems->add($audio);
     }
+
+    /*
+     *  this method can be used to just add the audio
+     *  @param \AppBundle\Entity\Audio $audio
+     */
+    public function linkAudio(\AppBundle\Entity\Audio $audio){
+        $this->audioItems->add($audio);
+    }
+
+    /*
+     * @param \AppBundle\Entity\Artist $artist
+     */
+    public function addArtist($artist){
+        $artist->linkAlbum($this);
+        $this->artist = $artist;
+    }
+
+    /*
+     * @param \AppBundle\Entity\Artist $artist
+     */
+    public function linkArtist($artist){
+        $this->artist = $artist;
+    }
+
+
+
 
     /* function that gets used when calling json_encode on objects*/
     public function jsonSerialize()
