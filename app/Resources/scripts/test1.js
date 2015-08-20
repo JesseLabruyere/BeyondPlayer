@@ -337,11 +337,12 @@ app.controller('albumController', function($scope, $http, $routeParams) {
 
 /* Code for the footer */
 
-app.controller('footerController', function($scope, $http, $routeParams,$timeout, sharedService) {
+app.controller('footerController', function($scope, $http, $routeParams,$timeout,$q, sharedService) {
     $scope.functions = {};
     $scope.songQueue = [];
     $scope.selected = {};
     $scope.index = 0;
+    $scope.indexHighLighted = 0;
     var player;
 
     $scope.functions.loadQueue = function (item, event) {
@@ -405,6 +406,8 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     $scope.functions.nextSong = function (item, event) {
 
+        var deferred = $q.defer();
+
         /* check we are at the end of the list yet, if true reset the index */
         if(($scope.index + 1) == $scope.songQueue.length){
             $scope.index = 0;
@@ -421,9 +424,13 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
             player.play();
         });
 
+        deferred.resolve();
+
+        return deferred.promise;
     };
 
     $scope.functions.playSong = function (songIndex) {
+
         if((songIndex + 1) > $scope.songQueue.length) {
             return;
         }
@@ -436,6 +443,7 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
             player.setSrc($scope.selected.fullPath);
             player.play();
         });
+
     };
 
     /* function that builds the mediaplayer */
@@ -468,6 +476,53 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     $timeout(function(){
         $scope.functions.buildMediaPlayer();
     });
+
+    $scope.functions.songClicked = function (songIndex) {
+
+        /* is this song already highlighted? */
+        if($scope.indexHighLighted === songIndex) {
+            /* is this song not already playing? */
+            if($scope.index !== songIndex) {
+                $scope.functions.playSong(songIndex);
+            }
+        } else {
+            $scope.indexHighLighted = songIndex;
+        }
+
+    };
+
+    $scope.functions.removeFromQueue = function(songIndex) {
+
+        if($scope.index === songIndex) {
+            if($scope.songQueue.length > 1) {
+                $scope.songQueue.splice(songIndex, 1);
+                $scope.index--;
+                $scope.functions.nextSong().then( function() {
+                    $timeout(function() {
+                        $scope.indexHighLighted = $scope.index;
+                    });
+                });
+            } else {
+                $scope.functions.emptyQueue();
+            }
+        } else {
+            $scope.songQueue.splice(songIndex, 1);
+        }
+    };
+
+    $scope.functions.emptyQueue = function() {
+        /* make everything empty */
+        $scope.songQueue = [];
+        $scope.selected = {};
+        $scope.index = 0;
+        $scope.indexHighLighted = 0;
+
+        /* remove the source from the player */
+        /* TODO more is needed to reset the player */
+        player.setSrc("");
+    };
+
+
 
 });
 

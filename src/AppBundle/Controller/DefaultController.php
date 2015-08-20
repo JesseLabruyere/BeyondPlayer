@@ -162,9 +162,11 @@ class DefaultController extends Controller
         $playlists = $user->getPlaylistPickerData();
         $albums = $user->getAlbumsPickerData();
 
-        $artists = $this->getDoctrine()
+        $artists = $user->getArtistsPickerData();
+
+    /*        $this->getDoctrine()
                         ->getRepository('AppBundle:Artist')
-                        ->getAllArtistsPickerData();
+                        ->getAllArtistsPickerData();*/
 
         /* setAction is needed because we will embed the form in a page, so the url wont match */
         /* property_path tells the formbuilder that its not a variable bound to the Audio entity*/
@@ -230,15 +232,12 @@ class DefaultController extends Controller
             }
 
             if( isset($artist)){
-                $optionalArtist = $this->getDoctrine()
-                                        ->getRepository('AppBundle:Artist')
-                                        ->find($artist);
+                $optionalArtist = $user->getArtistById($artist);
                 if(isset($optionalArtist)) {
                     $audio->addArtist($optionalArtist);
                     /*persist object*/
                     $em->persist($optionalArtist);
                 }
-
             }
             /* check if the optional playlist was set*/
             if(isset($playlist)){

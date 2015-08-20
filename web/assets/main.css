@@ -193,6 +193,9 @@ html, body {
 #mainContainer .footer-row .footer #footerController .songQueueRow table tr {
   height: 100%;
 }
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td:hover {
+  background-color: rgba(236, 231, 195, 0.33) !important;
+}
 #mainContainer .footer-row .footer #footerController .songQueueRow table tr td {
   height: 100%;
   padding-left: 10px;
@@ -203,12 +206,20 @@ html, body {
 #mainContainer .footer-row .footer #footerController .songQueueRow table tr td.selected .queueSong {
   background-color: yellow;
 }
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td.highLight {
+  background-color: #ece7c3 !important;
+}
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td.highLight:hover {
+  background-color: #fffacb !important;
+}
 #mainContainer .footer-row .footer #footerController .songQueueRow table tr td .queueSong {
   height: 100%;
   width: 100px;
   padding: 5px 5px 5px 5px;
 }
 #mainContainer .footer-row .footer #footerController .playerRow {
+  border-top: 1px solid #7f7f7f;
+  border-bottom: 1px solid #7f7f7f;
   background-color: pink;
   /* old placeholder should be invisible*/
   /* fix for the volume slider, that was somtimes pushed off the bar */
@@ -223,6 +234,11 @@ html, body {
 #mainContainer .footer-row .footer #footerController .playerRow .mejs-time-total {
   width: calc(100% - 205px) !important;
   width: -webkit-calc(100% - 205px) !important;
+}
+#mainContainer .footer-row .footer #footerController .playerRow #queue-options button {
+  border-top: 0px;
+  border-bottom: 0px;
+  height: 30px;
 }
 #mainContainer .noPadding {
   padding-left: 0px;

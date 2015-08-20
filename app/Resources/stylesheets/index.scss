@@ -230,6 +230,10 @@ html, body {
             tr {
               height: 100%;
 
+              td:hover {
+                background-color: rgba(236, 231, 195, 0.33) !important;
+              }
+
               td {
                 height: 100%;
                 padding-left: 10px;
@@ -237,8 +241,17 @@ html, body {
                 padding-top: 10px;
                 padding-bottom:10px;
 
+
                 &.selected .queueSong{
-                    background-color: yellow;
+                  background-color: yellow;
+                }
+
+                &.highLight {
+                    background-color: rgb(236, 231, 195) !important;
+                }
+
+                &.highLight:hover {
+                  background-color: rgb(255, 250, 203) !important;
                 }
 
                 .queueSong {
@@ -252,6 +265,9 @@ html, body {
         }
 
         .playerRow {
+          border-top: 1px solid #7f7f7f;
+          border-bottom: 1px solid #7f7f7f;
+
           background-color: pink;
           /* old placeholder should be invisible*/
           #audioPLayer {
@@ -265,6 +281,12 @@ html, body {
           .mejs-time-total {
             width: calc(100% - 205px)!important;
             width: -webkit-calc(100% - 205px)!important;
+          }
+
+          #queue-options button{
+            border-top:0px;
+            border-bottom: 0px;
+            height: 30px;
           }
 
         }

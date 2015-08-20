@@ -65,11 +65,20 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $albums;
 
+    // één user heeft meerdere Artists
+    /**
+     *
+     * @ORM\ManyToMany(targetEntity="Artist")
+     * @ORM\JoinTable(name="user_artist")
+     */
+    private $artists;
+
     public function __construct()
     {
         $this->isActive = true;
         $this->playLists = new ArrayCollection();
         $this->albums = new ArrayCollection();
+        $this->artists = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
     }
@@ -461,5 +470,60 @@ class User implements AdvancedUserInterface, \Serializable
         $this->uploads = $uploads;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getArtists()
+    {
+        return $this->artists;
+    }
 
+    /**
+     * @param mixed $artists
+     */
+    public function setArtists($artists)
+    {
+        $this->artists = $artists;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Artist $artist
+     */
+    public function addArtist($artist)
+    {
+        $this->artists->add($artist);
+    }
+
+    /**
+     * Get data for pickers
+     *
+     * @return array
+     */
+    public function getArtistsPickerData()
+    {
+        $data = array();
+        for($i = 0; $i < count($this->artists); $i++)
+        {
+            $artist = $this->artists->get($i);
+            $data[$artist->getId()] = $artist->getName();
+        }
+        return $data;
+    }
+
+
+    /**
+     * Get data for pickers
+     * @param int $artistId
+     * @return array
+     */
+    public function getArtistById($artistId)
+    {
+        for($i = 0; $i < count($this->artists); $i++)
+        {
+            if( $this->artists->get($i)->getId() == $artistId) {
+                return $this->artists->get($i);
+            }
+        }
+
+    }
 }

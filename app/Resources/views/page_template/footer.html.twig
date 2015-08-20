@@ -12,10 +12,16 @@
                         <source type="audio/mp3" src=""/>
                     </audio>
                 </div>
-                <div class="col-md-4">
-                    <audio id="audioPLayer" controls="controls">
+                <div class="col-md-4" id="queue-options">
+                    <div class="btn-group" role="group" aria-label="...">
+                        {# removes the highlighted song from the queue #}
+                        <button type="button" class="btn btn-default" ng-class="{inactive: songQueue.length == 0}" ng-click="songQueue.length > 0 && functions.removeFromQueue(indexHighLighted)">Remove</button>
+                        {# removes all the items from the queue#}
+                        <button type="button" class="btn btn-default" ng-class="{inactive: songQueue.length == 0}" ng-click="songQueue.length > 0 && functions.emptyQueue()">Empty queue</button>
+                    </div>
+{#                    <audio id="audioPLayer" controls="controls">
                         <source type="audio/mp3" src=""/>
-                    </audio>
+                    </audio>#}
                 </div>
             </div>
 
@@ -24,7 +30,8 @@
                     <tr>
                         {# the selected item has the selected class #}
                         {# if the item is not currently played, we call the ng-click function #}
-                        <td ng-repeat-start="song in songQueue" ng-class="{selected: index == $index}" ng-click="index != $index && functions.playSong($index)" ng-repeat-end>
+                        {# if the item is not selected, we want to select it, else play the song if it was not already playing #}
+                        <td ng-repeat-start="song in songQueue" ng-class="{selected: index == $index, highLight: indexHighLighted == $index}" ng-click="functions.songClicked($index)" ng-repeat-end>
                             <div class="queueSong">
                                 <a ng-bind="song.id"></a>
                                 <a ng-bind="song.name"></a>
