@@ -239,10 +239,12 @@ html, body {
               }
 
               td.ui-sortable-placeholder {
-                height: 100%;
+                height: 100%!important;
                 width: 120px!important;
                 visibility: visible!important;
-                display: block;
+                display: inline-block;
+                padding-bottom: 0px !important;
+                margin-bottom: 0px!important;
               }
 
               td {

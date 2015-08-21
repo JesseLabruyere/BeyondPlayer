@@ -535,8 +535,16 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
                 $scope.functions.emptyQueue();
             }
         } else {
+            /* if last item select first item */
+            if(songIndex + 1 == $scope.songQueue.length ) {
+                $scope.indexHighLighted = 0;
+            }
+
             $scope.songQueue.splice(songIndex, 1);
-            if($scope.songQueue.length > 1) {
+            /* the item we remove is before the current playing item
+            *  we have to move the index of the playing item one down
+            * */
+            if(songIndex < $scope.index) {
                 $scope.index--
             }
         }
@@ -550,7 +558,9 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         $scope.indexHighLighted = 0;
 
         /* remove the source from the player */
-        /* TODO more is needed to reset the player */
+        /* TODO more is needed to reset the players progress bar, maybe an empty mp3 file? */
+        /*player.stop();*/
+        player.pause();
         player.setSrc("");
     };
 
