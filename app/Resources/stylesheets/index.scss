@@ -225,6 +225,10 @@ html, body {
           overflow-x: scroll;
           height: calc(100% - 30px);
           height: -webkit-calc(100% - 30px);
+
+
+
+
           table {
             height: 100%;
             tr {
@@ -232,6 +236,13 @@ html, body {
 
               td:hover {
                 background-color: rgba(236, 231, 195, 0.33) !important;
+              }
+
+              td.ui-sortable-placeholder {
+                height: 100%;
+                width: 120px!important;
+                visibility: visible!important;
+                display: block;
               }
 
               td {

@@ -17,11 +17,18 @@
 
             {# JQuery #}
             <script src="{{ asset('//code.jquery.com/jquery-1.11.3.min.js') }}"></script>
+            {# JQuery ui voor draggable #}
+            <script src="/assets/jquery-ui_1.11.4/jquery-ui.min.js"></script>
+            <link rel="stylesheet" href="/assets/jquery-ui_1.11.4/jquery-ui.min.css" >
 
             {# loading angular in the right order will fix the 'angular is not defined' error, if we uglify these scripts bad things happen #}
             <script src="/assets/angular/angular.js"></script>
             <script src="/assets/angular/angular-sanitize.js"></script>
             <script src="/assets/angular/angular-route.js"></script>
+
+            {#  directive that allows you to sort an array with drag & drop. #}
+            <script src="/assets/ui-sortable/src/sortable.js"></script>
+
 
             {# TODO currently not used #}
             <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
@@ -42,6 +49,8 @@
             {# selectpicker with bootstrap look #}
             <script src="/assets/silviomoreto-bootstrap-select-a8ed49e/dist/js/bootstrap-select.min.js"></script>
             <link rel="stylesheet" href="/assets/silviomoreto-bootstrap-select-a8ed49e/dist/css/bootstrap-select.min.css" >
+
+
 
         {% block javascripts %}{% endblock %}
 

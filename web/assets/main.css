@@ -196,6 +196,12 @@ html, body {
 #mainContainer .footer-row .footer #footerController .songQueueRow table tr td:hover {
   background-color: rgba(236, 231, 195, 0.33) !important;
 }
+#mainContainer .footer-row .footer #footerController .songQueueRow table tr td.ui-sortable-placeholder {
+  height: 100%;
+  width: 120px !important;
+  visibility: visible !important;
+  display: block;
+}
 #mainContainer .footer-row .footer #footerController .songQueueRow table tr td {
   height: 100%;
   padding-left: 10px;

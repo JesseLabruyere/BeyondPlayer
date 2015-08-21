@@ -1,7 +1,7 @@
 /**
  * Created by Jesse on 10-6-2015.
  */
-var app = angular.module('app',['ngSanitize', 'ngRoute']);
+var app = angular.module('app',['ngSanitize', 'ngRoute', 'ui.sortable']);
 
 
 $( document ).ready(function() {
@@ -478,27 +478,56 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     });
 
     $scope.functions.songClicked = function (songIndex) {
-
+        /* check if the item was just dragged, in that case we dont want to play it */
+        if($scope.justDragged === songIndex) {
+            /* reset this value, so next time this item is clicked it will play */
+            $scope.justDragged = 99999;
+            return;
+        }
         /* is this song already highlighted? */
-        if($scope.indexHighLighted === songIndex) {
+        if($scope.indexHighLighted === songIndex && $scope.highLightedThisClick === false) {
             /* is this song not already playing? */
             if($scope.index !== songIndex) {
                 $scope.functions.playSong(songIndex);
             }
-        } else {
-            $scope.indexHighLighted = songIndex;
         }
+
+
+/*        else {
+            $scope.indexHighLighted = songIndex;
+        }*/
 
     };
 
-    $scope.functions.removeFromQueue = function(songIndex) {
+    $scope.functions.songMouseDown = function (songIndex) {
 
+        /* is this song already highlighted? */
+        if($scope.indexHighLighted === songIndex) {
+            /* since we use botch ng-click and ng-mousedown, we use this variable
+            *  to tell if this item was just highlighted in the same click action
+            *  because if thats true we don't want to play it yet
+            */
+            $scope.highLightedThisClick = false
+        } else {
+            $scope.indexHighLighted = songIndex;
+            $scope.highLightedThisClick = true;
+        }
+    };
+
+    /* function that removes an item from the queue based on its index */
+    $scope.functions.removeFromQueue = function(songIndex) {
+        /* check if song is being played*/
         if($scope.index === songIndex) {
+            /* check if its not the only item */
             if($scope.songQueue.length > 1) {
+                /* remove the item*/
                 $scope.songQueue.splice(songIndex, 1);
+                /* set index one lower since the array has become one smaller*/
                 $scope.index--;
+                /* call the function that will run the next song (so index + 1)*/
                 $scope.functions.nextSong().then( function() {
                     $timeout(function() {
+                        /* set the highlight on the now playing item */
                         $scope.indexHighLighted = $scope.index;
                     });
                 });
@@ -507,6 +536,9 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
             }
         } else {
             $scope.songQueue.splice(songIndex, 1);
+            if($scope.songQueue.length > 1) {
+                $scope.index--
+            }
         }
     };
 
@@ -522,7 +554,38 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         player.setSrc("");
     };
 
+    /* these variables are used to keep track
+    * if the dragged item is being played
+    * if the item was just dragged (we dont want it to start play in that case)
+    * */
+    $scope.isPLaying = false;
+    $scope.justDragged = 99999;
 
+    /* options for the draggable items in the songQueue*/
+    $scope.sortableOptions = {
+        start: function(e, ui) {
+            /* check if the item that is being dragged is currently playing */
+            if (ui.item.sortable.index === $scope.index) {
+                $scope.isPLaying = true;
+            }
+        },
+        stop: function(e, ui) {
+            /* if the item was playing we need to update the index variable*/
+            if($scope.isPLaying){
+                $scope.index = ui.item.index();
+            }
+
+            /* we highlight the item on its new position */
+            $scope.indexHighLighted = ui.item.index();
+
+            /* this var now tells that the item was just dragged */
+            $scope.justDragged = ui.item.index();
+
+            /* reset this value*/
+            $scope.isPLaying = false;
+        }
+
+    };
 
 });
 
