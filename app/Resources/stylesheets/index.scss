@@ -185,6 +185,33 @@ html, body {
               &.floatCenter {
                 Text-align:center;
               }
+              /* styling for the dropdown with single choice */
+              .chosen-container {
+                width: 100% !important;
+                height: 35px;
+                .chosen-single {
+                  height: 35px;
+                  padding-top: 5px;
+                  padding-bottom: 5px;
+
+                  .search-choice-close{
+                    margin-top:5px;
+                  }
+                  b {
+                    margin-top: 5px;
+                  }
+                }
+
+                .chosen-drop .chosen-results li {
+                  height: 35px !important;
+                  overflow-y: auto;
+                  padding-top: 10px;
+                  padding-bottom: 10px;
+                }
+              }
+
+
+
             }
 
             label {

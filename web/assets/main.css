@@ -151,12 +151,34 @@ html, body {
   width: 100%;
   padding-bottom: 10px;
   text-align: left;
+  /* styling for the dropdown with single choice */
 }
 #mainContainer .center-row .center #form_box #upload_form .input-group.row label {
   text-align: left;
 }
 #mainContainer .center-row .center #form_box #upload_form .input-group.row.floatCenter {
   Text-align: center;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row .chosen-container {
+  width: 100% !important;
+  height: 35px;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row .chosen-container .chosen-single {
+  height: 35px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row .chosen-container .chosen-single .search-choice-close {
+  margin-top: 5px;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row .chosen-container .chosen-single b {
+  margin-top: 5px;
+}
+#mainContainer .center-row .center #form_box #upload_form .input-group.row .chosen-container .chosen-drop .chosen-results li {
+  height: 35px !important;
+  overflow-y: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 #mainContainer .center-row .center #form_box #upload_form .input-group label {
   width: 65px;

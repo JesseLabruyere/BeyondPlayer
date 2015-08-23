@@ -21,20 +21,34 @@
         </div>
 
         <div class="input-group row">
-            {{ form_row(form.artist, {'attr': {'class': 'selectpicker'}}) }}
+            {{ form_row(form.artist, {'attr': {'class': 'chosen-select', 'data-placeholder': 'Artist, optional' }}) }}
         </div>
 
         <div class="input-group row">
-            {{ form_row(form.album, {'attr': {'class': 'selectpicker'}}) }}
+            {{ form_row(form.album, {'attr': {'class': 'chosen-select', 'data-placeholder': 'Album, optional' }}) }}
         </div>
 
         <div class="input-group row">
-            {{ form_row(form.playlist, {'attr': {'class': 'selectpicker'}}) }}
+            {{ form_row(form.playlist, {'attr': {'class': 'chosen-select', 'data-placeholder': 'Playlist, optional' }}) }}
         </div>
 
         <div class="input-group row floatCenter">
             {{ form_row(form.submit, {'attr': {'class': 'btn btn-default'}}) }}
         </div>
+
+{#    <select class="chosen-select" tabindex="1" style="width:350px;" data-placeholder="Choose a Country...">
+        <option value=""></option>
+        <option value="United States">United States</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="Afghanistan">Afghanistan</option>
+        <option value="Aland Islands">Aland Islands</option>
+        <option value="Albania">Albania</option>
+        <option value="Algeria">Algeria</option>
+        <option value="American Samoa">American Samoa</option>
+        <option value="Andorra">Andorra</option>
+    </select>#}
+
+
     {{ form_end(form) }}
 </div>
 
@@ -42,7 +56,8 @@
 
 
 <script type="text/javascript">
-    $('.selectpicker').selectpicker();
+    /* we use the jquery chosen plugin to create complex DropDowns */
+    $(".chosen-select").chosen({allow_single_deselect: true});
 
     /* script needed to style the fileInput */
     $( "input.upload").change(function() {

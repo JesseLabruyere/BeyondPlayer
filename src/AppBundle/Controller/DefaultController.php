@@ -177,18 +177,15 @@ class DefaultController extends Controller
             ->add('playlist', 'choice',
             array(  'choices'  => $playlists,
                     'required' => false,
-                    'placeholder' => 'None',
                     'mapped' => false ))
             ->add('album', 'choice',
                 array(  'choices'  => $albums,
                     'required' => false,
-                    'placeholder' => 'None',
                     'mapped' => false ))
             ->add('artist', 'choice',
                 array(  'choices'  => $artists,
                     'required' => false,
-                    'placeholder' => 'None',
-                    'mapped' => false ))
+                    'mapped' => false))
             ->add('submit', 'submit', array('label' => 'Upload'))
             ->getForm();
 
