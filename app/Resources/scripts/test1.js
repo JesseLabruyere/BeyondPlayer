@@ -568,21 +568,32 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     * if the dragged item is being played
     * if the item was just dragged (we dont want it to start play in that case)
     * */
-    $scope.isPLaying = false;
-    $scope.justDragged = 99999;
 
+    $scope.oldIndex = 0;
+    $scope.justDragged = 99999;
     /* options for the draggable items in the songQueue*/
     $scope.sortableOptions = {
         start: function(e, ui) {
-            /* check if the item that is being dragged is currently playing */
-            if (ui.item.sortable.index === $scope.index) {
-                $scope.isPLaying = true;
-            }
+            /* remember the old index */
+            $scope.oldIndex = ui.item.sortable.index;
+
         },
         stop: function(e, ui) {
-            /* if the item was playing we need to update the index variable*/
-            if($scope.isPLaying){
+
+            /* check if the item is playing
+             * also works if the item started playing mid drag
+             * */
+            if($scope.index == $scope.oldIndex) {
                 $scope.index = ui.item.index();
+            }
+
+            /* check if the index needs to be changed based on the position*/
+            if ( $scope.index !== ui.item.index() ){
+                if(ui.item.index() > $scope.index && $scope.oldIndex < $scope.index && $scope.index !== 0) {
+                    $scope.index--;
+                } else if (ui.item.index() < $scope.index && $scope.oldIndex > $scope.index) {
+                    $scope.index++;
+                }
             }
 
             /* we highlight the item on its new position */
