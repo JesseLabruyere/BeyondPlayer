@@ -1,7 +1,7 @@
 // variables
 $top-row-height: 150px;
 $footer-row-height: 150px;
-$remaining-height: calc(100% - (#{$top-row-height} + #{$footer-row-height}));
+$remaining-height: calc(100% - (#{$top-row-height} + #{$footer-row-height} + 2px));
 
 // we want to use the whole page
 html, body {

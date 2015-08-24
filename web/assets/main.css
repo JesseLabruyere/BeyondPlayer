@@ -19,8 +19,8 @@ html, body {
   height: 100%;
 }
 #mainContainer .center-row {
-  height: calc(100% - (150px + 150px));
-  min-height: calc(100% - (150px + 150px));
+  height: calc(100% - (150px + 150px + 2px));
+  min-height: calc(100% - (150px + 150px + 2px));
 }
 #mainContainer .center-row .leftbar {
   height: 100%;

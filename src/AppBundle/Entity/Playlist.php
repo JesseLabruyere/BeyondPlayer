@@ -136,6 +136,24 @@ class Playlist implements JsonSerializable{
     }
 
     /**
+     * @return mixed
+     */
+    public function getAudioItems()
+    {
+        return $this->audioItems;
+    }
+
+    /**
+     * @param mixed $audioItems
+     */
+    public function setAudioItems($audioItems)
+    {
+        $this->audioItems = $audioItems;
+    }
+
+
+
+    /**
      * get Audio bij Id
      *
      * @param int $id

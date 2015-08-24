@@ -27,7 +27,7 @@ app.factory('sharedService', function($rootScope, $q, $http) {
     /*/////////////////////////////////////////////////////*/
 
     sharedService.getPlaylists =  function(){
-        var response = $http.get("app/getPlaylists");
+        var response = $http.get("app/user/getPlaylists");
 
         response.success(function (data, status, headers, config) {
             if(data['playlists'] !== undefined && data['success']){
@@ -136,7 +136,7 @@ app.config(function($routeProvider) {
             templateUrl : 'app/getPlaylistsView',
             controller  : 'playlistsController'
         })
-        .when('/playlists/:playlistName', {
+        .when('/playlists/:playlistId/:playlistName', {
             templateUrl : 'app/getPlaylistView',
             controller  : 'playlistController'
         })
@@ -144,7 +144,7 @@ app.config(function($routeProvider) {
             templateUrl : 'app/getAlbumsView',
             controller  : 'albumsController'
         })
-        .when('/albums/:albumName', {
+        .when('/albums/:albumId/:albumName', {
             templateUrl : 'app/getAlbumView',
             controller  : 'albumController'
         });
@@ -160,11 +160,11 @@ app.controller('uploadsController', function($scope, $http, $timeout, $routePara
     $scope.playlists = [];
 
     $scope.functions.loadUploadsView = function (item, event) {
-        var response = $http.get("app/getUploads");
+        var response = $http.get("app/user/getUploads");
 
         response.success(function (data, status, headers, config) {
-            if(data['uploads'] !== undefined && data['success']){
-                $scope.songs = data['uploads']['listItems'];
+            if(data['playlist'] !== undefined && data['success']){
+                $scope.songs = data['playlist']['listItems'];
                 $scope.playlists = sharedService.playlists;
             }
 
@@ -222,7 +222,7 @@ app.controller('playlistsController', function($scope, $http) {
     $scope.functions = {};
 
     $scope.functions.loadPlaylistsView = function (item, event) {
-        var response = $http.get("app/getPlaylists");
+        var response = $http.get("app/user/getPlaylists");
 
         response.success(function (data, status, headers, config) {
             if(data['playlists'] !== undefined && data['success']){
@@ -245,7 +245,7 @@ app.controller('playlistController', function($scope, $http, $routeParams, $time
     $scope.playlists = [];
 
     $scope.functions.loadPlaylistView = function (item, event) {
-        var response = $http.get("app/getPlaylist/" + $routeParams.playlistName);
+        var response = $http.get("app/user/getPlaylistResults/" + $routeParams.playlistId);
 
         response.success(function (data, status, headers, config) {
             if(data['playlist'] !== undefined && data['success']){
@@ -294,7 +294,7 @@ app.controller('albumsController', function($scope, $http) {
     $scope.functions = {};
 
     $scope.functions.loadAlbumsView = function (item, event) {
-        var response = $http.get("app/getAlbums");
+        var response = $http.get("app/user/getAlbums");
 
         response.success(function (data, status, headers, config) {
             if(data['albums'] !== undefined && data['success']){
@@ -316,11 +316,11 @@ app.controller('albumController', function($scope, $http, $routeParams) {
     $scope.functions = {};
 
     $scope.functions.loadPlaylistView = function (item, event) {
-        var response = $http.get("app/getAlbum/" + $routeParams.albumName);
+        var response = $http.get("app/user/getAlbumResults/" + $routeParams.albumId);
 
         response.success(function (data, status, headers, config) {
             if(data['album'] !== undefined && data['success']){
-                $scope.songs = data['album']['tracks'];
+                $scope.songs = data['album']['listItems'];
             }
         });
 

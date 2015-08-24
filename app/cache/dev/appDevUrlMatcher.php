@@ -165,17 +165,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::taskSuccess',  '_route' => 'task_success',);
             }
 
-            if (0 === strpos($pathinfo, '/app/getPlaylist')) {
-                // getPlaylist
-                if (preg_match('#^/app/getPlaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
-                }
-
-                // getPlaylists
-                if ($pathinfo === '/app/getPlaylists') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylists',  '_route' => 'getPlaylists',);
-                }
-
+            // getPlaylist
+            if (0 === strpos($pathinfo, '/app/getPlaylist') && preg_match('#^/app/getPlaylist/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylist')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getPlaylist',));
             }
 
             // addToPlaylist
@@ -184,22 +176,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             if (0 === strpos($pathinfo, '/app/get')) {
-                if (0 === strpos($pathinfo, '/app/getAlbum')) {
-                    // getAlbum
-                    if (preg_match('#^/app/getAlbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
-                    }
-
-                    // getAlbums
-                    if ($pathinfo === '/app/getAlbums') {
-                        return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbums',  '_route' => 'getAlbums',);
-                    }
-
-                }
-
-                // getUploads
-                if ($pathinfo === '/app/getUploads') {
-                    return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getUploads',  '_route' => 'getUploads',);
+                // getAlbum
+                if (0 === strpos($pathinfo, '/app/getAlbum') && preg_match('#^/app/getAlbum/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbum')), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getAlbum',));
                 }
 
                 if (0 === strpos($pathinfo, '/app/getPlaylist')) {
@@ -245,25 +224,56 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::getArtists',  '_route' => 'getArtists',);
             }
 
-            if (0 === strpos($pathinfo, '/app/log')) {
-                if (0 === strpos($pathinfo, '/app/login')) {
-                    // loginAction
-                    if ($pathinfo === '/app/login') {
-                        return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'loginAction',);
+            if (0 === strpos($pathinfo, '/app/login')) {
+                // loginAction
+                if ($pathinfo === '/app/login') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginAction',  '_route' => 'loginAction',);
+                }
+
+                // loginCheckAction
+                if ($pathinfo === '/app/login_check') {
+                    return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginCheckAction',  '_route' => 'loginCheckAction',);
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/app/user/get')) {
+                // getUploads
+                if (0 === strpos($pathinfo, '/app/user/getUploads') && preg_match('#^/app/user/getUploads(?:/(?P<position>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getUploads')), array (  'position' => 0,  'amount' => 25,  '_controller' => 'AppBundle\\Controller\\UserController::getUploads',));
+                }
+
+                if (0 === strpos($pathinfo, '/app/user/getPlaylist')) {
+                    // getPlaylistResults
+                    if (0 === strpos($pathinfo, '/app/user/getPlaylistResults') && preg_match('#^/app/user/getPlaylistResults/(?P<listId>[^/]++)(?:/(?P<position>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylistResults')), array (  'position' => 0,  'amount' => 25,  '_controller' => 'AppBundle\\Controller\\UserController::getPlaylistResults',));
                     }
 
-                    // loginCheckAction
-                    if ($pathinfo === '/app/login_check') {
-                        return array (  '_controller' => 'AppBundle\\Controller\\SecurityController::loginCheckAction',  '_route' => 'loginCheckAction',);
+                    // getPlaylists
+                    if ($pathinfo === '/app/user/getPlaylists') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\UserController::getPlaylists',  '_route' => 'getPlaylists',);
                     }
 
                 }
 
-                // logout
-                if ($pathinfo === '/app/logout') {
-                    return array('_route' => 'logout');
+                if (0 === strpos($pathinfo, '/app/user/getAlbum')) {
+                    // getAlbumResults
+                    if (0 === strpos($pathinfo, '/app/user/getAlbumResults') && preg_match('#^/app/user/getAlbumResults/(?P<albumId>[^/]++)(?:/(?P<position>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbumResults')), array (  'position' => 0,  'amount' => 25,  '_controller' => 'AppBundle\\Controller\\UserController::getAlbumResults',));
+                    }
+
+                    // getAlbums
+                    if ($pathinfo === '/app/user/getAlbums') {
+                        return array (  '_controller' => 'AppBundle\\Controller\\UserController::getAlbums',  '_route' => 'getAlbums',);
+                    }
+
                 }
 
+            }
+
+            // logout
+            if ($pathinfo === '/app/logout') {
+                return array('_route' => 'logout');
             }
 
         }

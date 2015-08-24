@@ -14,7 +14,7 @@
         {# the ng-repeat stops with the same element as it starts #}
             <tr ng-repeat-start="album in albums"  ng-repeat-end>
                 <td ng-bind="album.id"> </td>
-                <td> <a ng-bind="album.name" ng-href="#albums/{% verbatim %}{{album.name}}{% endverbatim %}"> </a> </td>
+                <td> <a ng-bind="album.name" ng-href="#albums/{% verbatim %}{{album.id}}{% endverbatim %}/{% verbatim %}{{album.name}}{% endverbatim %}"> </a> </td>
                 <td ng-bind="album.count"> </td>
             </tr>
         </tbody>

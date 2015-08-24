@@ -13,9 +13,11 @@ use AppBundle\Entity\Playlist;
 use AppBundle\Entity\Genre;
 use AppBundle\Entity\Album;
 use AppBundle\Entity\Artist;
+use AppBundle\Controller\PlaylistController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpKernel\Profiler\RedisProfilerStorage;
 
 class DefaultController extends Controller
 {
@@ -406,27 +408,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("app/getUploads", name="getUploads")
-     *
-     * returns a playlist with all its Audio objects based on a name
-     */
-    public function getUploads() {
-
-        /* get current User object*/
-        $user = $this->getUser();
-        /* get the right playlist*/
-        $uploads = $user->getUploads();
-
-        if(!isset($uploads)) {
-            return new Response(json_encode( array('success' => false, 'reason' => 'no results') ));
-        }
-
-        return new Response(json_encode( array('success' => true, 'uploads' => $uploads) ));
-    }
-
-
-
-    /**
      * @Route("app/getPlaylistsView", name="getPlaylistsView")
      *
      * returns the playlist view
@@ -492,6 +473,5 @@ class DefaultController extends Controller
 
         return new Response(json_encode( array('success' => true, 'artists' => $artists) ));
     }
-
 
 }

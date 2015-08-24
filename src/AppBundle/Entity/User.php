@@ -404,6 +404,22 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * Get the name and id of the playlists
+     *
+     * @return array
+     */
+    public function getAlbumData()
+    {
+        $data = array();
+        for($i = 0; $i < count($this->albums); $i++)
+        {
+            $album = $this->albums->get($i);
+            $data[$i] = (object) array('id' => $album->getId(), 'name' => $album->getName());
+        }
+        return $data;
+    }
+
+    /**
      * @param mixed $albums
      */
     public function setAlbums($albums)

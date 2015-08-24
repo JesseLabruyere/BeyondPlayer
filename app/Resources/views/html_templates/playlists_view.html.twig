@@ -14,7 +14,7 @@
         {# the ng-repeat stops with the same element as it starts #}
             <tr ng-repeat-start="playlist in playlists"  ng-repeat-end>
                 <td ng-bind="playlist.id"> </td>
-                <td > <a ng-bind="playlist.listName" ng-href="#playlists/{% verbatim %}{{playlist.listName}}{% endverbatim %}"> </a> </td>
+                <td > <a ng-bind="playlist.listName" ng-href="#playlists/{% verbatim %}{{playlist.id}}{% endverbatim %}/{% verbatim %}{{playlist.listName}}{% endverbatim %}"> </a> </td>
                 <td ng-bind="playlist.count"> </td>
             </tr>
         </tbody>
