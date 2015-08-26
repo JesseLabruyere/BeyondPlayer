@@ -180,6 +180,10 @@ class Playlist implements JsonSerializable{
         return $this->audioItems->first();
     }
 
+    public function countItems() {
+        return count($this->audioItems);
+    }
+
     /* function that gets used when calling json_encode on objects*/
     public function jsonSerialize()
     {

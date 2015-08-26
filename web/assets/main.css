@@ -18,6 +18,13 @@ html, body {
 #mainContainer .header-row .header {
   height: 100%;
 }
+#mainContainer .header-row .header .navbar {
+  margin-bottom: 0 !important;
+}
+#mainContainer .header-row .header #topOptions {
+  width: 100%;
+  height: calc(100% - 52px);
+}
 #mainContainer .center-row {
   height: calc(100% - (150px + 150px + 2px));
   min-height: calc(100% - (150px + 150px + 2px));

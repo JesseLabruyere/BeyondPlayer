@@ -239,14 +239,14 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             if (0 === strpos($pathinfo, '/app/user/get')) {
                 // getUploads
-                if (0 === strpos($pathinfo, '/app/user/getUploads') && preg_match('#^/app/user/getUploads(?:/(?P<position>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getUploads')), array (  'position' => 0,  'amount' => 25,  '_controller' => 'AppBundle\\Controller\\UserController::getUploads',));
+                if (0 === strpos($pathinfo, '/app/user/getUploads') && preg_match('#^/app/user/getUploads(?:/(?P<page>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'getUploads')), array (  'page' => 1,  'amount' => NULL,  '_controller' => 'AppBundle\\Controller\\UserController::getUploads',));
                 }
 
                 if (0 === strpos($pathinfo, '/app/user/getPlaylist')) {
                     // getPlaylistResults
-                    if (0 === strpos($pathinfo, '/app/user/getPlaylistResults') && preg_match('#^/app/user/getPlaylistResults/(?P<listId>[^/]++)(?:/(?P<position>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylistResults')), array (  'position' => 0,  'amount' => 25,  '_controller' => 'AppBundle\\Controller\\UserController::getPlaylistResults',));
+                    if (0 === strpos($pathinfo, '/app/user/getPlaylistResults') && preg_match('#^/app/user/getPlaylistResults/(?P<listId>[^/]++)(?:/(?P<page>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getPlaylistResults')), array (  'page' => 1,  'amount' => NULL,  '_controller' => 'AppBundle\\Controller\\UserController::getPlaylistResults',));
                     }
 
                     // getPlaylists
@@ -258,8 +258,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
                 if (0 === strpos($pathinfo, '/app/user/getAlbum')) {
                     // getAlbumResults
-                    if (0 === strpos($pathinfo, '/app/user/getAlbumResults') && preg_match('#^/app/user/getAlbumResults/(?P<albumId>[^/]++)(?:/(?P<position>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
-                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbumResults')), array (  'position' => 0,  'amount' => 25,  '_controller' => 'AppBundle\\Controller\\UserController::getAlbumResults',));
+                    if (0 === strpos($pathinfo, '/app/user/getAlbumResults') && preg_match('#^/app/user/getAlbumResults/(?P<albumId>[^/]++)(?:/(?P<page>[^/]++)(?:/(?P<amount>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'getAlbumResults')), array (  'page' => 1,  'amount' => NULL,  '_controller' => 'AppBundle\\Controller\\UserController::getAlbumResults',));
                     }
 
                     // getAlbums

@@ -22,28 +22,59 @@ use Symfony\Component\HttpKernel\Profiler\RedisProfilerStorage;
 class UserController extends Controller
 {
     /**
-     * @Route("app/user/getUploads/{position}/{amount}", name="getUploads")
+     * @Route("app/user/getUploads/{page}/{amount}", name="getUploads")
      *
      * returns data from the Uploads list
      */
-    public function getUploads($position = 0, $amount = 25){
+    public function getUploads($page = 1, $amount = NULL){
+        /* we want to remember this value for later*/
+        $givenAmount = $amount;
 
+        /* this makes it easier when doing calculations*/
+        $page = $page -1;
         $user = $this->getUser();
         $playlist = $user->getUploads();
 
+        $listSize = $playlist->countItems();
+
+        /* check how many pages there can be made with the list and for given amount,
+        * we round up to not miss a half filled page
+        */
+        $numberOfPages = (isset($amount) ? ceil($listSize / $amount) : 1);
+
+        /* we calculate the position within the playlist*/
+        $position = (isset($amount) ? $page * $amount : 0 );
+
+
+        /* the requested page does not fall within the list*/
+        if(isset($amount)) {
+            if ($listSize < ($page * $amount)) {
+                return new Response(json_encode(array('success' => false, 'playlist' => 'page does not exist')));
+
+                /* check if the page falls at the end of the list */
+            } else if ($listSize < (($page * $amount) + $amount)) {
+                /* we set the amount to the last items of the array */
+                $amount = ($listSize - ($page * $amount));
+            }
+        }
+
+
+
         $controller = new PlaylistController();
-
         $results = $controller->getSelection($playlist, $position, $amount);
-
+        $results['pages'] = $numberOfPages;
+        $results['itemsPerPage'] = $givenAmount;
         return new Response( json_encode( array('success' => true, 'playlist' =>$results) ) );
     }
 
     /**
-     * @Route("app/user/getPlaylistResults/{listId}/{position}/{amount}", name="getPlaylistResults")
+     * @Route("app/user/getPlaylistResults/{listId}/{page}/{amount}", name="getPlaylistResults")
      *
      * returns data from a Playlist
      */
-    public function getPlaylistResults($listId, $position = 0, $amount = 25){
+    public function getPlaylistResults($listId, $page = 1, $amount = NULL){
+        /* we want to remember this value for later*/
+        $givenAmount = $amount;
 
         if(! isset($listId)){
             return new Response(json_encode(array('success' => false, 'reason' => 'no listId found')));
@@ -55,10 +86,34 @@ class UserController extends Controller
             return new Response( json_encode(array('success' => false, 'reason' => 'list not found')));
         }
 
+        /* this makes it easier when doing calculations*/
+        $page = $page -1;
+        $listSize = $playlist->countItems();
+
+        /* check how many pages there can be made with the list and for given amount,
+         * we round up to not miss a half filled page
+         */
+        $numberOfPages = (isset($amount) ? ceil($listSize / $amount) : 1);
+
+        /* we calculate the position within the playlist*/
+        $position = (isset($amount) ? $page * $amount : 0 );
+
+        if(isset($amount)) {
+            if ($listSize < ($page * $amount)) {
+                return new Response(json_encode(array('success' => false, 'playlist' => 'page does not exist')));
+
+                /* check if the page falls at the end of the list */
+            } else if ($listSize < (($page * $amount) + $amount)) {
+                /* we set the amount to the last items of the array */
+                $amount = ($listSize - ($page * $amount));
+            }
+        }
+
         $controller = new PlaylistController();
 
         $results = $controller->getSelection($playlist, $position, $amount);
-
+        $results['pages'] = $numberOfPages;
+        $results['itemsPerPage'] = $givenAmount;
         return new Response( json_encode( array('success' => true, 'playlist' => $results) ) );
     }
 
@@ -75,11 +130,13 @@ class UserController extends Controller
 
 
     /**
-     * @Route("app/user/getAlbumResults/{albumId}/{position}/{amount}", name="getAlbumResults")
+     * @Route("app/user/getAlbumResults/{albumId}/{page}/{amount}", name="getAlbumResults")
      *
      * returns data from an Album
      */
-    public function getAlbumResults($albumId, $position = 0, $amount = 25){
+    public function getAlbumResults($albumId, $page = 1, $amount = NULL){
+        /* we want to remember this value for later*/
+        $givenAmount = $amount;
 
         if(! isset($albumId)){
             return new Response(json_encode(array('success' => false, 'reason' => 'no albumId found')));
@@ -91,10 +148,35 @@ class UserController extends Controller
             return new Response( json_encode(array('success' => false, 'reason' => 'album not found')));
         }
 
+        /* this makes it easier when doing calculations*/
+        $page = $page -1;
+        $albumSize = $album->countItems();
+
+        /* check how many pages there can be made with the album and for given amount,
+         * we round up to not miss a half filled page
+         */
+        $numberOfPages = (isset($amount) ? ceil($albumSize / $amount) : 1);
+
+        /* we calculate the position within the album*/
+        $position = (isset($amount) ? $page * $amount : 0 );
+
+        /* the requested page does not fall within the list*/
+        if(isset($amount)) {
+            if ($albumSize < ($page * $amount)) {
+                return new Response(json_encode(array('success' => false, 'playlist' => 'page does not exist')));
+
+                /* check if the page falls at the end of the list */
+            } else if ($albumSize < (($page * $amount) + $amount)) {
+                /* we set the amount to the last items of the array */
+                $amount = ($albumSize - ($page * $amount));
+            }
+        }
+
         $controller = new AlbumController();
 
         $results = $controller->getSelection($album, $position, $amount);
-
+        $results['pages'] = $numberOfPages;
+        $results['itemsPerPage'] = $givenAmount;
         return new Response( json_encode( array('success' => true, 'album' => $results) ) );
     }
 

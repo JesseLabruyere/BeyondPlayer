@@ -31,20 +31,34 @@ class PlaylistController extends Controller
 
         if(isset($orderBy)){
             if(strcmp('DESC', $orderBy) == 0 ) {
-                /* we calculate the new position since the position will be mirrored  (starting at the back of the array)*/
-                $newPosition = (($listCount - $position - $amount) > 0 ? $listCount - $position - $amount : 0);
-                /* check if the requested amount at this position is bigger than the array, decrease the amount accordingly */
-                $newAmount = ($newPosition == 0 ? $listCount - $position : $amount);
 
+                if(isset($amount)) {
+                    /* we calculate the new position since the position will be mirrored  (starting at the back of the array)*/
+                    $newPosition = (($listCount - $position - $amount) > 0 ? $listCount - $position - $amount : 0);
+                    /* check if the requested amount at this position is bigger than the array, decrease the amount accordingly */
+
+                    /* if the position is bigger than the list we have to lower the amount accordingly */
+                    $newAmount = ($newPosition == 0 ? $listCount - $position : $amount);
+
+                } else {
+                    $newPosition = 0;
+                    $newAmount = ($listCount - $position);
+                }
                 $listItems = $listItems->slice($newPosition, $newAmount);
 
                 /* we resort the order so that the last item comes first */
                 rsort($listItems);
             } else if (strcmp('ASC', $orderBy) == 0) {
-                $newPosition = $position;
-                /* check if the requested amount at this position is bigger than the array, decrease the amount accordingly */
-                $newAmount = (($position + $amount) > $listCount ? $listCount - $position  : $amount);
 
+                $newPosition = $position;
+
+                /* if no amount is specified, we return all results starting at position */
+                if(isset($amount)) {
+                    /* check if the requested amount at this position is bigger than the array, decrease the amount accordingly */
+                    $newAmount = (($position + $amount) > $listCount ? $listCount - $position : $amount);
+                } else {
+                    $newAmount = ($listCount - $newPosition);
+                }
                 $listItems = $listItems->slice($newPosition, $newAmount);
             }
 

@@ -23,6 +23,16 @@ html, body {
     height: 150px;
     .header{
       height:100%;
+
+      .navbar {
+        margin-bottom: 0 !important;
+      }
+
+      #topOptions {
+        width: 100%;
+        height: calc(100% - 52px);
+      }
+
     }
   }
   //------- the center row

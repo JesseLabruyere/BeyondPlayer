@@ -1,7 +1,7 @@
 /**
  * Created by Jesse on 10-6-2015.
  */
-var app = angular.module('app',['ngSanitize', 'ngRoute', 'ui.sortable']);
+var app = angular.module('app',['ngSanitize', 'ngRoute', 'ui.sortable', 'ui.bootstrap']);
 
 
 $( document ).ready(function() {
@@ -104,6 +104,28 @@ app.factory('sharedService', function($rootScope, $q, $http) {
         return deferred.promise;
     };
 
+
+    sharedService.paginationInfo = {};
+
+    /* initiating pagination */
+    sharedService.initiatePagination = function (totalItems, pageNumber, viewName, numPages, itemsPerPage) {
+        sharedService.paginationInfo.totalItems = totalItems;
+        sharedService.paginationInfo.currentPage = (typeof pageNumber != 'undefined' ? pageNumber : 1 );
+        sharedService.paginationInfo.viewName = viewName;
+        sharedService.paginationInfo.numPages = numPages;
+        sharedService.paginationInfo.itemsPerPage = itemsPerPage;
+        sharedService.paginationInfo.maxSize = 5;
+        sharedService.paginationInfo.paginationShown = true;
+
+        this.broadcastItem('initiatePagination');
+    };
+
+    sharedService.disablePagination = function () {
+        sharedService.paginationInfo.paginationShown = false;
+
+        this.broadcastItem('disablePagination');
+    };
+
     return sharedService;
 });
 
@@ -125,6 +147,10 @@ app.config(function($routeProvider) {
             controller  : 'uploadController'
         })
         .when('/uploads', {
+            templateUrl : 'app/getUploadsView',
+            controller  : 'uploadsController'
+        })
+        .when('/uploads/:pageNumber', {
             templateUrl : 'app/getUploadsView',
             controller  : 'uploadsController'
         })
@@ -158,14 +184,25 @@ app.controller('uploadController', function($scope) {
 app.controller('uploadsController', function($scope, $http, $timeout, $routeParams, sharedService) {
     $scope.functions = {};
     $scope.playlists = [];
+    $scope.itemsPerPage = 25;
+    $scope.currentPage = $routeParams.pageNumber;
 
     $scope.functions.loadUploadsView = function (item, event) {
-        var response = $http.get("app/user/getUploads");
+
+        /* check if a pagenumber was given*/
+        if(typeof $scope.currentPage === 'undefined') {
+            var response = $http.get("app/user/getUploads");
+        } else {
+            var response = $http.get("app/user/getUploads/" + $scope.currentPage + '/' + $scope.itemsPerPage);
+        }
 
         response.success(function (data, status, headers, config) {
             if(data['playlist'] !== undefined && data['success']){
                 $scope.songs = data['playlist']['listItems'];
                 $scope.playlists = sharedService.playlists;
+                if(typeof $scope.currentPage != 'undefined') {
+                    sharedService.initiatePagination(data['playlist']['listCount'], $scope.currentPage, 'uploads', data['playlist']['pages'], data['playlist']['itemsPerPage'])
+                }
             }
 
             /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
@@ -341,8 +378,8 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     $scope.functions = {};
     $scope.songQueue = [];
     $scope.selected = {};
-    $scope.index = 0;
-    $scope.indexHighLighted = 0;
+    $scope.highLighted = {};
+    $scope.lastId = 0;
     var player;
 
     $scope.functions.loadQueue = function (item, event) {
@@ -351,13 +388,17 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     /* When the service broadcasts 'queue'*/
     $scope.$on('queue', function() {
-        $scope.songQueue = angular.copy(sharedService.songQueue);
+        var array = angular.copy(sharedService.songQueue);
+
+        /* give the items in the songQueue id's */
+        $scope.songQueue = $scope.functions.generateIds(array);
+
         // no items in the array abort
         if(! $scope.songQueue.length > 0 ) {
             return;
         }
         /* set selected to the first item in the songQueque)*/
-        $scope.selected = $scope.songQueue[$scope.index];
+        $scope.selected = $scope.songQueue[0];
 
         // set the new source for the player, timeout to make sure all the changes are digested
         $timeout(function() {
@@ -370,7 +411,11 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     /* When the service broadcasts 'addToQueue'*/
     $scope.$on('addToQueue', function() {
 
-        $scope.songQueue.push( angular.copy(sharedService.songToQueue) );
+        var song = angular.copy(sharedService.songToQueue);
+
+        song = $scope.functions.generateId(song);
+
+        $scope.songQueue.push(song);
 
         /* if there is only one item we start playing this */
         if($scope.songQueue.length === 1 ) {
@@ -385,15 +430,22 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     /* When the service broadcasts 'playSong'*/
     $scope.$on('playSong', function() {
 
+        var song = angular.copy(sharedService.songToQueue);
+        song = $scope.functions.generateId(song);
+
         /* when the queue is not empty*/
         if($scope.songQueue.length > 0) {
-            $scope.songQueue.splice($scope.index, 0, angular.copy(sharedService.songToQueue) );
-            $scope.selected = $scope.songQueue[$scope.index];
+            var currentIndex = $scope.functions.findSongIndex($scope.selected['generatedId']);
+
+            $scope.songQueue.splice(currentIndex, 0, song );
+            $scope.selected = song;
+            $scope.highLighted = song;
         }
         /* when the queue is empty*/
         else {
-            $scope.songQueue.push( angular.copy(sharedService.songToQueue) );
-            $scope.selected = $scope.songQueue[0];
+            $scope.songQueue.push( song );
+            $scope.selected = song;
+            $scope.highLighted = song;
         }
 
         /* start to play the song*/
@@ -408,15 +460,14 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
         var deferred = $q.defer();
 
-        /* check we are at the end of the list yet, if true reset the index */
-        if(($scope.index + 1) == $scope.songQueue.length){
-            $scope.index = 0;
-        } else {
-            $scope.index++;
-        }
+        var currentIndex = $scope.functions.findSongIndex($scope.selected['generatedId']);
 
-        // set selected to the first item of the future, remove item from future
-        $scope.selected = $scope.songQueue[$scope.index];
+        /* check we are at the end of the list yet, if true reset the index */
+        if((currentIndex + 1) == $scope.songQueue.length){
+            $scope.selected = $scope.songQueue[0];
+        } else {
+            $scope.selected = $scope.songQueue[currentIndex + 1];
+        }
 
         // set the new source for the player, timeout to make sure all the changes are digested
         $timeout(function() {
@@ -435,8 +486,7 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
             return;
         }
 
-        $scope.index = songIndex;
-        $scope.selected = $scope.songQueue[$scope.index];
+        $scope.selected = $scope.songQueue[songIndex];
 
         // set the new source for the player, timeout to make sure all the changes are digested
         $timeout(function() {
@@ -469,6 +519,35 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
     };
 
+    /* generate new unique id's for objects in an array */
+    $scope.functions.generateIds = function(array) {
+
+        for(var i = 0; i < array.length; i++) {
+            $scope.lastId ++;
+            array[i]['generatedId'] = $scope.lastId;
+        }
+
+        return array;
+    };
+    /*  generate a new unique id for an object */
+    $scope.functions.generateId = function(object) {
+        $scope.lastId ++;
+        object['generatedId'] = $scope.lastId;
+
+        return object;
+    };
+
+    /* this function is needed to find an itemById and get its index, this is because index can change when dragging */
+    $scope.functions.findSongIndex = function(generatedId){
+
+        for(var i = 0; i < $scope.songQueue.length; i ++) {
+            if($scope.songQueue[i]['generatedId'] === generatedId) {
+                return i;
+            }
+        }
+    };
+
+
     /* build the player, timeout to make sure all the models are digested
      * this is a hack, the intention is to wait until the end of the $digest cycle and then call the function
      * this works because Timeouts are called after all watches are done.
@@ -477,39 +556,34 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         $scope.functions.buildMediaPlayer();
     });
 
-    $scope.functions.songClicked = function (songIndex) {
+    $scope.functions.songClicked = function (index) {
+
         /* check if the item was just dragged, in that case we dont want to play it */
-        if($scope.justDragged === songIndex) {
+        if($scope.justDragged === index) {
             /* reset this value, so next time this item is clicked it will play */
             $scope.justDragged = 99999;
             return;
         }
         /* is this song already highlighted? */
-        if($scope.indexHighLighted === songIndex && $scope.highLightedThisClick === false) {
+        if($scope.highLighted.generatedId === $scope.songQueue[index].generatedId && $scope.highLightedThisClick === false) {
             /* is this song not already playing? */
-            if($scope.index !== songIndex) {
-                $scope.functions.playSong(songIndex);
+            if($scope.selected.generatedId !== $scope.songQueue[index].generatedId) {
+                $scope.functions.playSong(index);
             }
         }
-
-
-/*        else {
-            $scope.indexHighLighted = songIndex;
-        }*/
-
     };
 
-    $scope.functions.songMouseDown = function (songIndex) {
+    $scope.functions.songMouseDown = function (song) {
 
         /* is this song already highlighted? */
-        if($scope.indexHighLighted === songIndex) {
+        if($scope.highLighted.generatedId === song.generatedId) {
             /* since we use botch ng-click and ng-mousedown, we use this variable
             *  to tell if this item was just highlighted in the same click action
             *  because if thats true we don't want to play it yet
             */
             $scope.highLightedThisClick = false
         } else {
-            $scope.indexHighLighted = songIndex;
+            $scope.highLighted = song;
             $scope.highLightedThisClick = true;
         }
     };
@@ -554,8 +628,7 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
         /* make everything empty */
         $scope.songQueue = [];
         $scope.selected = {};
-        $scope.index = 0;
-        $scope.indexHighLighted = 0;
+        $scope.highLighted = {};
 
         /* remove the source from the player */
         /* TODO more is needed to reset the players progress bar, maybe an empty mp3 file? */
@@ -569,7 +642,6 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
     * if the item was just dragged (we dont want it to start play in that case)
     * */
 
-    $scope.oldIndex = 0;
     $scope.justDragged = 99999;
     /* options for the draggable items in the songQueue*/
     $scope.sortableOptions = {
@@ -579,36 +651,55 @@ app.controller('footerController', function($scope, $http, $routeParams,$timeout
 
         },
         stop: function(e, ui) {
-
-            /* check if the item is playing
-             * also works if the item started playing mid drag
-             * */
-            if($scope.index == $scope.oldIndex) {
-                $scope.index = ui.item.index();
-            }
-
-            /* check if the index needs to be changed based on the position*/
-            if ( $scope.index !== ui.item.index() ){
-                if(ui.item.index() > $scope.index && $scope.oldIndex < $scope.index && $scope.index !== 0) {
-                    $scope.index--;
-                } else if (ui.item.index() < $scope.index && $scope.oldIndex > $scope.index) {
-                    $scope.index++;
-                }
-            }
-
-            /* we highlight the item on its new position */
-            $scope.indexHighLighted = ui.item.index();
-
             /* this var now tells that the item was just dragged */
             $scope.justDragged = ui.item.index();
-
-            /* reset this value*/
-            $scope.isPLaying = false;
         }
 
     };
 
 });
+
+app.controller('topOptionsController', function($scope, $http, $routeParams, $location, sharedService) {
+
+    $scope.functions = {};
+
+    /* pagination*/
+    $scope.totalItems = 50;
+    $scope.currentPage = 1;
+    $scope.viewName = 'uploads';
+    $scope.numPages = 20;
+    $scope.itemsPerPage = 25;
+    $scope.maxSize = 5;
+    $scope.paginationShown = false;
+
+
+    $scope.functions.selectPage =  function () {
+        $scope.functions.pageChanged();
+    };
+
+
+    $scope.functions.pageChanged = function() {
+        $location.url('/'+ $scope.viewName + '/' + $scope.currentPage);
+    };
+
+
+    /* When the service broadcasts 'pagination'*/
+    $scope.$on('initiatePagination', function() {
+        $scope.totalItems = sharedService.paginationInfo.totalItems;
+        $scope.currentPage = sharedService.paginationInfo.currentPage;
+        $scope.viewName = sharedService.paginationInfo.viewName;
+        $scope.numPages = sharedService.paginationInfo.numPages;
+        $scope.itemsPerPage = sharedService.paginationInfo.itemsPerPage;
+        $scope.maxSize = sharedService.paginationInfo.maxSize;
+        $scope.paginationShown = sharedService.paginationInfo.paginationShown;
+    });
+
+    $scope.$on('disablePagination', function() {
+        $scope.paginationShown = sharedService.paginationInfo.paginationShown;
+    });
+});
+
+
 
 
 /*function initializeFileInput() {

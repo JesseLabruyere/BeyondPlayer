@@ -31,8 +31,10 @@
                         {# the selected item has the selected class #}
                         {# if the item is not currently played, we call the ng-click function #}
                         {# if the item is not selected, we want to select it, else play the song if it was not already playing #}
-                        <td ng-repeat-start="song in songQueue" ng-class="{selected: index == $index, highLight: indexHighLighted == $index}" ng-click="beingDragged !== $index && functions.songClicked($index)" ng-mousedown="functions.songMouseDown($index)"  style="cursor: move;" ng-repeat-end>
+                        <td ng-repeat-start="song in songQueue" ng-class="{selected: selected.generatedId == song.generatedId, highLight: highLighted.generatedId == song.generatedId}" ng-click="beingDragged !== $index && functions.songClicked($index)" ng-mousedown="functions.songMouseDown(song)"  style="cursor: move;" ng-repeat-end>
+
                             <div class="queueSong">
+                                <a ng-bind="song.index"></a>
                                 <a ng-bind="song.id"></a>
                                 <a ng-bind="song.name"></a>
                             </div>

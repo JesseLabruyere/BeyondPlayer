@@ -141,6 +141,9 @@ class Album implements JsonSerializable {
         $this->artist = $artist;
     }
 
+    public function countItems() {
+        return count($this->audioItems);
+    }
 
 
 
