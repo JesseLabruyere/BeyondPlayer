@@ -55,9 +55,10 @@ html, body {
 }
 #mainContainer .center-row .center #playlistView .row-fluid.scrolling-table {
   flex: 2;
-  display: flex;
+  /*display: flex;*/
   flex-flow: column;
   margin-bottom: -20px;
+  overflow: auto;
 }
 #mainContainer .center-row .center #playlistView .row-fluid.scrolling-table .jqstb-header-table {
   flex: auto;
@@ -78,14 +79,39 @@ html, body {
 }
 #mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table {
   flex: 2;
-  display: flex;
+  /*display: flex;*/
   flex-flow: column;
   margin-bottom: -20px;
+  overflow: auto;
 }
 #mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table .jqstb-header-table {
   flex: auto;
 }
 #mainContainer .center-row .center #uploadsView .row-fluid.scrolling-table .jqstb-scroll {
+  /* no idea why this works but it does */
+  flex: 999 1 0;
+  min-height: 20px;
+}
+#mainContainer .center-row .center #albumView {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+#mainContainer .center-row .center #albumView .row-fluid.menu {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#mainContainer .center-row .center #albumView .row-fluid.scrolling-table {
+  flex: 2;
+  /*display: flex;*/
+  flex-flow: column;
+  margin-bottom: -20px;
+  overflow: auto;
+}
+#mainContainer .center-row .center #albumView .row-fluid.scrolling-table .jqstb-header-table {
+  flex: auto;
+}
+#mainContainer .center-row .center #albumView .row-fluid.scrolling-table .jqstb-scroll {
   /* no idea why this works but it does */
   flex: 999 1 0;
   min-height: 20px;

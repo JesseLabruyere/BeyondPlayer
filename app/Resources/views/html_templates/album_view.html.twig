@@ -1,22 +1,23 @@
 {# app/Resources/views/html_templates/playlist_view.html.twig #}
 
 <div id="albumView">
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>link</th>
-            </tr>
-        </thead>
-        <tbody>
-        {# the ng-repeat stops with the same element as it starts #}
-            <tr ng-repeat-start="song in songs"  ng-repeat-end >
-                <td ng-bind="song.id"> </td>
-                <td ng-bind="song.name"> </td>
-                <td > <a ng-bind="song.fullPath" ng-href="/{% verbatim %}{{song.fullPath}}{% endverbatim %}"></a> </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row-fluid scrolling-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>link</th>
+                </tr>
+            </thead>
+            <tbody>
+            {# the ng-repeat stops with the same element as it starts #}
+                <tr ng-repeat-start="song in songs"  ng-repeat-end >
+                    <td ng-bind="song.id"> </td>
+                    <td ng-bind="song.name"> </td>
+                    <td > <a ng-bind="song.fullPath" ng-href="/{% verbatim %}{{song.fullPath}}{% endverbatim %}"></a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -49,7 +49,7 @@ class UserController extends Controller
         /* the requested page does not fall within the list*/
         if(isset($amount)) {
             if ($listSize < ($page * $amount)) {
-                return new Response(json_encode(array('success' => false, 'playlist' => 'page does not exist')));
+                return new Response(json_encode(array('success' => false, 'reason' => 'page does not exist', 'playlist' => (object)array('pages' => $numberOfPages, 'listCount' => $listSize, 'itemsPerPage' => $givenAmount) )));
 
                 /* check if the page falls at the end of the list */
             } else if ($listSize < (($page * $amount) + $amount)) {
@@ -100,7 +100,7 @@ class UserController extends Controller
 
         if(isset($amount)) {
             if ($listSize < ($page * $amount)) {
-                return new Response(json_encode(array('success' => false, 'playlist' => 'page does not exist')));
+                return new Response(json_encode(array('success' => false, 'playlist' => 'page does not exist', 'playlist' => (object)array('pages' => $numberOfPages, 'listCount' => $listSize, 'itemsPerPage' => $givenAmount))));
 
                 /* check if the page falls at the end of the list */
             } else if ($listSize < (($page * $amount) + $amount)) {

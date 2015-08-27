@@ -16,13 +16,16 @@ app.factory('sharedService', function($rootScope, $q, $http) {
     sharedService.playlists = [];
 
     /*---- broadcasting commands to other controllers ----*/
-    sharedService.broadcast = function(message) {
-        this.broadcastItem(message);
+    sharedService.broadcast = function(message, object) {
+        if(typeof object == 'undefined') {
+            object = {};
+        }
+        this.broadcastItem(message, object);
     };
 
     /* broadcast a message to all controllers */
-    sharedService.broadcastItem = function(message) {
-        $rootScope.$broadcast(message);
+    sharedService.broadcastItem = function(message, object) {
+        $rootScope.$broadcast(message, object);
     };
     /*/////////////////////////////////////////////////////*/
 
@@ -108,10 +111,10 @@ app.factory('sharedService', function($rootScope, $q, $http) {
     sharedService.paginationInfo = {};
 
     /* initiating pagination */
-    sharedService.initiatePagination = function (totalItems, pageNumber, viewName, numPages, itemsPerPage) {
+    sharedService.initiatePagination = function (totalItems, pageNumber, url, numPages, itemsPerPage) {
         sharedService.paginationInfo.totalItems = totalItems;
         sharedService.paginationInfo.currentPage = (typeof pageNumber != 'undefined' ? pageNumber : 1 );
-        sharedService.paginationInfo.viewName = viewName;
+        sharedService.paginationInfo.url= url;
         sharedService.paginationInfo.numPages = numPages;
         sharedService.paginationInfo.itemsPerPage = itemsPerPage;
         sharedService.paginationInfo.maxSize = 5;
@@ -129,15 +132,11 @@ app.factory('sharedService', function($rootScope, $q, $http) {
     return sharedService;
 });
 
-app.controller('initialisationController', ['$scope', function($scope) {
-    $scope.functions = {};
-}]);
 
 /* routing */
 app.config(function($routeProvider) {
     $routeProvider
 
-        // uploadForm
         .when('/', {
             templateUrl : 'app/empty',
             controller  : ''
@@ -148,12 +147,14 @@ app.config(function($routeProvider) {
         })
         .when('/uploads', {
             templateUrl : 'app/getUploadsView',
-            controller  : 'uploadsController'
+            controller  : 'uploadsController',
+            /* if the searchparameters change the controller won't reload*/
+            reloadOnSearch: false
         })
-        .when('/uploads/:pageNumber', {
+/*        .when('/uploads/:pageNumber', {
             templateUrl : 'app/getUploadsView',
             controller  : 'uploadsController'
-        })
+        })*/
         .when('/registration', {
             templateUrl : 'app/getRegistrationForm',
             controller  : 'registrationController'
@@ -181,11 +182,12 @@ app.config(function($routeProvider) {
 app.controller('uploadController', function($scope) {
 });
 
-app.controller('uploadsController', function($scope, $http, $timeout, $routeParams, sharedService) {
+app.controller('uploadsController', function($scope, $http, $timeout, $routeParams, $location, sharedService) {
     $scope.functions = {};
     $scope.playlists = [];
     $scope.itemsPerPage = 25;
-    $scope.currentPage = $routeParams.pageNumber;
+    $scope.currentPage = $routeParams.page;
+    $scope.pages = 0;
 
     $scope.functions.loadUploadsView = function (item, event) {
 
@@ -201,13 +203,13 @@ app.controller('uploadsController', function($scope, $http, $timeout, $routePara
                 $scope.songs = data['playlist']['listItems'];
                 $scope.playlists = sharedService.playlists;
                 if(typeof $scope.currentPage != 'undefined') {
-                    sharedService.initiatePagination(data['playlist']['listCount'], $scope.currentPage, 'uploads', data['playlist']['pages'], data['playlist']['itemsPerPage'])
+                    sharedService.initiatePagination(data['playlist']['listCount'], $scope.currentPage, '/uploads', data['playlist']['pages'], data['playlist']['itemsPerPage'])
                 }
             }
 
             /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
             $timeout(function() {
-                $('#uploadsView table').scrollTableBody();
+                /*$('#uploadsView table').scrollTableBody();*/
             });
         });
 
@@ -218,6 +220,60 @@ app.controller('uploadsController', function($scope, $http, $timeout, $routePara
     };
 
     $scope.functions.loadUploadsView();
+
+    $scope.functions.loadPage = function (pageNumber) {
+        /*$scope.currentPage = pageNumber;*/
+        var response = $http.get("app/user/getUploads/" + pageNumber + '/' + $scope.itemsPerPage);
+
+        response.success(function (data, status, headers, config) {
+
+            if(typeof data['playlist'] != 'undefined' && data['success']){
+                $scope.currentPage = pageNumber;
+                $scope.songs = data['playlist']['listItems'];
+                $scope.playlists = sharedService.playlists;
+                /* change url since the page has now changed*/
+                /*$location.path('/uploads').search({page: pageNumber});*/
+            } else if (!data['success'] && data['reason'] === 'page does not exist') {
+                /* do nothing*/
+            }
+
+            /* check if the amount of pages has changed, in that case we want to build the pagination again */
+            if(typeof data['playlist'] != 'undefined' && data['playlist']['pages'] != $scope.pages) {
+                $scope.pages = data['playlist']['pages'];
+                sharedService.initiatePagination(data['playlist']['listCount'], $scope.currentPage, '/uploads', data['playlist']['pages'], data['playlist']['itemsPerPage']);
+            }
+
+            /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
+            $timeout(function() {
+                /*$('#uploadsView table').scrollTableBody();*/
+            });
+        });
+
+        response.error(function (data, status, headers, config) {
+            alert("AJAX failed!");
+        });
+
+    };
+
+/* example of getting parameters from broadcast of service
+
+    $scope.$on('uploadsController.loadPage', function(event, args) {
+        $scope.functions.loadPage(args.pageNumber);
+    });
+*/
+
+    /* will be triggered when the searchparameters of the url have changed */
+    $scope.$on('$routeUpdate', function(next, current) {
+        /* if the searchParameter for the page has changed we load that page*/
+        if($routeParams.page != $scope.currentPage && typeof $routeParams.page != 'undefined') {
+            $scope.functions.loadPage($routeParams.page);
+        } else if ( $routeParams.page != 'undefined' ) {
+            /* there is no page specified so we will reload the default */
+            delete $scope.currentPage;
+            $scope.functions.loadUploadsView();
+        }
+    });
+
 
     /* function to remove item */
     $scope.functions.removeItem = function (id, index) {
@@ -293,7 +349,7 @@ app.controller('playlistController', function($scope, $http, $routeParams, $time
 
             /* make the table scrollable, after the $digest cycle otherwise the dimensions won't be accurate*/
             $timeout(function() {
-                $('#playlistView table').scrollTableBody();
+                /*$('#playlistView table').scrollTableBody();*/
             });
         });
 
@@ -666,7 +722,7 @@ app.controller('topOptionsController', function($scope, $http, $routeParams, $lo
     /* pagination*/
     $scope.totalItems = 50;
     $scope.currentPage = 1;
-    $scope.viewName = 'uploads';
+    $scope.url= '';
     $scope.numPages = 20;
     $scope.itemsPerPage = 25;
     $scope.maxSize = 5;
@@ -679,7 +735,9 @@ app.controller('topOptionsController', function($scope, $http, $routeParams, $lo
 
 
     $scope.functions.pageChanged = function() {
-        $location.url('/'+ $scope.viewName + '/' + $scope.currentPage);
+        $location.path($scope.url).search({page: $scope.currentPage});
+       /* $location.url('/'+ $scope.controllerName + '/' + $scope.currentPage);*/
+        /*sharedService.broadcast($scope.controllerName + '.loadPage' , {'pageNumber' : $scope.currentPage});*/
     };
 
 
@@ -687,7 +745,7 @@ app.controller('topOptionsController', function($scope, $http, $routeParams, $lo
     $scope.$on('initiatePagination', function() {
         $scope.totalItems = sharedService.paginationInfo.totalItems;
         $scope.currentPage = sharedService.paginationInfo.currentPage;
-        $scope.viewName = sharedService.paginationInfo.viewName;
+        $scope.url = sharedService.paginationInfo.url;
         $scope.numPages = sharedService.paginationInfo.numPages;
         $scope.itemsPerPage = sharedService.paginationInfo.itemsPerPage;
         $scope.maxSize = sharedService.paginationInfo.maxSize;
