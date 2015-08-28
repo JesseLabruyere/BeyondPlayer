@@ -56,7 +56,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div id="topOptions" ng-controller="topOptionsController">
-            <pagination ng-show="paginationShown" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage" ng-change="functions.selectPage()"></pagination>
+            <pagination ng-show="paginationShown" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" items-per-page="itemsPerPage" ng-change="functions.pageChanged()"></pagination>
 
         </div>
         {% endblock %}
